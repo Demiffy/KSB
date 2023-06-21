@@ -1,0 +1,98 @@
+/* ZMĚNA POZADÍ */
+body {
+    background-color: #171717 !important;
+}
+/* ZMĚNA BARVA TEXTU LINE */
+.col label {
+    color: white !important;
+    padding: 10px;
+    text-transform: capitalize;
+}
+
+/* ODSTRANENÍ OZNÁMENÍ */
+.alert.alert-success {
+    display: none !important;
+}
+
+/* NAVBAR BARVY */
+.navbar.navbar-inverse {
+    background-color: #00337C !important;
+    color: white;
+    border-color: #034aac !important;
+}
+
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover {
+    background-color: #034aac !important;
+}
+
+.day-selector {
+    background-color: #00337C !important;
+}
+/* ČÁRA KALENDÁŘ */
+.hour-line::after {
+    background-color: white !important;
+}
+
+/* BLOK KALENDÁŘ */
+.col .hour-line label {
+    position: absolute;
+    margin: -10px 0 0 -60px;
+    padding: 0px;
+    color: white !important;
+    width: 50px;
+    left: 0;
+    text-align: right;
+}
+
+.col label {
+    color: white !important;
+    padding: 10px;
+    text-transform: capitalize;
+}
+
+/* ZMĚNA HODIN */
+.hour-card.changed-card {
+    background-color: goldenrod !important;
+}
+.hour-card.added-card {
+    background-color: #DA0037 !important;
+}
+.hour-card.canceled-card {
+    background-color: #444444 !important;
+}
+.hour-cards .lunch-card {
+    background-color: #03C988 !important;
+}
+.hour-card, .lunch-card,.resit-card {
+    background-color: #00337C !important;
+}
+
+
+/* IDK */
+input:checked + .slider {
+    background-color: #00337C !important;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #00337C !important;
+}
+
+/* ZNÁMKY */
+.panel-heading > .dropdown .dropdown-toggle {
+    color: blue !important;
+  }
+
+  .panel-default > .panel-heading {
+    color: white !important;
+    background-color: #00337C !important;
+    border-color: #034aac !important;
+  }
+  .panel-default > .panel-heading + .panel-collapse > .panel-body {
+    border-top-color: #034aac !important;
+  }
+  .panel-default > .panel-heading .badge {
+    color: #034aac !important;
+  }
+
+
+

@@ -1,0 +1,12 @@
+/* Style for the hello world text */
+.hello-world {
+    font-size: 50px;
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  /* Style for the gray background */
+  body {
+    background-color: gray;
+  }
+  
