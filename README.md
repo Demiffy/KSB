@@ -2,6 +2,10 @@
 
 This chrome extension project aims to transform the KybernaIS site theme to a visually appealing and user-friendly dark theme.
 
+
+![git4](https://github.com/Demiffy/KSB/assets/74311311/4cbcd8a9-cd08-437e-8b85-4ad8fe77d615)
+
+
 ## Notice
 
 Keep in mind that this extension is only meant for Kyberna High School students, for everyone else it's useless. Also this was mainly made for me, but feel free to use this extension if you find it atleast somewhat good!
