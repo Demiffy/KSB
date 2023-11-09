@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Website</title>
+  </head>
+  <body>
+    <h1 id="title">Error Test</h1>
+    <button onclick="myFunction()">Click me</button>
+    <div id="error-container"></div>
+
+    <script>
+      var title = document.getElementById('title');
+      var errorContainer = document.getElementById('error-container');
+
+      console.log = function(message) {
+        title.setAttribute('title', message);
+        return console.log.apply(console, arguments);
+      };
+
+      console.warn = function(message) {
+        title.setAttribute('title', message);
+        return console.warn.apply(console, arguments);
+      };
+
+      console.error = function(message) {
+        var errorText = document.createElement('p');
+        errorText.innerText = message;
+        errorContainer.appendChild(errorText);
+
+        title.setAttribute('title', message);
+
+        return console.error.apply(console, arguments);
+      };
+console.log("Hello");
+    </script>
+  </body>
+</html>

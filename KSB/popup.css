@@ -1,0 +1,244 @@
+/* Barvy */
+:root {
+  --primary: #cc2929;
+  --accent: #581111;
+
+  --background: #111;
+  --secondary: #272727;
+  --tertiary: #424242;
+  --lightGrey: #999;
+  --white: #fff;
+}
+
+/* Body */
+html,
+body {
+  background-color: var(--background);
+  color: var(--white);
+  min-width: 310px;
+  min-height: 350px;
+  padding: 0.5em;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+h1 {
+  font-size: 26px;
+}
+
+/* Titulek */
+.quick-menu {
+  text-align: center;
+  position: relative;
+  color: #f8b739;
+}
+
+.quick-menu::before,
+.quick-menu::after {
+  content: '';
+  position: absolute;
+  width: 3px;
+  height: 100%;
+  background-color: #f8b739;
+  opacity: 0;
+  animation: blink 1s ease-in-out infinite;
+}
+
+.quick-menu::before {
+  left: 0;
+}
+
+.quick-menu::after {
+  right: 0;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Tlačítka */
+
+button {
+  color: var(--white);
+  background: var(--secondary);
+  cursor: pointer;
+  padding: 5px 16px;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+
+  transition: 0.4s;
+}
+
+button:hover {
+  background: #444;
+}
+
+#version {
+  padding: 0.25rem 0.5rem;
+}
+
+#ext-update {
+  cursor: pointer;
+  color: var(--white);
+  text-decoration: none;
+  background: var(--primary);
+  border-radius: 0.25rem;
+}
+#ext-update:hover {
+  text-decoration: underline;
+}
+
+#main {
+  padding: 0.25rem 0;
+  z-index: 69;
+  position: fixed;
+  background: var(--secondary);
+  margin: 0;
+  bottom: 1.15rem;
+  right: 1.15rem;
+  border-radius: 0.25rem;
+}
+
+#main2 {
+  position: fixed;
+  margin: 0;
+  bottom: 1.15rem;
+  right: 19rem;
+}
+
+.savebutton {
+  position: fixed;
+  margin: 0;
+  bottom: 1.15rem;
+  right: 9.85rem;
+}
+
+.switch::before,
+.label-with-hover-tip::before {
+  content: attr(data-hover);
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.1s linear, opacity 0.1s linear;
+  width: 250px;
+  background-color: var(--secondary);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 160%;
+}
+
+.switch:hover::before,
+.label-with-hover-tip:hover::before {
+  visibility: visible;
+  opacity: 1;
+}
+
+.fade-in {
+  opacity: 1;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 2s;
+}
+
+@keyframes fadeInOpacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/*   Switche   */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 17px;
+  margin-bottom: 1rem;
+}
+
+.label-with-hover-tip {
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  height: 17px;
+  margin-bottom: 1rem;
+}
+
+.switch:last-of-type {
+  margin-bottom: 0;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--secondary);
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 13px;
+  width: 13px;
+  left: 2px;
+  bottom: 2px;
+  background: var(--lightGrey);
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background: var(--accent);
+}
+
+input:checked + .slider::before {
+  transform: translateX(13px);
+  background: var(--primary);
+}
+
+.switchLabel {
+  margin-left: 0.5rem;
+  width: 250px !important;
+  transform: translateX(35px);
+  display: inline-block;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#status {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 5px;
+  transition: background-color 0.2s ease-in-out;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}

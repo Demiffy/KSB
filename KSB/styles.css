@@ -1,0 +1,698 @@
+/* ZMĚNA POZADÍ */
+body {
+    background-color: #171717 !important;
+    color: #800080 !important;
+}
+
+/* ZMĚNA BARVA TEXTU LINE */
+.col label {
+    color: white !important;
+    padding: 10px;
+    text-transform: capitalize;
+}
+
+/* ODSTRANENÍ OZNÁMENÍ */
+.alert.alert-success {
+    display: none !important;
+}
+
+/* NAVBAR BARVY */
+.navbar.navbar-inverse {
+    background-color: #00337C !important;
+    color: white;
+    border-color: #034aac !important;
+}
+
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover {
+    background-color: #034aac !important;
+}
+
+.day-selector {
+    background-color: #00337C !important;
+}
+/* ČÁRA KALENDÁŘ */
+.hour-line::after {
+    background-color: white !important;
+}
+
+/* BLOK KALENDÁŘ */
+.col .hour-line label {
+    position: absolute;
+    margin: -10px 0 0 -60px;
+    padding: 0px;
+    color: white !important;
+    width: 50px;
+    left: 0;
+    text-align: right;
+}
+
+.col label {
+    color: white !important;
+    padding: 10px;
+    text-transform: capitalize;
+}
+
+/* ZMĚNA HODIN */
+.hour-card.changed-card {
+    background-color: goldenrod !important;
+}
+.hour-card.added-card {
+    background-color: #DA0037 !important;
+}
+.hour-card.canceled-card {
+    background-color: #444444 !important;
+}
+.hour-cards .lunch-card {
+    background-color: #03C988 !important;
+}
+.hour-card, .lunch-card,.resit-card {
+    background-color: #00337C !important;
+}
+
+
+/* IDK */
+input:checked + .slider {
+    background-color: #00337C !important;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #00337C !important;
+}
+
+/* ZNÁMKY */
+.panel-heading > .dropdown .dropdown-toggle {
+    color: blue !important;
+  }
+
+  .classification .table{
+    color: black !important;
+  }
+  .panel-default > .panel-heading {
+    color: white !important;
+    background-color: #00337C !important;
+    border-color: #034aac !important;
+  }
+  .panel-default > .panel-heading + .panel-collapse > .panel-body {
+    border-top-color: #034aac !important;
+  }
+  .panel-default > .panel-heading .badge {
+    color: #034aac !important;
+  }
+
+
+/* OSTATNÍ */
+.btn.btn-default {
+    color: #ffffff !important; /* Light purple text to stand out against the dark blue background */
+    background-color: #00337C !important; /* Main color of the page */
+    border: 1px solid #265487 !important; /* Slightly lighter border for some depth */
+    padding: 10px 20px !important; /* Comfortable padding around the text */
+    font-size: 16px !important; /* Adequate font size for readability */
+    border-radius: 5px !important; /* Rounded corners for a modern look */
+    transition: background-color 0.3s, color 0.3s !important; /* Smooth transition for hover effects */
+    outline: none !important; /* Remove the outline to keep the style clean */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important; /* Subtle shadow for a 3D effect */
+}
+
+.btn.btn-default:hover,
+.btn.btn-default:focus {
+    color: #FFFFFF !important; /* White text on hover for better visibility */
+    background-color: #1A4A8D !important; /* Slightly lighter blue background on hover */
+    border-color: #163D7A !important; /* Adjusted blue border on hover for contrast */
+    text-decoration: none !important; /* No underline on hover */
+}
+
+.btn.btn-default:active {
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3) !important; /* Inner shadow for a pressed effect */
+    transform: translateY(1px) !important; /* Slight move down to mimic a button press */
+}
+
+
+
+
+
+.write_btn {
+    color: #ffffff !important; /* White text to stand out against the dark blue background */
+    background-color: #00337C !important; /* Main color of the page */
+    border: 1px solid #265487 !important; /* Slightly lighter border for some depth */
+    padding: 10px 20px !important; /* Comfortable padding around the text */
+    font-size: 16px !important; /* Adequate font size for readability */
+    border-radius: 5px !important; /* Rounded corners for a modern look */
+    transition: background-color 0.3s, color 0.3s !important; /* Smooth transition for hover effects */
+    outline: none !important; /* Remove the outline to keep the style clean */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important; /* Subtle shadow for a 3D effect */
+}
+
+.write_btn:hover,
+.write_btn:focus {
+    color: #FFFFFF !important; /* White text on hover for better visibility */
+    background-color: #1A4A8D !important; /* Slightly lighter blue background on hover */
+    border-color: #163D7A !important; /* Adjusted blue border on hover for contrast */
+    text-decoration: none !important; /* No underline on hover */
+}
+
+.write_btn:active {
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3) !important; /* Inner shadow for a pressed effect */
+    transform: translateY(1px) !important; /* Slight move down to mimic a button press */
+}
+
+
+
+
+
+
+
+.table.table-bordered {
+    background-color: #20232A !important; /* Dark grey/blueish background */
+    border-collapse: separate !important;
+    border: 1px solid #343A40 !important; /* Dark border for each cell */
+}
+
+.table.table-bordered th,
+.table.table-bordered td {
+    border: 1px solid #343A40 !important; /* Dark border for each cell */
+    padding: 8px !important; /* Padding for cell content */
+    width: 30px !important; /* Set the width of the cells */
+}
+
+.table.table-bordered thead th {
+    background-color: #2C2F33 !important; /* Even darker shade for header row */
+    color: #FFFFFF !important; /* White text for header for better contrast */
+}
+
+
+
+
+
+
+
+/* General Styling for Inside the Panel */
+.panel-default .panel-heading {
+    background: #00337C !important;
+    color: #fff !important;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.panel-body {
+    background-color: #171717;
+    color: #D3B9FF;
+    padding: 20px;
+}
+
+/* Style for the table */
+.table-striped {
+    width: 100%;
+    background-color: #20232A !important;
+    border-collapse: collapse;
+}
+
+.table-striped td, .table-striped th {
+    border: 1px solid #343A40;
+    padding: 8px 10px;
+    color: #D3B9FF;
+}
+
+.table-striped tr:nth-child(even) {
+    background-color: #292b2c;
+}
+
+.table-striped tr:hover {
+    background-color: #1d1f21;
+}
+
+/* Style for input fields */
+.panel-body .dateTime input[type="date"],
+.panel-body .dateTime input[type="number"] {
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    background-color: #292b2c;
+    color: #D3B9FF;
+    border-radius: 4px;
+}
+
+/* Style for the select field */
+.panel-body .input select {
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    background-color: #292b2c;
+    color: #D3B9FF;
+    border-radius: 4px;
+    width: 100%;
+}
+
+/* Style for the textarea */
+.panel-body .input textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    background-color: #292b2c;
+    color: #D3B9FF;
+    border-radius: 4px;
+    height: 100px;
+    resize: vertical;
+}
+
+/* Centering text next to inputs */
+.panel-body .center {
+    display: inline-block;
+    margin-right: 10px;
+    color: #D3B9FF;
+    vertical-align: middle;
+}
+
+/* Additional Styling for Buttons */
+.write_btn {
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    /* other styles from .write_btn should be here as well */
+}
+
+/* Hover effect for rows that can be removed */
+.detailData td.remove:hover {
+    cursor: pointer;
+    background-color: #DA0037 !important; /* Highlight row for removal in red on hover */
+    color: #fff;
+}
+
+
+.table.table-striped.detailData,
+.table.table-striped.detailData td,
+.table.table-striped.detailData th {
+    color: white !important; /* Black text color */
+    background-color: #171717;
+    border-radius: 0px;
+}
+
+
+#end_Lesson {
+    margin-left: 20px !important; /* Move 20px to the right */
+    width: 60px !important; /* Increase width */
+}
+
+#start_Lesson{
+    margin-left: 20px !important; /* Move 20px to the right */
+    width: 60px !important; /* Increase width */
+}
+
+select[name="type"] {
+    margin: 0 auto !important; /* Centers the element within its container */
+    display: block; /* This makes the auto margins work for horizontal centering */
+    width: 80% !important; /* Adjust the width as needed */
+}
+
+textarea[name="message"] {
+    margin: 0 auto !important; /* Centers the element within its container */
+    display: block; /* This makes the auto margins work for horizontal centering */
+    width: 80% !important; /* Adjust the width as needed */
+}
+
+
+td[colspan="13"] {
+    font-weight: bold;
+    font-size: larger !important;
+    color: #ffffff;
+    background-color: #353a46; 
+  }
+  
+
+
+
+  
+
+  .alert.alert-info {
+    background-color: #20232A; /* Dark background for the alert */
+    color: #ADBAC7; /* Light grey text color for readability */
+    padding: 20px;
+    border-radius: 0; /* No rounded corners */
+    border: 1px solid #3A3F44; /* Slightly lighter border for a subtle contrast */
+}
+
+.alert.alert-info > div {
+    margin-bottom: 15px; /* Spacing between rows */
+}
+
+.alert.alert-info .table-container {
+    display: table;
+    width: 100%; /* Full width for alignment */
+    margin-bottom: 15px; /* Spacing after the table */
+}
+
+.alert.alert-info .table-cell {
+    display: table-cell;
+    vertical-align: middle; /* Align content vertically in the middle */
+    padding-right: 15px; /* Spacing to the right of the cell */
+}
+
+.alert.alert-info .highlight-box {
+    display: inline-block;
+    background-color: white; /* White background for highlighted boxes */
+    padding: 12px 20px;
+    margin: 4px;
+    border-radius: 0; /* No rounded corners */
+    border: 2px solid #4D9FEC; /* Blue border for emphasis */
+    font-weight: bold; /* Bold font for emphasis */
+    color: #20232A; /* Dark text for contrast */
+}
+
+.alert.alert-info table {
+    width: 100%; /* Full width of its container */
+    table-layout: fixed; /* Fixed table layout for equal column widths */
+}
+
+.alert.alert-info tr {
+    font-size: 18px; /* Slightly smaller font size for a more refined look */
+    line-height: 1.8; /* Increased line height for better readability */
+}
+
+.alert.alert-info td {
+    padding: 8px; /* Increased padding for a more spacious look */
+    border-bottom: 2px solid #E1E4E8; /* Light border for subtle row separation */
+}
+
+.alert.alert-info td:last-child {
+    text-align: right; /* Align VS numbers to the right for consistency */
+}
+
+/* Override any inline styles */
+.alert.alert-info [style] {
+    color: inherit !important;
+    background-color: inherit !important;
+    padding: inherit !important;
+    margin: inherit !important;
+    border: inherit !important;
+}
+
+/* Style for bank account information */
+.alert.alert-info .bank-info {
+    color: #20232A; /* Dark text color for readability on light background */
+    background-color: #E1E4E8; /* Light grey background for the bank account container */
+    padding: 12px 20px;
+    border-radius: 0; /* No rounded corners */
+    display: inline-block;
+    margin: 4px 0; /* Only vertical margin for alignment */
+    border: 2px solid #4D9FEC; /* Consistent blue border with the highlight box */
+}
+
+
+
+
+.panel {
+    margin: 0 auto;
+    max-width: 768px;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .panel-default {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .panel-body {
+    padding: 15px;
+  }
+  
+  .row {
+    margin: 0 -15px;
+  }
+  
+  .profile-foto img {
+    width: 138px;
+    height: 183px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+  }
+  
+  .user-info {
+    padding-left: 15px;
+  }
+  
+  .user-info .table {
+    background-color: transparent;
+  }
+  
+  .user-info .table > tbody > tr > td {
+    color: #495057; /* Dark grey color for text */
+  }
+  
+  .rowHeader {
+    font-weight: bold;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    margin: 10px 0;
+  }
+  
+  .studyGroups .table {
+    margin-bottom: 0;
+  }
+  
+  .studyGroups .table th {
+    background-color: #e9ecef;
+    border-bottom: 2px solid #dee2e6;
+  }
+  
+  .studyGroups .table td {
+    background-color: #fff;
+    color: #495057; /* Dark grey color for text */
+  }
+  
+  .btn-add {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: #fff;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-add:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+  }
+  
+  .table-striped {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+  
+  .table-striped thead {
+    background-color: #343a40;
+    color: #ffffff;
+  }
+  
+  .table-striped tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+  }
+  
+  .table-striped tbody tr:nth-child(even) {
+    background-color: #ffffff;
+  }
+  
+  .table-striped tbody tr:hover {
+    background-color: #dddfe2;
+  }
+  
+  .table-striped td, .table-striped th {
+    padding: 8px;
+    border: 1px solid #dee2e6;
+    text-align: left;
+  }
+  
+  .table-striped label {
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+  
+  .table-striped .btn-add {
+    padding: 5px 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .table-striped .btn-add:hover {
+    background-color: #0056b3;
+  }
+  
+  .table-striped .glyphicon {
+    margin-right: 5px;
+  }
+  
+  .table-striped .rowAdd {
+    background-color: #007bff;
+    color: #ffffff;
+  }
+  
+  .table-striped .rowAdd:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Specific to WiFi settings */
+  .wifi-settings .table th {
+    width: 50%;
+  }
+  
+  .wifi-settings .table td input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: 0;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .wifi-settings .table td input[type="submit"]:hover {
+    background-color: #0069d9;
+  }
+  
+  .wifi-settings .table td input[type="password"] {
+    border: 1px solid #ced4da;
+    padding: 5px;
+  }
+  
+  /* Clearfix */
+  .clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Override Bootstrap's responsive padding */
+  @media (max-width: 768px) {
+    .row {
+      margin: 0;
+    }
+  }
+  
+
+  /* First table white theme */
+.table.table-striped:nth-of-type(1) {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.table.table-striped:nth-of-type(1) td,
+.table.table-striped:nth-of-type(1) th {
+  border: 1px solid #dddddd;
+}
+
+.table.table-striped:nth-of-type(1) tr:hover {
+  background-color: #f2f2f2;
+}
+
+.table.table-striped:nth-of-type(1) .btn-add {
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  padding: 5px 10px;
+  border: none;
+}
+
+.table.table-striped:nth-of-type(1) .btn-add:hover {
+  background-color: #0056b3;
+}
+
+/* Second table */
+.table.table-striped:nth-of-type(2) {
+  background-color: #e8e8e8;
+  color: #000000;
+}
+
+.table.table-striped:nth-of-type(2) td,
+.table.table-striped:nth-of-type(2) th {
+  border: 1px solid #cccccc;
+}
+
+.table.table-striped:nth-of-type(2) tr:hover {
+  background-color: #dcdcdc;
+}
+
+.table.table-striped:nth-of-type(2) input[type="submit"],
+.table.table-striped:nth-of-type(2) input[type="password"] {
+  border: 1px solid #cccccc;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.table.table-striped:nth-of-type(2) input[type="submit"] {
+  background-color: #28a745;
+  color: white;
+  border-radius: 4px;
+}
+
+.table.table-striped:nth-of-type(2) input[type="submit"]:hover {
+  background-color: #218838;
+}
+
+/* General styles for all .table-striped */
+.table-striped {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.table-striped tbody tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+.table-striped tbody tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+.table-striped td, .table-striped th {
+  padding: 8px;
+  text-align: left;
+}
+
+.table-striped label {
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+
+#current-time-line {
+    position: absolute;
+    background-color: #ff4136; /* Bright red for visibility */
+    height: 4px;
+    width: calc(100% - 8px); /* Adjust width to account for the circle at the end */
+  }
+  
+  #current-time-line::after {
+    content: '';
+    position: absolute;
+    right: -4px; /* Align to the right end of the line */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px; /* Width of the circle */
+    height: 12px; /* Height of the circle */
+    background-color: #ff4136;
+    border-radius: 50%; /* Makes it a circle */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3); /* Soft shadow for depth */
+  }
+  
+  #time-label {
+    position: absolute;
+    background-color: #fff;
+    color: #000;
+    padding: 2px 5px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    white-space: nowrap;
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+  
+  .before{
+    color: white !important;
+  }
+  
+  .after{
+    color: white !important;
+  }

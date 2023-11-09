@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Website Ping</title>
+  <style>
+    .dot {
+      height: 14px;
+      width: 14px;
+      border-radius: 50%;
+      display: inline-block;
+      box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .dot-green {
+      background-color: #4CAF50;
+    }
+
+    .dot-red {
+      background-color: #F44336;
+    }
+
+    .dot:hover {
+      transform: scale(1.2);
+      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+</head>
+<body onload="pingWebsite()">
+  <h1>Website Ping</h1>
+  <div id="status" style="width: 10px; height: 10px; background-color: grey; border-radius: 50%; display: inline-block; margin-left: 5px;"></div>
+
+  <script>
+    function pingWebsite() {
+      const url = 'https://sis.ssakhk.cz/'; //URL
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', url);
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          document.getElementById('status').innerHTML = '<div class="dot dot-green"></div>';
+        } else {
+          document.getElementById('status').innerHTML = '<div class="dot dot-red"></div>';
+        }
+      };
+      xhr.onerror = function() {
+        document.getElementById('status').innerHTML = '<div class="dot dot-red"></div>';
+      };
+      xhr.send();
+    }
+  </script>
+</body>
+</html>
