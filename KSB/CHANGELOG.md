@@ -1,20 +1,19 @@
-# Change Log 📘
+# Seznam změn 📘
 
-## [1.4.3] - 2023-11-09 🗓️
+## [1.4.3] - 09.11.2023 🗓️
 
-### Added ✨
-- **Custom Favicon** 🌐: A function has been added to change the favicon for all pages under the `sis.ssakhk.cz` domain.
-- **Dynamic Title Update** 🏷️: Titles of the pages now dynamically update to reflect the content of the page, enhancing user experience and bookmarking clarity.
-- **Content Insertion After H2** 📝: New content is dynamically inserted after the H2 element on the News page, providing users with the latest update notes right within the website interface.
-- **Profile Photo Randomization** 🖼️: Users will now see a random profile photo from a pre-defined list, adding a personal touch to their profile page.
-- **Month Names in Colspan** 📆: Updated the colspan elements to display Czech month names, catering to the local user base.
-- **Current Time Indicator Enhancement** ⏲️: Improved the current time line feature on the timetable, making it more accurate and visually distinct.
-- **New Style for Absence Section** 🆕: The Absence section has been restyled for improved user experience.
-- **Current Time Indicator on Schedule** 🕒: Added a line that indicates the current time on the personal schedule view.
+### Přidáno ✨
+- **Nový Favicon** 🌐: Favicon všech stránek `sis.ssakhk.cz` byl změněn.
+- **Dynamická aktualizace titulků** 🏷️: Titulky stránek se nyní dynamicky aktualizují tak, aby odrážely obsah stránky, což zlepšuje uživatelskou zkušenost a přehlednost záložek.
+- **Vložení obsahu po elementu H2** 📝: Po elementu H2 na stránce Novinky je nyní dynamicky vkládán nový obsah, který uživatelům poskytuje nejnovější poznámky k aktualizaci přímo v rozhraní webu.
+- **Náhodná fotka profilu** 🖼️: Uživatelé nyní uvidí náhodnou profilovou fotografii ze předdefinovaného seznamu, což dodává jejich profilové stránce osobní nádech.
+- **Názvy měsíců ve colspan** 📆: Prvky colspan jsou nyní aktualizovány tak, aby zobrazovaly názvy měsíců.
+- **Indikátor aktuálního času na rozvrhu** 🕒: Byla přidána čára označující aktuální čas na pohledu osobního rozvrhu.
+- **Vylepšení indikátoru aktuálního času** ⏲️: Vlastnost časové linie na rozvrhu byla vylepšena, je nyní přesnější a vizuálně výraznější.
+- **Nový styl sekce Absence** 🆕: Sekce Absence byla přepracována pro lepší uživatelskou zkušenost.
 
-### Fixed 🔧
-- **Error Handling and Redirection** 🚨: Enhanced error handling with a redirection function that guides users to a safe page when encountering a server error.
-- **Titles Correction** 🛠️: Titles across various pages have been fixed for consistency.
-- **Error Redirection** 🔄: Users encountering an error on the certificate page are now redirected to a help page.
+### Opraveno 🔧
+- **Zpracování chyb a přesměrování** 🚨: Zlepšeno zpracování chyb s funkcí přesměrování, která uživatele vede na bezpečnou stránku při setkání s chybou serveru.
+- **Oprava titulků** 🛠️: Titulky na různých stránkách byly opraveny pro dosažení konzistence.
 
-Remember to update your extension to enjoy the latest features and improvements! 🚀
+Nezapomeňte aktualizovat své rozšíření, abyste si užili nejnovější funkce a vylepšení! 🚀
