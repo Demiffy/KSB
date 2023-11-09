@@ -1,62 +1,72 @@
-# KSB
+# KSB Dark Theme Extension
 
-This chrome extension project aims to transform the KybernaIS site theme to a visually appealing and user-friendly dark theme.
+The KSB Dark Theme Extension is a Chrome browser add-on specifically designed for students of Kyberna High School. It enhances the visual appearance of the KybernaIS site by applying a dark theme, making it more comfortable for night-time browsing and reducing eye strain.
 
+![KSB Extension Preview](https://github.com/Demiffy/KSB/assets/74311311/4cbcd8a9-cd08-437e-8b85-4ad8fe77d615)
 
-![git4](https://github.com/Demiffy/KSB/assets/74311311/4cbcd8a9-cd08-437e-8b85-4ad8fe77d615)
+## 📢 Notice
 
+This extension is intended exclusively for students of Kyberna High School. For non-students, this extension will not provide any functionality.
 
-## Notice
+## 📜 Table of Contents
 
-Keep in mind that this extension is only meant for Kyberna High School students, for everyone else it's useless. Also this was mainly made for me, but feel free to use this extension if you find it atleast somewhat good!
-
-## Table of Contents
-
-- [Background](#background)
+- [About](#about)
+- [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Support](#support)
 - [Contributing](#contributing)
 
-## Background
+## 🌟 About
 
-This project was born out of a need to provide a more soothing and less strenuous visual experience to users. It can be particularly useful in low light environments or for users who prefer darker aesthetics.
+Developed out of a personal need for a more eye-friendly interface during late-night study sessions, this project has grown into a fully-featured extension that benefits all students who prefer a dark-themed browsing experience.
 
-## Installation
+## ✨ Features
 
-Here's a simple guide on how to install this chrome extension:
+The extension boasts a variety of features designed to improve usability and aesthetics:
 
-1. Download the .zip file
-2. Extract the file into a folder
-3. Open Chrome and navigate to the Extensions tab
-4. Turn on Developer mode (red circle)
+- **Dark Theme Conversion**: Automatically converts the entire KybernaIS site into a dark theme.
+- **Customized Text Colors**: Nice set of text colors to ensure readability across all elements.
+- **Calendar Enhancements**: Adjusts the calendar interface for better visibility and differentiation of events.
+- **Grading Panel Visibility**: Enhances the visibility of grades and assessment components.
+- **Navigation Improvements**: Improves the navigation bar with hover effects and dark theme compatibility.
+- **Button Styling**: Custom styles for buttons to make them stand out against the dark background.
+- **Table Enhancements**: Enhances tables with clear color distinctions to improve data readability.
+- **Input Field and Form Styling**: Adjusts the styling of input fields and forms for a seamless dark mode experience.
+- **Real-Time UI Adjustments**: Actively updates the UI to maintain readability and aesthetics during live changes.
+- **Extension Popup Interface**: Provides a dark theme for the extension's popup interface for a consistent experience.
 
-![git1](https://github.com/Demiffy/KSB/assets/74311311/c417504d-177b-472b-a621-ad20cf82504e)
+## 🛠 Installation
 
-5. Click on Load unpacked (red circle)
+To install the KSB Dark Theme Extension, follow these steps:
 
-![git2](https://github.com/Demiffy/KSB/assets/74311311/ce79419a-f678-47c6-8a47-8f3a82c54366)
+1. Download the `.zip` file from the releases page.
+2. Extract the contents into a new folder.
+3. Open Chrome and navigate to the Extensions page (`chrome://extensions/`).
+4. Enable Developer mode.
+   
+   ![Developer Mode](https://github.com/Demiffy/KSB/assets/74311311/c417504d-177b-472b-a621-ad20cf82504e)
 
-6. Locate and Select the KSB folder located on your hard drive
-7. Now you should have the extension installed, you can check by navigating to the KybernaIS site.
+5. Click on 'Load unpacked' and select the folder where you extracted the extension files.
+   
+   ![Load Unpacked](https://github.com/Demiffy/KSB/assets/74311311/ce79419a-f678-47c6-8a47-8f3a82c54366)
 
-Alternatively, you can check this video guide instead of my guide: https://www.youtube.com/watch?v=vW8W19W_X0I&t=133s&ab_channel=MatthewMcDonald
+6. The extension should now be installed and active.
 
-## Usage
-This theme changes the following elements:
+For a visual guide, watch the installation video [here](https://www.youtube.com/watch?v=vW8W19W_X0I).
 
-- Background color to black (#171717)
-- Text color in a calendar to white
-- Removal of success alerts
-- Change navbar colors to a shade of dark blue (#00337C)
-- Highlight navbar items on hover
-- Change calendar's color scheme
-- Different color codings for hour cards based on their status (changed, added, canceled, lunch)
-- Switch slider colors
-- Enhance grading panel visibility
+## 🖥 Usage
 
-## Support
-For any queries or support, please raise an issue in the repository or contact via email.
+After installation, navigate to the KybernaIS site, and the dark theme will automatically be applied. Explore the site as usual, and enjoy the new dark aesthetic.
 
-## Contributing
-Contributions, issues, and feature requests are welcome!
+## 🆘 Support
+
+For support, please open an issue on the GitHub repository, or contact support through email.
+
+## 👋 Contributing
+
+We welcome contributions, bug reports, and feature requests. Feel free to fork the repository and submit pull requests.
+
+---
+
+Your feedback and contributions will help to improve the KSB Dark Theme Extension for everyone at Kyberna High School!
