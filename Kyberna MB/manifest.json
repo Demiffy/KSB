@@ -1,0 +1,98 @@
+{
+  "name": "KybernaIS Made Better",
+  "version": "2.0.5",
+  "description": "Vylepšuje a zpříjemňuje uživatelské prostředí informačního systému KybernaIS",
+  "manifest_version": 3,
+  "action": {
+    "default_icon": "iconmainBlack.png",
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "IconBlack16.png",
+    "32": "IconBlack32.png",
+    "48": "IconBlack48.png",
+    "128": "IconBlack128.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "permissions": [
+    "storage",
+    "scripting",
+    "tabs"
+  ],
+  
+  "host_permissions": [
+    "https://sis.ssakhk.cz/*"
+  ],
+  
+  "content_scripts": [
+    {
+      "matches": ["*://sis.ssakhk.cz/*"],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "absenceStyles.css",
+        "absenceStyles2.css",
+        "absenceStyles3.css",
+        "attendanceStyles.css",
+        "attendanceStyles2.css",
+        "attendanceStyles3.css",
+        "classificationStyles.css",
+        "classificationStyles2.css",
+        "classificationStyles3.css",
+        "documentStyles.css",
+        "documentStyles2.css",
+        "documentStyles3.css",
+        "financeStyles.css",
+        "financeStyles2.css",
+        "financeStyles3.css",
+        "financetableStyles.css",
+        "financetableStyles2.css",
+        "financetableStyles3.css",
+        "newsStyles.css",
+        "newsStyles2.css",
+        "newsStyles3.css",
+        "profileStyles.css",
+        "profileStyles2.css",
+        "profileStyles3.css",
+        "projectelectionStyles.css",
+        "projectelectionStyles2.css",
+        "projectelectionStyles3.css",
+        "resitexamStyles.css",
+        "resitexamStyles2.css",
+        "resitexamStyles3.css",
+        "subjectelectionStyles.css",
+        "subjectelectionStyles2.css",
+        "subjectelectionStyles3.css",
+        "timetablepersonalStyles.css",
+        "timetablepersonalStyles2.css",
+        "timetablepersonalStyles3.css",
+        "timetableschoolStyles.css",
+        "timetableschoolStyles2.css",
+        "timetableschoolStyles3.css",
+        "workStyles.css",
+        "workStyles2.css",
+        "workStyles3.css",
+        "changepasswordStyles.css",
+        "changepasswordStyles2.css",
+        "changepasswordStyles3.css",
+        "loginStyles.css",
+        "loginStyles2.css",
+        "loginStyles3.css",
+        "predvidac.html",
+        "update.html",
+        "updateStyles.css",
+        "updateStyles2.css",
+        "updateStyles3.css"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

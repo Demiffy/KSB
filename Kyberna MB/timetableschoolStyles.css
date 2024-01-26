@@ -1,0 +1,42 @@
+/* CONTENT */
+.container .content {
+    color: #D3B9FF;
+    padding: 20px;
+    text-align: center;
+}
+
+.container .content h2 {
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.container .content a {
+    background-color: #00337C;
+    color: white;
+    padding: 10px 15px;
+    margin: 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s;
+    font-size: 1.2em;
+}
+
+.container .content a:hover {
+    background-color: #022b5c;
+}
+
+/* RESPONSIVE ELEMENTS */
+@media (max-width: 768px) {
+    .container .content h2 {
+        font-size: 2em;
+    }
+
+    .container .content a {
+        padding: 8px 12px;
+        font-size: 1em;
+    }
+}

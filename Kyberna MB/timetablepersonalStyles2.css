@@ -1,0 +1,336 @@
+/* NAVBAR */
+.navbar.navbar-inverse {
+  background-color: #D32F2F !important; /* Main red color */
+  border-color: #D61530 !important; /* Slightly darker shade of red */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
+  font-family: 'Segoe UI', Arial, sans-serif !important;
+}
+
+.navbar.navbar-inverse .navbar-brand {
+  color: #FFFFFF !important; /* White text */
+  font-size: 20px !important;
+  font-weight: bold !important;
+  transition: transform 0.3s ease, color 0.3s ease !important;
+}
+
+.navbar.navbar-inverse .navbar-brand:hover {
+  transform: scale(1.05) !important;
+}
+
+.navbar.navbar-inverse .navbar-nav > li > a {
+  color: #FFFFFF !important; /* White text */
+  font-size: 16px !important;
+  transition: color 0.3s ease !important;
+}
+
+.navbar.navbar-inverse .navbar-nav > li > a:hover,
+.navbar.navbar-inverse .navbar-nav > li > a:focus {
+  color: #FFFFFF !important; /* White text */
+  background-color: #D61530 !important; /* Slightly darker shade of red */
+}
+
+.navbar.navbar-inverse .navbar-nav > .active > a,
+.navbar.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar.navbar-inverse .navbar-nav > .active > a:focus {
+  color: #FFFFFF !important; /* White text */
+  background-color: #C4132C !important; /* Even darker shade of red */
+}
+
+.navbar-inverse .navbar-nav>.open>a, 
+.navbar-inverse .navbar-nav>.open>a:focus, 
+.navbar-inverse .navbar-nav>.open>a:hover {
+  background-color: #E6193D !important; /* Slightly lighter shade of red */
+}
+
+.navbar.navbar-inverse .navbar-toggle {
+  border-color: #D61530 !important;
+  background-color: transparent !important;
+}
+
+.navbar.navbar-inverse .navbar-toggle .icon-bar {
+  background-color: #FFFFFF !important; /* White bars */
+}
+
+.navbar.navbar-inverse .dropdown-menu {
+  background-color: #D32F2F !important; /* Main red color */
+  border-color: #D61530 !important; /* Slightly darker shade of red */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
+}
+
+.navbar.navbar-inverse .dropdown-menu > li > a {
+  color: #FFFFFF !important; /* White text */
+  transition: background-color 0.3s, color 0.3s !important;
+}
+
+.navbar.navbar-inverse .dropdown-menu > li > a:hover,
+.navbar.navbar-inverse .dropdown-menu > li > a:focus {
+  color: #FFFFFF !important; /* White text */
+  background-color: #C4132C !important; /* Even darker shade of red */
+}
+
+/* NAVBAR SLIDEUP ANIM & Z-INDEX */
+.navbar.navbar-inverse.navbar-fixed-top {
+  transition: top 0.5s ease !important;
+  z-index: 10000000 !important;
+}
+
+/* TOGGLE BUTTON NAVBAR */
+#navbar-toggle {
+  padding: 5px 10px !important;
+  background-color: #D32F2F !important; /* Main red color */
+  color: white !important; /* White text */
+  border: none !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  font-size: 18px !important;
+  right: 10px !important;
+}
+
+/* PHONES */
+@media screen and (max-width: 768px) {
+  #navbar-toggle {
+      right: auto !important; 
+      left: 125px !important;
+  }
+}
+
+/* BUTTONS */
+.btn.btn-default {
+  color: #ffffff !important; /* White text */
+  background-color: #D32F2F !important; /* Main red color */
+  border: 1px solid #D61530 !important; /* Slightly darker shade of red */
+  padding: 10px 20px !important;
+  font-size: 16px !important;
+  border-radius: 5px !important;
+  transition: background-color 0.3s, color 0.3s !important;
+  outline: none !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+}
+
+.btn.btn-default:hover,
+.btn.btn-default:focus {
+  color: #FFFFFF !important; /* White text */
+  background-color: #E6193D !important; /* Slightly lighter shade of red */
+  border-color: #C4132C !important; /* Even darker shade of red */
+  text-decoration: none !important;
+}
+
+.btn.btn-default:active {
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+  transform: translateY(1px) !important;
+}
+
+.write_btn {
+  color: #ffffff !important; /* White text */
+  background-color: #D32F2F !important; /* Main red color */
+  border: 1px solid #D61530 !important; /* Slightly darker shade of red */
+  padding: 10px 20px !important;
+  font-size: 16px !important;
+  border-radius: 5px !important;
+  transition: background-color 0.3s, color 0.3s !important;
+  outline: none !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+}
+
+.write_btn:hover,
+.write_btn:focus {
+  color: #FFFFFF !important; /* White text */
+  background-color: #E6193D !important; /* Slightly lighter shade of red */
+  border-color: #C4132C !important; /* Even darker shade of red */
+  text-decoration: none !important;
+}
+
+.write_btn:active {
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+  transform: translateY(1px) !important;
+}
+
+/* ALERT DELETION */
+.alert.alert-success {
+  display: none !important;
+}
+
+/* TIMELINE */
+#current-time-line {
+  position: absolute;
+  background-color: #fd2d22;
+  height: 4px;
+  width: calc(100% - 8px);
+  box-shadow: 0 0 10px rgba(253, 45, 34, 0.6);
+  transition: all 0.3s ease;
+}
+
+/* TIMELINE AFTER */
+#current-time-line::after {
+  content: '';
+  position: absolute;
+  left: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background-color: #ff4136;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  animation: bounceAnimation 2s infinite;
+}
+
+/* ANIMATION BOUNCE */
+@keyframes bounceAnimation {
+  0%, 100% { transform: translateY(-50%) scale(1); }
+  50% { transform: translateY(-60%) scale(1.1); }
+}
+
+
+  /* HOUR COLORS */
+.hour-card.changed-card {
+  background-color: goldenrod !important;
+}
+.hour-card.added-card {
+  background-color: #da005b !important;
+}
+.hour-card.canceled-card {
+  background-color: #444444 !important;
+}
+.hour-cards .lunch-card {
+  background-color: #03C988 !important;
+}
+.hour-card, .lunch-card,.resit-card {
+  background-color: #D32F2F !important; /* Main red color for theme2 */
+}
+
+/* TEXT LINE COLOR*/
+.col label {
+  color: white !important;
+  padding: 10px;
+  text-transform: capitalize;
+}
+
+/* DAY SELECTOR */
+.day-selector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #D32F2F !important; /* Main red color for theme2 */
+    color: #FFFFFF;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 10px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.day-selector button {
+    background-color: #D61530 !important; /* Darker shade of red for theme2 */
+    color: #FFFFFF;
+    border: none;
+    padding: 5px 10px;
+    margin: 0 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.day-selector button:hover {
+    background-color: #E6193D !important; /* Lighter shade of red for theme2 */
+}
+
+.day-selector .date {
+    color: #FFFFFF;
+    padding: 0 10px;
+}
+
+/* SLIDER & DAY SELECTOR */
+.static-switch, .day-selector {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+/* SLIDER */
+.static-switch {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 10px;
+}
+
+.static-switch .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.static-switch input[type="checkbox"] {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.static-switch .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px !important;
+}
+
+.static-switch input:checked + .slider {
+    background-color: #2196F3 !important;
+}
+
+.static-switch .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50% !important;
+}
+
+.static-switch input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.static-switch .slider .rider {
+    display: none;
+}
+
+/* ANIM HOVER HOUR CARDS */
+.hour-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  transform-origin: center;
+}
+
+.hour-card:hover {
+  transform: scale(1.05) rotate(-1deg);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+  background-color: #f8f9fa;
+}
+
+.hour-card:hover .card-content {
+  color: #D32F2F;
+  transition: color 0.3s ease;
+}
+
+
+/* ACTIVE DAY LABEL */
+.col.active > label {
+  animation: pulseAnimation 1.5s infinite;
+  font-size: 1.3em;
+}
+
+/* ANIM PULSE */
+@keyframes pulseAnimation {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+

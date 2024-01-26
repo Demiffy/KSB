@@ -1,0 +1,184 @@
+/* TIMELINE */
+#current-time-line {
+  position: absolute;
+  background-color: #fd2d22;
+  height: 4px;
+  width: calc(100% - 8px);
+  box-shadow: 0 0 10px rgba(253, 45, 34, 0.6);
+  transition: all 0.3s ease;
+}
+
+/* TIMELINE AFTER */
+#current-time-line::after {
+  content: '';
+  position: absolute;
+  left: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background-color: #ff4136;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  animation: bounceAnimation 2s infinite;
+}
+
+/* ANIMATION BOUNCE */
+@keyframes bounceAnimation {
+  0%, 100% { transform: translateY(-50%) scale(1); }
+  50% { transform: translateY(-60%) scale(1.1); }
+}
+
+
+  /* HOUR COLORS */
+.hour-card.changed-card {
+  background-color: goldenrod !important;
+}
+.hour-card.added-card {
+  background-color: #DA0037 !important;
+}
+.hour-card.canceled-card {
+  background-color: #444444 !important;
+}
+.hour-cards .lunch-card {
+  background-color: #03C988 !important;
+}
+.hour-card, .lunch-card,.resit-card {
+  background-color: #00337C !important;
+}
+
+/* TEXT LINE COLOR*/
+.col label {
+  color: white !important;
+  padding: 10px;
+  text-transform: capitalize;
+}
+
+/* DAY SELECTOR */
+.day-selector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00337C;
+    color: #FFFFFF;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 10px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.day-selector button {
+    background-color: #265487;
+    color: #FFFFFF;
+    border: none;
+    padding: 5px 10px;
+    margin: 0 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.day-selector button:hover {
+    background-color: #022b5c;
+}
+
+.day-selector .date {
+    color: #FFFFFF;
+    padding: 0 10px;
+}
+
+/* SLIDER & DAY SELECTOR */
+.static-switch, .day-selector {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+/* SLIDER */
+.static-switch {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 10px;
+}
+
+.static-switch .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.static-switch input[type="checkbox"] {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.static-switch .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px !important;
+}
+
+.static-switch input:checked + .slider {
+    background-color: #2196F3 !important;
+}
+
+.static-switch .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50% !important;
+}
+
+.static-switch input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.static-switch .slider .rider {
+    display: none;
+}
+
+/* ANIM HOVER HOUR CARDS */
+.hour-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  transform-origin: center;
+}
+
+.hour-card:hover {
+  transform: scale(1.05) rotate(-1deg);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+  background-color: #f8f9fa;
+}
+
+.hour-card:hover .card-content {
+  color: #0450bb;
+  transition: color 0.3s ease;
+}
+
+
+/* ACTIVE DAY LABEL */
+.col.active > label {
+  animation: pulseAnimation 1.5s infinite;
+  font-size: 1.3em;
+}
+
+/* ANIM PULSE */
+@keyframes pulseAnimation {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+

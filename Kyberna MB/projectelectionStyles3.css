@@ -1,0 +1,235 @@
+body{
+    background-color: #fff !important;
+}
+
+/* NAVBAR */
+.navbar.navbar-inverse {
+    background-color: #E9671E !important; /* Main color */
+    border-color: #C55F1B !important; /* Darker shade of main color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
+    font-family: 'Segoe UI', Arial, sans-serif !important;
+  }
+  
+  .navbar.navbar-inverse .navbar-brand {
+    color: #FFFFFF !important; /* White text */
+    font-size: 20px !important;
+    font-weight: bold !important;
+    transition: transform 0.3s ease, color 0.3s ease !important;
+  }
+  
+  .navbar.navbar-inverse .navbar-brand:hover {
+    transform: scale(1.05) !important;
+  }
+  
+  .navbar.navbar-inverse .navbar-nav > li > a {
+    color: #FFFFFF !important; /* White text */
+    font-size: 16px !important;
+    transition: color 0.3s ease !important;
+  }
+  
+  .navbar.navbar-inverse .navbar-nav > li > a:hover,
+  .navbar.navbar-inverse .navbar-nav > li > a:focus {
+    color: #FFFFFF !important; /* White text */
+    background-color: #C55F1B !important; /* Darker shade of main color */
+  }
+  
+  .navbar.navbar-inverse .navbar-nav > .active > a,
+  .navbar.navbar-inverse .navbar-nav > .active > a:hover,
+  .navbar.navbar-inverse .navbar-nav > .active > a:focus {
+    color: #FFFFFF !important; /* White text */
+    background-color: #C55F1B !important; /* Darker shade of main color */
+  }
+  
+  .navbar-inverse .navbar-nav>.open>a, 
+  .navbar-inverse .navbar-nav>.open>a:focus, 
+  .navbar-inverse .navbar-nav>.open>a:hover {
+    background-color: #D57235 !important; /* Slightly lighter shade of main color */
+  }
+  
+  .navbar.navbar-inverse .navbar-toggle {
+    border-color: #C55F1B !important;
+    background-color: transparent !important;
+  }
+  
+  .navbar.navbar-inverse .navbar-toggle .icon-bar {
+    background-color: #FFFFFF !important; /* White bars */
+  }
+  
+  .navbar.navbar-inverse .dropdown-menu {
+    background-color: #E9671E !important; /* Main color */
+    border-color: #C55F1B !important; /* Darker shade of main color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
+  }
+  
+  .navbar.navbar-inverse .dropdown-menu > li > a {
+    color: #FFFFFF !important; /* White text */
+    transition: background-color 0.3s, color 0.3s !important;
+  }
+  
+  .navbar.navbar-inverse .dropdown-menu > li > a:hover,
+  .navbar.navbar-inverse .dropdown-menu > li > a:focus {
+    color: #FFFFFF !important; /* White text */
+    background-color: #C55F1B !important; /* Darker shade of main color */
+  }
+  
+  /* NAVBAR SLIDEUP ANIM & Z-INDEX */
+  .navbar.navbar-inverse.navbar-fixed-top {
+    transition: top 0.5s ease !important;
+    z-index: 10000000 !important;
+  }
+  
+  /* TOGGLE BUTTON NAVBAR */
+  #navbar-toggle {
+    padding: 5px 10px !important;
+    background-color: #E9671E !important; /* Main color */
+    color: white !important; /* White text */
+    border: none !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+    font-size: 18px !important;
+    right: 10px !important;
+  }
+  
+  /* PHONES */
+  @media screen and (max-width: 768px) {
+    #navbar-toggle {
+      right: auto !important; 
+      left: 125px !important;
+    }
+  }
+  
+  /* BUTTONS */
+  .btn.btn-default {
+      color: #ffffff !important; /* White text */
+      background-color: #E9671E !important; /* Main color */
+      border: 1px solid #C55F1B !important; /* Darker shade of main color */
+      padding: 10px 20px !important;
+      font-size: 16px !important;
+      border-radius: 5px !important;
+      transition: background-color 0.3s, color 0.3s !important;
+      outline: none !important;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+  }
+  
+  .btn.btn-default:hover,
+  .btn.btn-default:focus {
+      color: #FFFFFF !important; /* White text */
+      background-color: #D57235 !important; /* Slightly lighter shade of main color */
+      border-color: #B9642E !important; /* Dark grey border */
+      text-decoration: none !important;
+  }
+  
+  .btn.btn-default:active {
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+      transform: translateY(1px) !important;
+  }
+  
+  .write_btn {
+      color: #ffffff !important; /* White text */
+      background-color: #E9671E !important; /* Main color */
+      border: 1px solid #C55F1B !important; /* Darker shade of main color */
+      padding: 10px 20px !important;
+      font-size: 16px !important;
+      border-radius: 5px !important;
+      transition: background-color 0.3s, color 0.3s !important;
+      outline: none !important;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+  }
+  
+  .write_btn:hover,
+  .write_btn:focus {
+      color: #FFFFFF !important; /* White text */
+      background-color: #D57235 !important; /* Slightly lighter shade of main color */
+      border-color: #B9642E !important; /* Dark grey border */
+      text-decoration: none !important;
+  }
+  
+  .write_btn:active {
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+      transform: translateY(1px) !important;
+  }
+  
+  /* ALERT DELETION */
+  .alert.alert-success {
+    display: none !important;
+  }
+
+/* FOOTER */
+footer {
+  color: #333333; /* Dark grey text */
+  text-align: center;
+  padding: 10px 0;
+  font-size: 14px;
+  margin-top: 30px;
+}
+
+
+thead th {
+    background-color: #E9671E;
+    color: #fff;
+    padding: 15px;
+    text-align: left;
+    border-bottom: 2px solid #fff;
+}
+
+tbody td {
+    padding: 10px;
+    border-bottom: 1px solid #f5823f;
+}
+
+.table-cell-center {
+    text-align: center;
+}
+
+tr.even {
+    background-color: #F2F2F2;
+}
+
+tr.odd {
+    background-color: #e9e7e7 !important;
+}
+
+tr.professions th {
+    text-align: left;
+    font-weight: bold;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.goal, .comment {
+    display: block;
+    margin-top: 5px;
+}
+
+.comment {
+    font-style: italic;
+    color: #f5823f;
+}
+
+.electionData {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.electionData td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    color: #4A1212;
+}
+
+.electionData tr:nth-child(odd) {
+    background-color: #f2dede;
+}
+
+.electionData tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+.electionData tr.projectApproved {
+    background-color: #54dd59;
+}
+
+.electionData td:first-child {
+    font-weight: bold;
+}
