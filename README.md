@@ -2,7 +2,7 @@
 
 The KSB Dark Theme Extension is a Chrome browser add-on specifically designed for students of Kyberna High School. It enhances the visual appearance of the KybernaIS site by applying a dark theme, making it more comfortable for night-time browsing and reducing eye strain.
 
-![KSB Extension Preview](https://github.com/Demiffy/KSB/assets/74311311/4cbcd8a9-cd08-437e-8b85-4ad8fe77d615)
+![KSB Extension Preview](https://github.com/Demiffy/KybernaIS-MB/assets/74311311/4cab2d2e-cae9-4ba5-bc42-e288da445715)
 
 ## 📢 Notice
 
