@@ -1,0 +1,80 @@
+/* H2 Styling */
+h2 {
+    color: white;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+/* TABLE STYLES */
+.modern-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 0 8px 8px 8px;
+    overflow: hidden;
+    background-color: #121212;
+    color: #fff;
+}
+
+.modern-table thead {
+    background: linear-gradient(145deg, #034aac, #022b5c);
+    color: white;
+}
+
+.modern-table th, .modern-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #343a40;
+}
+
+.modern-table tbody tr:nth-child(even) {
+    background-color: #1c1c1c;
+}
+
+.modern-table tbody tr:hover {
+    background-color: #292929;
+}
+
+.modern-table th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.modern-table-header {
+    font-size: 22px;
+    color: #fff;
+    background: linear-gradient(145deg, #034aac, #022b5c);
+    padding: 10px 15px;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* FINAL GRADE ROW */
+.modern-table .final-grade-row {
+    background-color: #34495e;
+    font-weight: bold;
+    color: white;
+}
+
+/* FINAL GRADE CELL */
+.modern-table .final-grade-cell {
+    font-weight: bold;
+}
+
+/* RESPONSIVE ELEMENTS */
+@media screen and (max-width: 768px) {
+    .modern-table th, .modern-table td {
+        padding: 8px;
+        font-size: 14px;
+    }
+    .modern-table {
+        display: block;
+        overflow-x: auto;
+    }
+}
+
+
+

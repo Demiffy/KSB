@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>KybernaQuickMenu</title>
+  <link rel="stylesheet" href="popup.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+  <script src="axios.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <img src="icon.png" alt="Kyberna" class="logo breathe-animation">
+    <h1 class="quick-menu">
+      Rychlá nabídka
+    </h1>
+    <p class="made-by">
+      Kyberna Made Better
+    </p>
+
+    <div class="button-container">
+      <button class="custom-button" id="rozvrh">Rozvrh</button>
+      <button class="custom-button" id="znamky">Známky</button>
+      <button class="custom-button" id="absence">Absence</button>
+      <button class="custom-button" id="predvidac">Předvídač</button>
+    </div>
+
+    <div class="theme-options">
+      <input type="radio" name="theme" id="theme1" value="theme1" checked>
+      <label for="theme1">Modrá</label>
+    
+      <input type="radio" name="theme" id="theme2" value="theme2">
+      <label for="theme2">Červená</label>
+    
+      <input type="radio" name="theme" id="theme3" value="theme3">
+      <label for="theme3">Bílá</label>
+    </div>
+
+    
+
+    <div class="logout-container">
+      <button class="custom-button" id="logout">Odhlásit se</button>
+    </div>
+
+    <div class="status-container">
+      <div title="Status Kyberny" id="status"></div>
+      <span id="version" title="Aktualní verze">N/A</span>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

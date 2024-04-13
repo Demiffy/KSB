@@ -1,0 +1,42 @@
+/* ATTENDANCE H2 */
+.container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* TABLE STYLING */
+.table {
+    width: 100%;
+    background-color: #171717;
+    color: #D3B9FF;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 12px;
+    border: 1px solid #343A40;
+    text-align: left;
+}
+
+.table thead th {
+    background-color: #2C2F33;
+    color: #FFFFFF;
+}
+
+/* RESPONSIVE ELEMENTS */
+@media screen and (max-width: 768px) {
+    .container h2 {
+        font-size: 18px;
+    }
+
+    .alert.alert-success, .table th, .table td {
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container h2 {
+        font-size: 16px;
+    }
+}

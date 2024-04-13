@@ -1,0 +1,121 @@
+/* FINANCE H2,3,4 */
+.container h2, .container h3, .container h4 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.alert.alert-info {
+    background-color: #20232A;
+    color: white;
+    padding: 20px;
+    border-radius: 4px;
+    border: 1px solid #3A3F44;
+}
+
+.alert.alert-info > div {
+    margin-bottom: 20px;
+}
+
+.alert.alert-info .table-container {
+    display: table;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.alert.alert-info .table-cell {
+    display: table-cell;
+    vertical-align: middle;
+    padding-right: 20px;
+}
+
+.alert.alert-info .highlight-box {
+    display: inline-block;
+    background-color: white;
+    padding: 15px 25px;
+    margin: 5px;
+    border-radius: 4px;
+    border: 2px solid #4D9FEC;
+    font-weight: bold;
+    color: #20232A;
+}
+
+.nav.nav-tabs {
+    border-bottom: 1px solid #343A40;
+    margin-bottom: 25px;
+}
+
+.nav-tabs > li > a {
+    color: #B0BEC5;
+    background-color: transparent;
+    margin-right: 5px;
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li > a:hover {
+    color: #FFFFFF;
+    background-color: #00337C;
+    border-color: #034aac;
+}
+
+.tab-content {
+    background-color: #171717;
+    color: #D3B9FF;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+.tab-content .table {
+    width: 100%;
+    background-color: transparent;
+    color: white;
+    border-collapse: collapse;
+}
+
+.tab-content .table th, .tab-content .table td {
+    padding: 12px;
+    border: 1px solid #343A40;
+}
+
+.tab-content .table th {
+    background-color: #2C2F33;
+    color: #FFFFFF;
+}
+
+.alert.alert-info [style], .alert.alert-info .bank-info [style] {
+    color: inherit !important;
+    background-color: inherit !important;
+    padding: inherit !important;
+    margin: inherit !important;
+    border: inherit !important;
+}
+
+.alert.alert-info .bank-info {
+    color: #20232A;
+    background-color: #E1E4E8;
+    padding: 15px 25px;
+    border-radius: 4px;
+    display: inline-block;
+    margin: 5px 0;
+    border: 2px solid #4D9FEC;
+}
+
+/* RESPONSIVE ELEMENTS */
+@media (max-width: 768px) {
+    .alert.alert-info .table-container, .alert.alert-info .table-cell {
+        display: block;
+        width: 100%;
+        padding-right: 0;
+    }
+    .nav.nav-tabs > li > a {
+        font-size: 14px;
+    }
+    .tab-content {
+        padding: 10px;
+    }
+}
+
+a{
+    color: #dad9d9 !important;
+}
