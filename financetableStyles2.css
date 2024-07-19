@@ -1,0 +1,83 @@
+.alert.alert-info {
+    max-width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #20232A !important;
+}
+
+.new-finance-info {
+    background-color: #16181d;
+    color: #fff !important;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    text-align: center;
+}
+
+h2{
+    color: #D32F2F !important;
+}
+
+.new-finance-info h2 {
+    color: #D32F2F !important;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.new-finance-info h3 {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.new-finance-info ul {
+    list-style-position: inside;
+    list-style-type: disc;
+    padding: 0;
+}
+
+.new-finance-info li {
+    margin-bottom: 10px;
+}
+
+.new-finance-info strong {
+    font-weight: bold;
+}
+
+.new-finance-info p {
+    margin-top: 5px;
+}
+
+/* Center-align content within vs-info and bank-account-info */
+.vs-info,
+.bank-account-info {
+    text-align: center;
+}
+
+/* Style for the prescription link */
+.prescription-link {
+    color: #e74c3c;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid #e74c3c;
+    transition: background-color 0.3s, color 0.3s;
+    display: inline-block;
+    margin: 0 auto;
+}
+
+.prescription-link:hover {
+    background-color: #e74c3c;
+    color: white;
+    text-decoration: none;
+}
+
+.prescription-info {
+    text-align: center;
+    margin-top: 20px;
+}

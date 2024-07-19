@@ -1,0 +1,307 @@
+/* NAME */
+h2 {
+    font-size: 2.5em;
+    color: white;
+    text-align: center;
+    margin: 20px 0;
+    position: relative;
+    overflow: hidden;
+    font-weight: bold;
+}
+
+/* RESPONSIVE ELEMENTS */
+@media screen and (max-width: 768px) {
+    h2 {
+        font-size: 2em;
+    }
+}
+
+/* ABSENCE */
+.table.table-bordered {
+    background-color: #20232A !important;
+    border-collapse: separate !important;
+    border: 1px solid #343A40 !important;
+}
+
+.table.table-bordered th,
+.table.table-bordered td {
+    border: 1px solid #343A40 !important;
+    padding: 8px !important;
+    width: 30px !important;
+}
+
+.table.table-bordered thead th {
+    background-color: #2C2F33 !important;
+    color: #FFFFFF !important;
+}
+
+/* Desktop styles */
+.panel-default .panel-heading {
+    background: #00337C !important;
+    color: #fff !important;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.panel-body {
+    background-color: #171717;
+    color: #D3B9FF;
+    padding: 20px;
+}
+
+.table-striped {
+    width: 100%;
+    background-color: #20232A !important;
+    border-collapse: collapse;
+}
+
+.table-striped td, .table-striped th {
+    border: 1px solid #343A40;
+    padding: 8px 10px;
+    color: #D3B9FF;
+}
+
+.table-striped tr:nth-child(even) {
+    background-color: #292b2c;
+}
+
+.table-striped tr:hover {
+    background-color: #1d1f21;
+}
+
+.hour.hour-delay {
+    background-color: #00d4a6 !important;
+}
+
+td[colspan="13"] {
+    font-weight: bold;
+    font-size: larger !important;
+    color: #ffffff;
+    background-color: #353a46; 
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .panel-default .panel-heading {
+        font-size: 16px;
+    }
+
+    .panel-body {
+        padding: 10px;
+    }
+
+    .table-striped td, .table-striped th {
+        padding: 6px 8px;
+    }
+
+    td[colspan="13"] {
+        font-size: large !important;
+    }
+}
+
+
+/* STYLE INPUT FIELDS */
+.panel-body .dateTime input[type="date"],
+.panel-body .dateTime input[type="number"] {
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    background-color: #292b2c;
+    color: #D3B9FF;
+    border-radius: 4px;
+}
+
+/* STYLES SELECT INPUT FIELDS */
+.panel-body .input select {
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    background-color: #292b2c;
+    color: #D3B9FF;
+    border-radius: 4px;
+    width: 100%;
+}
+
+/* STYLES TEXT AREA */
+.panel-body .input textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    background-color: #292b2c;
+    color: #D3B9FF;
+    border-radius: 4px;
+    height: 100px;
+    resize: vertical;
+}
+
+/* CENTERING */
+.panel-body .center {
+    display: inline-block;
+    margin-right: 10px;
+    color: #D3B9FF;
+    vertical-align: middle;
+}
+
+/* BUTTON */
+.write_btn {
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* HOVER EFF REMOVED */
+.detailData td.remove:hover {
+    cursor: pointer;
+    background-color: #DA0037 !important; 
+    color: #fff;
+}
+
+
+.table.table-striped.detailData,
+.table.table-striped.detailData td,
+.table.table-striped.detailData th {
+    color: white !important;
+    background-color: #171717;
+    border-radius: 0px;
+}
+
+
+#end_Lesson {
+    margin-left: 20px !important;
+    width: 60px !important;
+}
+
+#start_Lesson{
+    margin-left: 20px !important;
+    width: 60px !important;
+}
+
+select[name="type"] {
+    margin: 0 auto !important;
+    display: block;
+    width: 80% !important;
+}
+
+textarea[name="message"] {
+    margin: 0 auto !important;
+    display: block;
+    width: 80% !important;
+}
+
+  
+  /* RESPONSIVE ELEMENTS */
+@media screen and (max-width: 768px) {
+
+    .panel-default .panel-heading {
+        font-size: 16px;
+    }
+
+    .panel-body {
+        padding: 15px;
+    }
+
+    .table-striped td, .table-striped th {
+        padding: 6px 5px;
+    }
+
+    .panel-body .input, .panel-body .dateTime {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .panel-body .input select, 
+    .panel-body .dateTime input[type="date"], 
+    .panel-body .dateTime input[type="number"], 
+    .panel-body .input textarea {
+        width: 100%;
+    }
+
+    .write_btn {
+        margin-top: 15px;
+        padding: 8px 10px;
+    }
+
+    td[colspan="13"] {
+        font-size: medium;
+    }
+
+    .table.table-bordered, .table-striped {
+        table-layout: fixed;
+        word-wrap: break-word;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .panel-default .panel-heading {
+        font-size: 14px;
+    }
+}
+
+
+.absent-sumarized-table {
+    display: none;
+    height: 0px;
+    width: 0px;
+}
+
+
+
+.modern-table {
+    animation: fadeIn 0.2s ease-out;
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-family: 'Arial', sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #1e1e1e;
+    color: #ffffff;
+    border-radius: 8px 8px 0 0;
+}
+
+.modern-table thead {
+    background-color: #00337C;
+    color: white;
+}
+
+.modern-table thead tr:first-child th:first-child {
+    border-top-left-radius: 8px;
+}
+
+.modern-table thead tr:first-child th:last-child {
+    border-top-right-radius: 8px;
+}
+
+.modern-table th,
+.modern-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #2f2f2f;
+}
+
+.modern-table tbody tr:nth-child(even) {
+    background-color: #292929;
+}
+
+.modern-table th {
+    position: sticky;
+    top: 0;
+}
+
+/* Responsive design for smaller screens */
+@media screen and (max-width: 768px) {
+    .modern-table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    .modern-table th, .modern-table td {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

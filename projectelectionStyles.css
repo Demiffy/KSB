@@ -1,0 +1,78 @@
+thead th {
+    background-color: #00337C; /* Main color for background */
+    color: #fff; /* White text for contrast */
+    padding: 15px;
+    text-align: left;
+    border-bottom: 2px solid #fff; /* White bottom border for each header cell */
+}
+
+/* General styling for all table cells */
+tbody td {
+    padding: 10px;
+    border-bottom: 1px solid #2a77e2; /* Light grey bottom border for each cell */
+}
+
+/* Styling for cells with specific classes */
+.table-cell-center {
+    text-align: center; /* Center align text for specific cells */
+}
+
+/* Row styling for alternating colors */
+tr.even {
+    background-color: #121212; /* Light grey background for even rows */
+}
+
+tr.odd {
+    background-color: #0f0f0f !important; /* White background for odd rows */
+}
+
+/* Additional styling for headers in tbody */
+tr.professions th {
+    text-align: left;
+    font-weight: bold;
+    background-color: #4CAF50; /* Green background for profession headers */
+    color: white; /* White text for better contrast */
+}
+
+/* Styling for goals and comments */
+.goal, .comment {
+    display: block; /* Display these elements in block for better readability */
+    margin-top: 5px;
+}
+
+.comment {
+    font-style: italic; /* Italicize comments for differentiation */
+    color: #2a77e2; /* Dark grey color for comments */
+}
+
+
+
+
+.electionData {
+    width: 100%;
+    border-collapse: collapse; /* Collapses the border to a single line */
+}
+
+.electionData td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd; /* Light grey bottom border for each cell */
+    text-align: left; /* Align text to the left */
+    color: #333; /* Dark grey color for text */
+}
+
+.electionData tr:nth-child(odd) {
+    background-color: #f9f9f9; /* Very light grey for odd rows */
+}
+
+.electionData tr:nth-child(even) {
+    background-color: #ffffff; /* White for even rows */
+}
+
+.electionData tr.projectApproved {
+    background-color: #54dd59; /* Light green background for approved projects */
+}
+
+/* Styles for specific table data cells */
+.electionData td:first-child {
+    font-weight: bold; /* Bold for the first column */
+}

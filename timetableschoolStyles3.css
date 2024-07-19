@@ -1,0 +1,212 @@
+body{
+    background-color: #fff !important;
+}
+
+/* NAVBAR */
+.navbar.navbar-inverse {
+    background-color: #E9671E !important; /* Main color */
+    border-color: #C55F1B !important; /* Darker shade of main color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
+    font-family: 'Segoe UI', Arial, sans-serif !important;
+  }
+  
+  .navbar.navbar-inverse .navbar-brand {
+    color: #FFFFFF !important; /* White text */
+    font-size: 19px !important;
+    font-weight: bold !important;
+    transition: transform 0.3s ease, color 0.3s ease !important;
+  }
+  
+  .navbar.navbar-inverse .navbar-brand:hover {
+    transform: scale(1.05) !important;
+  }
+  
+  .navbar.navbar-inverse .navbar-nav > li > a {
+    color: #FFFFFF !important; /* White text */
+    font-size: 16px !important;
+    transition: color 0.3s ease !important;
+  }
+  
+  .navbar.navbar-inverse .navbar-nav > li > a:hover,
+  .navbar.navbar-inverse .navbar-nav > li > a:focus {
+    color: #FFFFFF !important; /* White text */
+    background-color: #C55F1B !important; /* Darker shade of main color */
+  }
+  
+  .navbar.navbar-inverse .navbar-nav > .active > a,
+  .navbar.navbar-inverse .navbar-nav > .active > a:hover,
+  .navbar.navbar-inverse .navbar-nav > .active > a:focus {
+    color: #FFFFFF !important; /* White text */
+    background-color: #C55F1B !important; /* Darker shade of main color */
+  }
+  
+  .navbar-inverse .navbar-nav>.open>a, 
+  .navbar-inverse .navbar-nav>.open>a:focus, 
+  .navbar-inverse .navbar-nav>.open>a:hover {
+    background-color: #D57235 !important; /* Slightly lighter shade of main color */
+  }
+  
+  .navbar.navbar-inverse .navbar-toggle {
+    border-color: #C55F1B !important;
+    background-color: transparent !important;
+  }
+  
+  .navbar.navbar-inverse .navbar-toggle .icon-bar {
+    background-color: #FFFFFF !important; /* White bars */
+  }
+  
+  .navbar.navbar-inverse .dropdown-menu {
+    background-color: #E9671E !important; /* Main color */
+    border-color: #C55F1B !important; /* Darker shade of main color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
+  }
+  
+  .navbar.navbar-inverse .dropdown-menu > li > a {
+    color: #FFFFFF !important; /* White text */
+    transition: background-color 0.3s, color 0.3s !important;
+  }
+  
+  .navbar.navbar-inverse .dropdown-menu > li > a:hover,
+  .navbar.navbar-inverse .dropdown-menu > li > a:focus {
+    color: #FFFFFF !important; /* White text */
+    background-color: #C55F1B !important; /* Darker shade of main color */
+  }
+  
+  /* NAVBAR SLIDEUP ANIM & Z-INDEX */
+  .navbar.navbar-inverse.navbar-fixed-top {
+    transition: top 0.5s ease !important;
+    z-index: 10000000 !important;
+  }
+  
+  /* TOGGLE BUTTON NAVBAR */
+  #navbar-toggle {
+    padding: 5px 10px !important;
+    background-color: #E9671E !important; /* Main color */
+    color: white !important; /* White text */
+    border: none !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+    font-size: 18px !important;
+    right: 10px !important;
+  }
+  
+  /* PHONES */
+  @media screen and (max-width: 768px) {
+    #navbar-toggle {
+      right: auto !important; 
+      left: 125px !important;
+    }
+  }
+  
+  /* BUTTONS */
+  .btn.btn-default {
+      color: #ffffff !important; /* White text */
+      background-color: #E9671E !important; /* Main color */
+      border: 1px solid #C55F1B !important; /* Darker shade of main color */
+      padding: 10px 20px !important;
+      font-size: 16px !important;
+      border-radius: 5px !important;
+      transition: background-color 0.3s, color 0.3s !important;
+      outline: none !important;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+  }
+  
+  .btn.btn-default:hover,
+  .btn.btn-default:focus {
+      color: #FFFFFF !important; /* White text */
+      background-color: #D57235 !important; /* Slightly lighter shade of main color */
+      border-color: #B9642E !important; /* Dark grey border */
+      text-decoration: none !important;
+  }
+  
+  .btn.btn-default:active {
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+      transform: translateY(1px) !important;
+  }
+  
+  .write_btn {
+      color: #ffffff !important; /* White text */
+      background-color: #E9671E !important; /* Main color */
+      border: 1px solid #C55F1B !important; /* Darker shade of main color */
+      padding: 10px 20px !important;
+      font-size: 16px !important;
+      border-radius: 5px !important;
+      transition: background-color 0.3s, color 0.3s !important;
+      outline: none !important;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+  }
+  
+  .write_btn:hover,
+  .write_btn:focus {
+      color: #FFFFFF !important; /* White text */
+      background-color: #D57235 !important; /* Slightly lighter shade of main color */
+      border-color: #B9642E !important; /* Dark grey border */
+      text-decoration: none !important;
+  }
+  
+  .write_btn:active {
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+      transform: translateY(1px) !important;
+  }
+  
+  /* ALERT DELETION */
+  .alert.alert-success {
+    display: none !important;
+  }
+  
+  /* FOOTER */
+  footer {
+    color: #333333; /* Dark grey text */
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+    margin-top: 30px;
+  }
+
+/* Base Content Styles */
+.container .content {
+  color: #333333;
+  padding: 20px;
+  text-align: center;
+}
+
+.container .content h2 {
+  text-shadow: 0 2px 1px rgba(0, 0, 0, 0.5);
+  font-size: 2.5em;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+/* Modern Button Styles */
+.container .content a {
+  background-image: linear-gradient(145deg, #FB7222, #fd4542);
+  color: white;
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+  display: inline-block;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.container .content a:hover, .container .content a:focus {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+  background-color: #E6193D;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .container .content h2 {
+      font-size: 2em;
+  }
+
+  .container .content a {
+      padding: 12px 20px;
+      font-size: 1em;
+  }
+}

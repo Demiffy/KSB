@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KybernaIS - Předvídač</title>
+    <link rel="stylesheet" href="predvidacStyles.css">
+    <script src="content.js"></script>
+    <script src="predvidac.js"></script>
+</head>
+<body>
+    <h2>Předvídač</h2>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="https://sis.ssakhk.cz/News">KybernaIS</a>
+            </div>
+            <div class="navbar-nav">
+                <a href="https://sis.ssakhk.cz/News" class="navbar-link">Zpět</a>
+            </div>
+        </div>
+    </div>
+    <!-- /Navbar -->
+
+    <!-- Update -->
+    <div class="update-info">
+        <span class="update-text">Poslední aktualizace dat:</span> 
+        <span class="update-date" id="lastFetchDate">N/A</span>
+    </div>
+    <!-- Update -->
+
+    <select id="tableTitlesDropdown" class="table-titles-dropdown">
+    </select>
+
+    <!-- Input fields -->
+    <div class="input-group">
+        <input type="text" id="známkaInput" placeholder="Známka" disabled>
+        <input type="text" id="váhaInput" placeholder="Váha" disabled>
+    </div>
+
+    <!-- Button group -->
+    <div class="button-group">
+        <button class="btn btn-default" id="známkaButton">Přidat Známku</button>
+        <button class="btn btn-default" id="resetTablesButton">Resetovat Známky</button>
+    </div>
+
+
+
+
+    <div class="classification-container"></div>
+    <!-- Combobox for Table Titles -->
+
+
+    <hr>
+    <footer>
+        <p>©2023-2024 Rozšíření Kyberna Made Better</p>
+    </footer>
+</body>
+</html>
