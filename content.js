@@ -283,7 +283,7 @@ function changeFaviconForDomain() {
 
     link.rel = 'icon';
     link.type = 'image/png';
-    link.href = 'https://gcdnb.pbrd.co/images/CDpSp5R80QKE.png?o=1';
+    link.href = 'https://kyberna.cz/favicon.ico';
 
     // Remove existing favicons
     oldLinks.forEach(oldLink => {
