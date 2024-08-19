@@ -52,6 +52,14 @@ After installation, navigate to the KybernaIS site, and the dark theme will auto
 
 For support, please open an issue on the GitHub repository
 
+## 🔒 Browser Compatibility
+
+Please note that the KybernaIS Made Better Extension is currently only available for Chrome. There are no plans to release it for Firefox or other web browsers.
+
+## 🔄 Future Development
+
+I am constantly exploring ways to improve the design of this extension. Although it's unlikely, I may consider a future redesign using Tailwind CSS. However, this is a low-priority possibility at the moment.
+
 ## 👋 Contributing
 
 I welcome contributions, bug reports, and feature requests. Feel free to fork the repository and submit pull requests
