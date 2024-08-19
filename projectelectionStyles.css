@@ -1,48 +1,48 @@
 thead th {
-    background-color: #00337C; /* Main color for background */
-    color: #fff; /* White text for contrast */
+    background-color: #00337C;
+    color: #fff;
     padding: 15px;
     text-align: left;
-    border-bottom: 2px solid #fff; /* White bottom border for each header cell */
+    border-bottom: 2px solid #fff;
 }
 
-/* General styling for all table cells */
+/* All table cells */
 tbody td {
     padding: 10px;
-    border-bottom: 1px solid #2a77e2; /* Light grey bottom border for each cell */
+    border-bottom: 1px solid #2a77e2;
 }
 
-/* Styling for cells with specific classes */
+/* Cells with specific classes */
 .table-cell-center {
-    text-align: center; /* Center align text for specific cells */
+    text-align: center;
 }
 
-/* Row styling for alternating colors */
+/* Alternating colors */
 tr.even {
-    background-color: #121212; /* Light grey background for even rows */
+    background-color: #121212;
 }
 
 tr.odd {
-    background-color: #0f0f0f !important; /* White background for odd rows */
+    background-color: #0f0f0f !important;
 }
 
-/* Additional styling for headers in tbody */
+/* Headers in tbody */
 tr.professions th {
     text-align: left;
     font-weight: bold;
-    background-color: #4CAF50; /* Green background for profession headers */
-    color: white; /* White text for better contrast */
+    background-color: #4CAF50;
+    color: white;
 }
 
-/* Styling for goals and comments */
+/* Goals and comments */
 .goal, .comment {
-    display: block; /* Display these elements in block for better readability */
+    display: block;
     margin-top: 5px;
 }
 
 .comment {
-    font-style: italic; /* Italicize comments for differentiation */
-    color: #2a77e2; /* Dark grey color for comments */
+    font-style: italic;
+    color: #2a77e2;
 }
 
 
@@ -50,29 +50,29 @@ tr.professions th {
 
 .electionData {
     width: 100%;
-    border-collapse: collapse; /* Collapses the border to a single line */
+    border-collapse: collapse;
 }
 
 .electionData td {
     padding: 10px;
-    border-bottom: 1px solid #ddd; /* Light grey bottom border for each cell */
-    text-align: left; /* Align text to the left */
-    color: #333; /* Dark grey color for text */
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    color: #333;
 }
 
 .electionData tr:nth-child(odd) {
-    background-color: #f9f9f9; /* Very light grey for odd rows */
+    background-color: #f9f9f9;
 }
 
 .electionData tr:nth-child(even) {
-    background-color: #ffffff; /* White for even rows */
+    background-color: #ffffff;
 }
 
 .electionData tr.projectApproved {
-    background-color: #54dd59; /* Light green background for approved projects */
+    background-color: #54dd59;
 }
 
-/* Styles for specific table data cells */
+/* Specific table data cells */
 .electionData td:first-child {
-    font-weight: bold; /* Bold for the first column */
+    font-weight: bold;
 }

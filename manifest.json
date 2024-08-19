@@ -92,7 +92,8 @@
         "updateStyles2.css",
         "updateStyles3.css",
         "timetable.html",
-        "loading.gif"
+        "loading.gif",
+        "DMLogoGif.gif"
       ],
       "matches": ["<all_urls>"]
     }

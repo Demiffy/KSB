@@ -441,7 +441,7 @@ textarea[name="message"] {
     top: 0;
 }
 
-/* Responsive design for smaller screens */
+/* RESPONSIVE ELEMENTS */
 @media screen and (max-width: 768px) {
     .modern-table {
         display: block;

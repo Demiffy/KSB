@@ -55,24 +55,24 @@ h3 {
 }
 
 .navbar-nav .navbar-link {
-    color: #FFFFFF; /* White text color */
-    background-color: #022b5c; /* Darker red background */
+    color: #FFFFFF;
+    background-color: #022b5c;
     font-size: 16px;
     padding: 10px 15px;
-    margin: 0 10px; /* Adds space around the button */
-    border-radius: 4px; /* Rounded corners */
-    border: none; /* No border */
+    margin: 0 10px;
+    border-radius: 4px;
+    border: none;
     transition: background-color 0.3s ease, color 0.3s ease;
     text-decoration: none;
-    display: inline-block; /* Aligns properly with other nav items */
-    line-height: 1.5; /* Adjust line height for better text alignment */
-    cursor: pointer; /* Cursor changes to a hand icon on hover */
+    display: inline-block;
+    line-height: 1.5;
+    cursor: pointer;
 }
 
 .navbar-nav .navbar-link:hover, .navbar-nav .navbar-link:focus {
-    background-color: #034aac; /* Slightly lighter red on hover/focus */
-    color: #FFFFFF; /* Keeps text color white */
-    text-decoration: none; /* No underline on hover/focus */
+    background-color: #034aac;
+    color: #FFFFFF;
+    text-decoration: none;
 }
 
 /* Adjustments for smaller screens */
@@ -253,9 +253,9 @@ hr {
 /* BUTTONS */
 .button-group {
     display: flex;
-    flex-direction: row; /* Align buttons horizontally */
+    flex-direction: row;
     align-items: center;
-    justify-content: center; /* Center the buttons horizontally */
+    justify-content: center;
     gap: 10px;
     margin: 20px;
 }
@@ -310,7 +310,7 @@ hr {
 
 
 
-/* Style for the remove grade button */
+/* Remove grade button */
 .grade-button {
     margin: 0 5px;
     padding: 5px 10px;
@@ -320,9 +320,9 @@ hr {
     font-size: 0.9em;
 }
 
-/* Specific style for the remove button */
+/* Remove button */
 .remove-grade-button {
-    background-color: #ff4d4d; /* Red */
+    background-color: #ff4d4d;
     color: white;
 }
 
@@ -330,9 +330,9 @@ hr {
     background-color: #ff6666;
 }
 
-/* Specific style for the edit button */
+/* Edit button */
 .edit-grade-button {
-    background-color: #4CAF50; /* Green */
+    background-color: #4CAF50;
     color: white;
 }
 
@@ -341,16 +341,16 @@ hr {
 }
 
 .modern-table td .grade-button {
-    margin-bottom: 5px; /* Adds space below each button */
-    display: block; /* Makes each button take the full width of its container */
+    margin-bottom: 5px;
+    display: block;
 }
 
-/* Additional style to only apply when the buttons are next to each other */
-@media screen and (min-width: 1800px) { /* Adjust the min-width as needed */
+/* Styles to only apply when the buttons are next to each other */
+@media screen and (min-width: 1800px) {
     .modern-table td .grade-button {
-        display: inline-block; /* Buttons next to each other for wider screens */
-        margin-right: 5px; /* Adds space to the right of each button */
-        margin-bottom: 0; /* Resets the bottom margin for side-by-side layout */
+        display: inline-block;
+        margin-right: 5px;
+        margin-bottom: 0;
     }
 }
 

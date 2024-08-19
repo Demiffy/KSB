@@ -68,7 +68,7 @@ body {
 }
 
 .navbar.navbar-inverse .dropdown-menu > li > a {
-    color: #FFFFFF; /* White text */
+    color: #FFFFFF;
     transition: background-color 0.3s, color 0.3s;
 }
 

@@ -1,13 +1,13 @@
 /* NAVBAR */
 .navbar.navbar-inverse {
-    background-color: #D32F2F !important; /* Main red color */
-    border-color: #D61530 !important; /* Slightly darker shade of red */
+    background-color: #D32F2F !important;
+    border-color: #D61530 !important;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
     font-family: 'Segoe UI', Arial, sans-serif !important;
 }
 
 .navbar.navbar-inverse .navbar-brand {
-    color: #FFFFFF !important; /* White text */
+    color: #FFFFFF !important;
     font-size: 19px !important;
     font-weight: bold !important;
     transition: transform 0.3s ease, color 0.3s ease !important;
@@ -18,28 +18,28 @@
 }
 
 .navbar.navbar-inverse .navbar-nav > li > a {
-    color: #FFFFFF !important; /* White text */
+    color: #FFFFFF !important;
     font-size: 16px !important;
     transition: color 0.3s ease !important;
 }
 
 .navbar.navbar-inverse .navbar-nav > li > a:hover,
 .navbar.navbar-inverse .navbar-nav > li > a:focus {
-    color: #FFFFFF !important; /* White text */
-    background-color: #D61530 !important; /* Slightly darker shade of red */
+    color: #FFFFFF !important;
+    background-color: #D61530 !important;
 }
 
 .navbar.navbar-inverse .navbar-nav > .active > a,
 .navbar.navbar-inverse .navbar-nav > .active > a:hover,
 .navbar.navbar-inverse .navbar-nav > .active > a:focus {
-    color: #FFFFFF !important; /* White text */
-    background-color: #C4132C !important; /* Even darker shade of red */
+    color: #FFFFFF !important;
+    background-color: #C4132C !important;
 }
 
 .navbar-inverse .navbar-nav>.open>a, 
 .navbar-inverse .navbar-nav>.open>a:focus, 
 .navbar-inverse .navbar-nav>.open>a:hover {
-    background-color: #E6193D !important; /* Slightly lighter shade of red */
+    background-color: #E6193D !important;
 }
 
 .navbar.navbar-inverse .navbar-toggle {
@@ -48,24 +48,24 @@
 }
 
 .navbar.navbar-inverse .navbar-toggle .icon-bar {
-    background-color: #FFFFFF !important; /* White bars */
+    background-color: #FFFFFF !important;
 }
 
 .navbar.navbar-inverse .dropdown-menu {
-    background-color: #D32F2F !important; /* Main red color */
-    border-color: #D61530 !important; /* Slightly darker shade of red */
+    background-color: #D32F2F !important;
+    border-color: #D61530 !important;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
 }
 
 .navbar.navbar-inverse .dropdown-menu > li > a {
-    color: #FFFFFF !important; /* White text */
+    color: #FFFFFF !important;
     transition: background-color 0.3s, color 0.3s !important;
 }
 
 .navbar.navbar-inverse .dropdown-menu > li > a:hover,
 .navbar.navbar-inverse .dropdown-menu > li > a:focus {
-    color: #FFFFFF !important; /* White text */
-    background-color: #C4132C !important; /* Even darker shade of red */
+    color: #FFFFFF !important;
+    background-color: #C4132C !important;
 }
 
 /* NAVBAR SLIDEUP ANIM & Z-INDEX */
@@ -77,8 +77,8 @@
 /* TOGGLE BUTTON NAVBAR */
 #navbar-toggle {
     padding: 5px 10px !important;
-    background-color: #D32F2F !important; /* Main red color */
-    color: white !important; /* White text */
+    background-color: #D32F2F !important;
+    color: white !important;
     border: none !important;
     border-radius: 4px !important;
     cursor: pointer !important;
@@ -96,9 +96,9 @@
 
 /* BUTTONS */
 .btn.btn-default {
-    color: #ffffff !important; /* White text */
-    background-color: #D32F2F !important; /* Main red color */
-    border: 1px solid #D61530 !important; /* Slightly darker shade of red */
+    color: #ffffff !important;
+    background-color: #D32F2F !important;
+    border: 1px solid #D61530 !important;
     padding: 10px 20px !important;
     font-size: 16px !important;
     border-radius: 5px !important;
@@ -109,9 +109,9 @@
 
 .btn.btn-default:hover,
 .btn.btn-default:focus {
-    color: #FFFFFF !important; /* White text */
-    background-color: #E6193D !important; /* Slightly lighter shade of red */
-    border-color: #C4132C !important; /* Even darker shade of red */
+    color: #FFFFFF !important;
+    background-color: #E6193D !important;
+    border-color: #C4132C !important;
     text-decoration: none !important;
 }
 
@@ -121,9 +121,9 @@
 }
 
 .write_btn {
-    color: #ffffff !important; /* White text */
-    background-color: #D32F2F !important; /* Main red color */
-    border: 1px solid #D61530 !important; /* Slightly darker shade of red */
+    color: #ffffff !important;
+    background-color: #D32F2F !important;
+    border: 1px solid #D61530 !important;
     padding: 10px 20px !important;
     font-size: 16px !important;
     border-radius: 5px !important;
@@ -134,9 +134,9 @@
 
 .write_btn:hover,
 .write_btn:focus {
-    color: #FFFFFF !important; /* White text */
-    background-color: #E6193D !important; /* Slightly lighter shade of red */
-    border-color: #C4132C !important; /* Even darker shade of red */
+    color: #FFFFFF !important;
+    background-color: #E6193D !important;
+    border-color: #C4132C !important;
     text-decoration: none !important;
 }
 
@@ -150,43 +150,43 @@
     display: none !important;
 }
 
-/* Style for the overall table */
+/* Overall table */
 .table {
-    color: #fff; /* White text color for readability on dark background */
-    background-color: #171717; /* Dark grey background */
-    border-collapse: collapse; /* Collapses the border to a single line */
-    width: 100%; /* Full width of the container */
+    color: #fff;
+    background-color: #171717;
+    border-collapse: collapse;
+    width: 100%;
 }
 
-/* Style for table headers */
+/* Table headers */
 .table th {
-    background-color: #D32F2F; /* Deep blue background for headers */
-    color: #fff; /* White text for contrast */
-    padding: 10px; /* Padding for aesthetic spacing */
-    text-align: left; /* Align text to the left */
+    background-color: #D32F2F;
+    color: #fff;
+    padding: 10px;
+    text-align: left;
 }
 
-/* Style for table rows */
+/* Table rows */
 .table tr {
-    border-bottom: 1px solid #fff; /* White bottom border for each row */
+    border-bottom: 1px solid #fff;
 }
 
-/* Style for table data cells */
+/* Table data cells */
 .table td {
-    padding: 10px; /* Padding for cells */
-    color: #fff; /* White text color for readability */
+    padding: 10px;
+    color: #fff;
 }
 
-/* Striping rows with alternate colors for better readability */
+/* Striping rows with alternate colors */
 .table-striped tr:nth-child(odd) {
-    background-color: #0f0f0f !important; /* Slightly lighter shade of grey for odd rows */
+    background-color: #0f0f0f !important;
 }
 
 .table-striped tr:nth-child(even) {
-    background-color: #121212 !important; /* Dark grey for even rows */
+    background-color: #121212 !important;
 }
 
-/* Style for specific class-based rows */
+/* Specific class-based rows */
 .table tr.blockid-14, .table tr.blockid-4, .table tr.blockid-13, .table tr.blockid-2, .table tr.blockid-3 {
-    color: #fff; /* Ensuring white text color for these specific rows */
+    color: #fff;
 }

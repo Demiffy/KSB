@@ -1,13 +1,13 @@
 /* NAVBAR */
 .navbar.navbar-inverse {
-    background-color: #D32F2F !important; /* Main red color */
-    border-color: #D61530 !important; /* Slightly darker shade of red */
+    background-color: #D32F2F !important;
+    border-color: #D61530 !important;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
     font-family: 'Segoe UI', Arial, sans-serif;
 }
 
 .navbar.navbar-inverse .navbar-brand {
-    color: #FFFFFF !important; /* White text */
+    color: #FFFFFF !important;
     font-size: 19px;
     font-weight: bold;
     transition: transform 0.3s ease, color 0.3s ease;
@@ -18,28 +18,28 @@
 }
 
 .navbar.navbar-inverse .navbar-nav > li > a {
-    color: #FFFFFF !important; /* White text */
+    color: #FFFFFF !important;
     font-size: 16px;
     transition: color 0.3s ease;
 }
 
 .navbar.navbar-inverse .navbar-nav > li > a:hover,
 .navbar.navbar-inverse .navbar-nav > li > a:focus {
-    color: #FFFFFF !important; /* White text */
-    background-color: #D61530 !important; /* Slightly darker shade of red */
+    color: #FFFFFF !important;
+    background-color: #D61530 !important;
 }
 
 .navbar.navbar-inverse .navbar-nav > .active > a,
 .navbar.navbar-inverse .navbar-nav > .active > a:hover,
 .navbar.navbar-inverse .navbar-nav > .active > a:focus {
-    color: #FFFFFF !important; /* White text */
-    background-color: #C4132C !important; /* Even darker shade of red */
+    color: #FFFFFF !important;
+    background-color: #C4132C !important;
 }
 
 .navbar-inverse .navbar-nav>.open>a, 
 .navbar-inverse .navbar-nav>.open>a:focus, 
 .navbar-inverse .navbar-nav>.open>a:hover {
-    background-color: #E6193D !important; /* Slightly lighter shade of red */
+    background-color: #E6193D !important;
 }
 
 .navbar.navbar-inverse .navbar-toggle {
@@ -48,24 +48,24 @@
 }
 
 .navbar.navbar-inverse .navbar-toggle .icon-bar {
-    background-color: #FFFFFF; /* White bars */
+    background-color: #FFFFFF;
 }
 
 .navbar.navbar-inverse .dropdown-menu {
-    background-color: #D32F2F; /* Main red color */
-    border-color: #D61530; /* Slightly darker shade of red */
+    background-color: #D32F2F;
+    border-color: #D61530;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .navbar.navbar-inverse .dropdown-menu > li > a {
-    color: #FFFFFF; /* White text */
+    color: #FFFFFF;
     transition: background-color 0.3s, color 0.3s;
 }
 
 .navbar.navbar-inverse .dropdown-menu > li > a:hover,
 .navbar.navbar-inverse .dropdown-menu > li > a:focus {
-    color: #FFFFFF; /* White text */
-    background-color: #C4132C; /* Even darker shade of red */
+    color: #FFFFFF;
+    background-color: #C4132C;
 }
 
 /* NAVBAR SLIDEUP ANIM & Z-INDEX */
@@ -77,8 +77,8 @@
 /* TOGGLE BUTTON NAVBAR */
 #navbar-toggle {
     padding: 5px 10px;
-    background-color: #D32F2F; /* Main red color */
-    color: white; /* White text */
+    background-color: #D32F2F;
+    color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -96,9 +96,9 @@
 
 /* BUTTONS */
 .btn.btn-default {
-    color: #ffffff !important; /* White text */
-    background-color: #D32F2F !important; /* Main red color */
-    border: 1px solid #D61530 !important; /* Slightly darker shade of red */
+    color: #ffffff !important;
+    background-color: #D32F2F !important;
+    border: 1px solid #D61530 !important;
     padding: 10px 20px !important;
     font-size: 16px !important;
     border-radius: 5px !important;
@@ -109,9 +109,9 @@
 
 .btn.btn-default:hover,
 .btn.btn-default:focus {
-    color: #FFFFFF !important; /* White text */
-    background-color: #E6193D !important; /* Slightly lighter shade of red */
-    border-color: #C4132C !important; /* Even darker shade of red */
+    color: #FFFFFF !important;
+    background-color: #E6193D !important;
+    border-color: #C4132C !important;
     text-decoration: none !important;
 }
 
@@ -121,9 +121,9 @@
 }
 
 .write_btn {
-    color: #ffffff !important; /* White text */
-    background-color: #D32F2F !important; /* Main red color */
-    border: 1px solid #D61530 !important; /* Slightly darker shade of red */
+    color: #ffffff !important;
+    background-color: #D32F2F !important;
+    border: 1px solid #D61530 !important;
     padding: 10px 20px !important;
     font-size: 16px !important;
     border-radius: 5px !important;
@@ -134,9 +134,9 @@
 
 .write_btn:hover,
 .write_btn:focus {
-    color: #FFFFFF !important; /* White text */
-    background-color: #E6193D !important; /* Slightly lighter shade of red */
-    border-color: #C4132C !important; /* Even darker shade of red */
+    color: #FFFFFF !important;
+    background-color: #E6193D !important;
+    border-color: #C4132C !important;
     text-decoration: none !important;
 }
 

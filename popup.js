@@ -24,11 +24,6 @@ window.addEventListener('load', () => {
   setInterval(checkStatus, 30000); // 30 seconds
 });
 
-
-
-
-
-
 // Current version of the extension
 chrome.runtime.getManifest().version;
 
@@ -92,4 +87,3 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
-

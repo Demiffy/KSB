@@ -130,11 +130,6 @@ function calculateWeightedAverage(tableData) {
     }
 }
 
-
-
-
-
-
 function parseGrade(gradeStr) {
     if (gradeStr === 'n') {
         return 5.00;
@@ -143,7 +138,6 @@ function parseGrade(gradeStr) {
     }
     return parseFloat(gradeStr);
 }
-
 
 let originalTableData;
 function insertModernTables(data, container) {
@@ -179,7 +173,7 @@ function insertModernTables(data, container) {
             headerRow.appendChild(th);
         });
 
-        // Add a <th> with text "Možnosti" for the remove button column
+        // Add a <th>
         let optionsHeader = document.createElement('th');
         optionsHeader.innerText = 'Možnosti';
         headerRow.appendChild(optionsHeader);
@@ -226,7 +220,7 @@ function insertModernTables(data, container) {
 
         
 
-        // Update the last row's 'Známka' value with the calculated average
+        // Update row Známka value with the calculated average
         if (tableData.length > 0) {
             let lastRowCells = tbody.lastChild.cells;
             if (lastRowCells.length >= 2) {
@@ -258,7 +252,6 @@ function editGrade(row, gradeCellIndex, weightCellIndex) {
     let gradeCell = row.cells[gradeCellIndex];
     let weightCell = row.cells[weightCellIndex];
 
-    // Ensure the cell indices are within the bounds of the row cells
     if (gradeCellIndex >= row.cells.length || weightCellIndex >= row.cells.length) {
         console.error("Invalid cell index");
         return;
@@ -284,7 +277,6 @@ function editGrade(row, gradeCellIndex, weightCellIndex) {
     let weightInput = createInputField(currentWeight, 20, 'weight');
     weightCell.appendChild(weightInput);
 
-    // Setup blur event with a timeout to allow for focus switching
     let onBlur = function() {
         setTimeout(() => {
             if (document.activeElement !== gradeInput && document.activeElement !== weightInput) {
@@ -329,16 +321,12 @@ function createInputField(value, width, type) {
         });
     }
 
-    // Stop click event from propagating to parent elements
     input.addEventListener('click', function(event) {
         event.stopPropagation();
     });
 
     return input;
 }
-
-
-
 
 function updateGrade(row, gradeCellIndex, weightCellIndex) {
     let gradeInput = row.cells[gradeCellIndex].querySelector('input');
@@ -354,7 +342,6 @@ function updateGrade(row, gradeCellIndex, weightCellIndex) {
 
     recalculateAverage(table, subjectName);
 }
-
 
 function removeGrade(row, subjectName) {
     let table = row.closest('.modern-table');
@@ -379,7 +366,6 @@ function applyGradeColor(cell, gradeStr) {
     }
 }
 
-
 function populateCombobox(tableTitles) {
     const dropdown = document.getElementById('tableTitlesDropdown');
     dropdown.innerHTML = '';
@@ -399,7 +385,6 @@ function populateCombobox(tableTitles) {
         dropdown.appendChild(option);
     });
 }
-
 
 function addGradeToTable(subject, grade, weight) {
     // Find the table with the matching subject
@@ -442,7 +427,6 @@ function addGradeToTable(subject, grade, weight) {
         titleDivToUpdate.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 }
-
 
 function resetTables() {
     if (originalTableData) {
@@ -492,9 +476,6 @@ function removeLatestGradeFromTable(subject) {
     }
 }
 
-
-
-
 function recalculateAverage(table, subjectName) {
     // Extract table data excluding the last row (average)
     let tableData = Array.from(table.rows).slice(1, -1).map(row => Array.from(row.cells).map(cell => cell.innerText));
@@ -521,11 +502,6 @@ function recalculateAverage(table, subjectName) {
         console.log(`[Kyberna MB] No valid grades left for ${subjectName}. Average set to N/A.`);
     }
 }
-
-
-
-
-
 
 function checkAndApplyThemeStyles() {
     chrome.storage.local.get("selectedTheme", function(result) {

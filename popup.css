@@ -90,14 +90,14 @@ html, body {
 /* Status and Version Container */
 .status-container {
   position: relative;
-  padding: 5px 0; /* Adjust padding as needed */
+  padding: 5px 0;
 }
 
 /* Status Dot */
 #status {
   position: absolute;
-  left: 10px; /* Adjust as needed */
-  bottom: 10px; /* Adjust as needed */
+  left: 10px;
+  bottom: 10px;
   width: 10px;
   height: 10px;
   background-color: grey;
@@ -108,15 +108,15 @@ html, body {
 /* Version Number */
 #version {
   position: absolute;
-  right: 10px; /* Adjust as needed */
-  bottom: 10px; /* Adjust as needed */
+  right: 10px;
+  bottom: 10px;
 }
 
 
 /* Logout Button */
 .logout-container {
   margin-top: 20px;
-  padding: 35px 0; /* Adjust padding as needed */
+  padding: 35px 0;
 }
 
 /* Logo with breathing animation */

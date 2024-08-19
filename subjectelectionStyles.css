@@ -1,40 +1,40 @@
-/* Style for the overall table */
+/* Overall table */
 .table {
-    color: #fff; /* White text color for readability on dark background */
-    background-color: #171717; /* Dark grey background */
-    border-collapse: collapse; /* Collapses the border to a single line */
-    width: 100%; /* Full width of the container */
+    color: #fff;
+    background-color: #171717;
+    border-collapse: collapse;
+    width: 100%;
 }
 
-/* Style for table headers */
+/* Table headers */
 .table th {
-    background-color: #00337C; /* Deep blue background for headers */
-    color: #fff; /* White text for contrast */
-    padding: 10px; /* Padding for aesthetic spacing */
-    text-align: left; /* Align text to the left */
+    background-color: #00337C;
+    color: #fff;
+    padding: 10px;
+    text-align: left;
 }
 
-/* Style for table rows */
+/* Table rows */
 .table tr {
-    border-bottom: 1px solid #fff; /* White bottom border for each row */
+    border-bottom: 1px solid #fff;
 }
 
-/* Style for table data cells */
+/* Table data cells */
 .table td {
-    padding: 10px; /* Padding for cells */
-    color: #fff; /* White text color for readability */
+    padding: 10px;
+    color: #fff;
 }
 
-/* Striping rows with alternate colors for better readability */
+/* Striping rows with alternate colors*/
 .table-striped tr:nth-child(odd) {
-    background-color: #0f0f0f !important; /* Slightly lighter shade of grey for odd rows */
+    background-color: #0f0f0f !important;
 }
 
 .table-striped tr:nth-child(even) {
-    background-color: #121212 !important; /* Dark grey for even rows */
+    background-color: #121212 !important;
 }
 
-/* Style for specific class-based rows */
+/* Specific class-based rows */
 .table tr.blockid-14, .table tr.blockid-4, .table tr.blockid-13, .table tr.blockid-2, .table tr.blockid-3 {
-    color: #fff; /* Ensuring white text color for these specific rows */
+    color: #fff;
 }

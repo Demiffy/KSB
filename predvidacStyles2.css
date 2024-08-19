@@ -55,24 +55,24 @@ h3 {
 }
 
 .navbar-nav .navbar-link {
-    color: #FFFFFF; /* White text color */
-    background-color: #D61530; /* Darker red background */
+    color: #FFFFFF;
+    background-color: #D61530;
     font-size: 16px;
     padding: 10px 15px;
-    margin: 0 10px; /* Adds space around the button */
-    border-radius: 4px; /* Rounded corners */
-    border: none; /* No border */
+    margin: 0 10px;
+    border-radius: 4px;
+    border: none;
     transition: background-color 0.3s ease, color 0.3s ease;
     text-decoration: none;
-    display: inline-block; /* Aligns properly with other nav items */
-    line-height: 1.5; /* Adjust line height for better text alignment */
-    cursor: pointer; /* Cursor changes to a hand icon on hover */
+    display: inline-block;
+    line-height: 1.5;
+    cursor: pointer;
 }
 
 .navbar-nav .navbar-link:hover, .navbar-nav .navbar-link:focus {
-    background-color: #E6193D; /* Slightly lighter red on hover/focus */
-    color: #FFFFFF; /* Keeps text color white */
-    text-decoration: none; /* No underline on hover/focus */
+    background-color: #E6193D;
+    color: #FFFFFF;
+    text-decoration: none;
 }
 
 
@@ -254,9 +254,9 @@ hr {
 /* BUTTONS */
 .button-group {
     display: flex;
-    flex-direction: row; /* Align buttons horizontally */
+    flex-direction: row;
     align-items: center;
-    justify-content: center; /* Center the buttons horizontally */
+    justify-content: center;
     gap: 10px;
     margin: 20px;
 }

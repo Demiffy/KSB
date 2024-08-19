@@ -4,14 +4,14 @@ body{
 
 /* NAVBAR */
 .navbar.navbar-inverse {
-    background-color: #E9671E !important; /* Main color */
-    border-color: #C55F1B !important; /* Darker shade of main color */
+    background-color: #E9671E !important;
+    border-color: #C55F1B !important;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
     font-family: 'Segoe UI', Arial, sans-serif !important;
   }
   
   .navbar.navbar-inverse .navbar-brand {
-    color: #FFFFFF !important; /* White text */
+    color: #FFFFFF !important;
     font-size: 19px !important;
     font-weight: bold !important;
     transition: transform 0.3s ease, color 0.3s ease !important;
@@ -22,28 +22,28 @@ body{
   }
   
   .navbar.navbar-inverse .navbar-nav > li > a {
-    color: #FFFFFF !important; /* White text */
+    color: #FFFFFF !important;
     font-size: 16px !important;
     transition: color 0.3s ease !important;
   }
   
   .navbar.navbar-inverse .navbar-nav > li > a:hover,
   .navbar.navbar-inverse .navbar-nav > li > a:focus {
-    color: #FFFFFF !important; /* White text */
-    background-color: #C55F1B !important; /* Darker shade of main color */
+    color: #FFFFFF !important;
+    background-color: #C55F1B !important;
   }
   
   .navbar.navbar-inverse .navbar-nav > .active > a,
   .navbar.navbar-inverse .navbar-nav > .active > a:hover,
   .navbar.navbar-inverse .navbar-nav > .active > a:focus {
-    color: #FFFFFF !important; /* White text */
-    background-color: #C55F1B !important; /* Darker shade of main color */
+    color: #FFFFFF !important;
+    background-color: #C55F1B !important;
   }
   
   .navbar-inverse .navbar-nav>.open>a, 
   .navbar-inverse .navbar-nav>.open>a:focus, 
   .navbar-inverse .navbar-nav>.open>a:hover {
-    background-color: #D57235 !important; /* Slightly lighter shade of main color */
+    background-color: #D57235 !important;
   }
   
   .navbar.navbar-inverse .navbar-toggle {
@@ -52,24 +52,24 @@ body{
   }
   
   .navbar.navbar-inverse .navbar-toggle .icon-bar {
-    background-color: #FFFFFF !important; /* White bars */
+    background-color: #FFFFFF !important;
   }
   
   .navbar.navbar-inverse .dropdown-menu {
-    background-color: #E9671E !important; /* Main color */
-    border-color: #C55F1B !important; /* Darker shade of main color */
+    background-color: #E9671E !important;
+    border-color: #C55F1B !important;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
   }
   
   .navbar.navbar-inverse .dropdown-menu > li > a {
-    color: #FFFFFF !important; /* White text */
+    color: #FFFFFF !important;
     transition: background-color 0.3s, color 0.3s !important;
   }
   
   .navbar.navbar-inverse .dropdown-menu > li > a:hover,
   .navbar.navbar-inverse .dropdown-menu > li > a:focus {
-    color: #FFFFFF !important; /* White text */
-    background-color: #C55F1B !important; /* Darker shade of main color */
+    color: #FFFFFF !important;
+    background-color: #C55F1B !important;
   }
   
   /* NAVBAR SLIDEUP ANIM & Z-INDEX */
@@ -81,8 +81,8 @@ body{
   /* TOGGLE BUTTON NAVBAR */
   #navbar-toggle {
     padding: 5px 10px !important;
-    background-color: #E9671E !important; /* Main color */
-    color: white !important; /* White text */
+    background-color: #E9671E !important;
+    color: white !important;
     border: none !important;
     border-radius: 4px !important;
     cursor: pointer !important;
@@ -100,9 +100,9 @@ body{
   
   /* BUTTONS */
   .btn.btn-default {
-      color: #ffffff !important; /* White text */
-      background-color: #E9671E !important; /* Main color */
-      border: 1px solid #C55F1B !important; /* Darker shade of main color */
+      color: #ffffff !important;
+      background-color: #E9671E !important;
+      border: 1px solid #C55F1B !important;
       padding: 10px 20px !important;
       font-size: 16px !important;
       border-radius: 5px !important;
@@ -113,9 +113,9 @@ body{
   
   .btn.btn-default:hover,
   .btn.btn-default:focus {
-      color: #FFFFFF !important; /* White text */
-      background-color: #D57235 !important; /* Slightly lighter shade of main color */
-      border-color: #B9642E !important; /* Dark grey border */
+      color: #FFFFFF !important;
+      background-color: #D57235 !important;
+      border-color: #B9642E !important;
       text-decoration: none !important;
   }
   
@@ -125,9 +125,9 @@ body{
   }
   
   .write_btn {
-      color: #ffffff !important; /* White text */
-      background-color: #E9671E !important; /* Main color */
-      border: 1px solid #C55F1B !important; /* Darker shade of main color */
+      color: #ffffff !important;
+      background-color: #E9671E !important;
+      border: 1px solid #C55F1B !important;
       padding: 10px 20px !important;
       font-size: 16px !important;
       border-radius: 5px !important;
@@ -138,9 +138,9 @@ body{
   
   .write_btn:hover,
   .write_btn:focus {
-      color: #FFFFFF !important; /* White text */
-      background-color: #D57235 !important; /* Slightly lighter shade of main color */
-      border-color: #B9642E !important; /* Dark grey border */
+      color: #FFFFFF !important;
+      background-color: #D57235 !important;
+      border-color: #B9642E !important;
       text-decoration: none !important;
   }
   
@@ -156,17 +156,17 @@ body{
 
 /* PANEL */
 .panel {
-    background-color: #FFFFFF !important; /* White background */
-    color: #000000 !important; /* Black text */
-    border-color: #343A40 !important; /* Darker shade of main color */
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+    border-color: #343A40 !important;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5) !important;
     border-radius: 10px !important;
 }
 
 .panel-default > .panel-heading {
-    background-color: #E9671E !important; /* Main color */
-    color: #FFFFFF !important; /* White text */
-    border-color: #C55F1B !important; /* Darker shade of main color */
+    background-color: #E9671E !important;
+    color: #FFFFFF !important;
+    border-color: #C55F1B !important;
     text-align: center;
     font-size: 20px;
     padding: 15px;
@@ -176,13 +176,13 @@ body{
 
 .panel-body {
     padding: 35px;
-    background-color: #F2F2F2 !important; /* White background */
-    color: #000000 !important; /* Black text */
+    background-color: #F2F2F2 !important;
+    color: #000000 !important;
 }
 
 /* FORM FIELD STYLING */
 .form-horizontal .form-group label {
-    color: #000000; /* Black text */
+    color: #000000;
     text-align: left;
     margin-bottom: 10px;
     display: block;
@@ -190,13 +190,13 @@ body{
 
 .form-horizontal .form-group .form-control {
     background-color: #fff !important;
-    color: #000000; /* Black text */
-    border: 1px solid #C55F1B; /* Darker shade of main color */
+    color: #000000;
+    border: 1px solid #C55F1B;
     height: 40px;
     padding: 10px;
 }
 
 /* CHECKBOX & BUTTON */
 .form-horizontal .checkbox label {
-    color: #000000; /* Black text */
+    color: #000000;
 }

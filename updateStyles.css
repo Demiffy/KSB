@@ -1,53 +1,101 @@
-    .custom-container {
-      color: #ffffff;
-      border-radius: 4px;
-      padding: 20px;
-      margin-top: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .custom-content h2 {
-      color: #0450bb;
-      margin-bottom: 15px;
-    }
-    .custom-content .desc {
-      margin-bottom: 10px;
-    }
-    .custom-content .dateSpan {
-      background-color: #00337C;
-      color: #ffffff;
-      padding: 3px 6px;
-      border-radius: 2px;
-      font-size: 0.9em;
-    }
-    .custom-content a {
-      color: #4da6ff;
-      text-decoration: none;
-    }
-    .custom-content a:hover {
-      text-decoration: underline;
-    }
-    .custom-footer-button {
-      text-align: center;
-      padding: 15px 0;
-      background: #00337C;
-      color: #ffffff;
-      border-radius: 4px;
-      margin-top: 20px;
-      width: 25%;
-      display: block;
-      text-decoration: none;
-      transition: background-color 0.3s ease;
-    }
-    .custom-footer-button:hover {
-      background-color: #002855;
-      text-decoration: none;
-    }
-    .custom-footer-button p {
-      margin: 0;
-      line-height: 1.5;
-    }
-    .custom-footer-button .fa {
-      margin-right: 5px;
-    }
+.update-container {
+  width: 100%;
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 32px 16px;
+  box-sizing: border-box;
+}
+
+.update-content {
+  padding-bottom: 12px;
+}
+
+.update-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0;
+}
+
+.update-head {
+  display: flex;
+  flex-direction: column;
+}
+
+.update-version-info h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.update-release-date {
+  color: #6b7280 !important;
+  margin: 0;
+}
+
+.update-release-date {
+  color: #ffffff;
+  margin: 0;
+}
+
+.update-github-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2%;
+  margin-bottom: -20px;
+  gap: 4px;
+}
+
+.update-gif {
+  margin-top: 8px;
+}
+
+.update-github-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #013E93;
+  color: #ffffff;
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none !important;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.update-github-button:hover {
+  background-color: #3b82f6;
+  color: #ffffff;
+}
+
+.update-github-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.update-changelog p {
+  color: #ffffff;
+  margin: 0;
+  margin-top: 0px;
+  line-height: 3;
+}
+
+.update-extension-name {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.update-extension-name h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ffffff;
+  animation: colorChange 5s infinite;
+}
+
+@keyframes colorChange {
+  0% { color: #ffffff; }
+  50% { color: rgb(141, 141, 141); }
+  100% { color: #ffffff; }
+}

@@ -1,68 +1,101 @@
-h2{
-  font-weight: bold !important;
+.update-container {
+  width: 100%;
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 32px 16px;
+  box-sizing: border-box;
 }
 
-.custom-container {
-  color: #ffffff; /* White text */
-  border-radius: 4px;
-  padding: 20px;
-  margin-top: 20px;
+.update-content {
+  padding-bottom: 12px;
+}
+
+.update-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0;
+}
+
+.update-head {
+  display: flex;
+  flex-direction: column;
+}
+
+.update-version-info h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.update-release-date {
+  color: #6b7280 !important;
+  margin: 0;
+}
+
+.update-release-date {
+  color: #ffffff;
+  margin: 0;
+}
+
+.update-github-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #171717; /* Dark background */
+  margin-top: 2%;
+  margin-bottom: -20px;
+  gap: 4px;
 }
 
-.custom-content h2 {
-  color: #D32F2F; /* Main red color */
-  font-weight: bold !important;
-  margin-bottom: 15px;
+.update-gif {
+  margin-top: 8px;
 }
 
-.custom-content .desc {
-  margin-bottom: 10px;
-}
-
-.custom-content .dateSpan {
-  background-color: #D32F2F; /* Main red color */
-  color: #ffffff; /* White text */
-  padding: 3px 6px;
-  border-radius: 2px;
-  font-size: 0.9em;
-}
-
-.custom-content a {
-  color: #4da6ff; /* Light blue link color */
-  text-decoration: none;
-}
-
-.custom-content a:hover {
-  text-decoration: underline;
-}
-
-.custom-footer-button {
-  text-align: center;
-  padding: 15px 0;
-  background: #D32F2F; /* Main red color */
-  color: #ffffff; /* White text */
+.update-github-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #B71C1C;
+  color: #ffffff;
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none !important;
   border-radius: 4px;
-  margin-top: 20px;
-  width: 25%;
-  display: block;
-  text-decoration: none;
   transition: background-color 0.3s ease;
 }
 
-.custom-footer-button:hover {
-  background-color: #C4132C; /* Darker shade of red */
-  text-decoration: none;
+.update-github-button:hover {
+  background-color: #9A0007;
+  color: #ffffff;
 }
 
-.custom-footer-button p {
+.update-github-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.update-changelog p {
+  color: #ffffff;
   margin: 0;
-  line-height: 1.5;
+  margin-top: 0px;
+  line-height: 3;
 }
 
-.custom-footer-button .fa {
-  margin-right: 5px;
+.update-extension-name {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.update-extension-name h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ffffff;
+  animation: colorChange 5s infinite;
+}
+
+@keyframes colorChange {
+  0% { color: #ffffff; }
+  50% { color: rgb(141, 141, 141); }
+  100% { color: #ffffff; }
 }
