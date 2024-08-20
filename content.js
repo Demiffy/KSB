@@ -1009,7 +1009,6 @@ function scrapeUserProfile() {
 }
 
 // Function to insert the scraped user profile data into the HTML
-let lastClickTime = 0;
 function displayUserProfile(userProfile) {
   const profileContainer = document.getElementById('profile-container');
   if (!profileContainer) {
@@ -1246,6 +1245,7 @@ function displayUserProfile(userProfile) {
 }
 
 // Function to teleport the update GIF to a random location
+let lastClickTime = 0;
 function teleportGif() {
   const gif = document.querySelector('.update-gif');
   if (!gif) {
@@ -1260,56 +1260,69 @@ function teleportGif() {
   const gifWidth = gif.offsetWidth;
   const gifHeight = gif.offsetHeight;
 
+  // Generate random position for the GIF
   const randomX = Math.random() * (viewportWidth - gifWidth);
   const randomY = Math.random() * (viewportHeight - gifHeight);
 
+  // Apply the new position to the GIF
   gif.style.left = `${randomX}px`;
   gif.style.top = `${randomY}px`;
 }
 
-// Function to set up event listeners
-function setupEventListeners() {
+// Function to handle the GIF click event
+function handleGifClick() {
   const gif = document.querySelector('.update-gif');
-  if (gif) {
-    let canClick = false;
-    let clickCount = 0;
+  if (!gif) {
+    console.error('GIF not found!');
+    return;
+  }
 
-    setTimeout(() => {
-      canClick = true;
-      gif.style.pointerEvents = 'auto';
-    }, 3000);
+  let clickCount = 0;
+  let firstClickDone = false;
 
-    gif.style.pointerEvents = 'none';
+  // Add click event listener to the GIF
+  gif.addEventListener('click', function() {
+    const currentTime = new Date().getTime();
+    
+    if (!firstClickDone && currentTime - lastClickTime < 3000) {
+      return;
+    }
 
-    gif.addEventListener('click', () => {
-      if (!canClick) {
-        return;
-      }
-      clickCount++;
+    const audioUrl = clickCount < 9 
+      ? 'https://cdn.pixabay.com/audio/2024/08/07/audio_801a5dbcf9.mp3'
+      : 'https://cdn.pixabay.com/audio/2022/03/17/audio_d52cf65833.mp3';
+
+    const audio = new Audio(audioUrl);
+    audio.play();
+
+    clickCount++;
+    lastClickTime = currentTime;
+
+    if (!firstClickDone) {
+      firstClickDone = true;
+    }
+
+    if (clickCount >= 10) {
+      setTimeout(() => {
+        console.log('%cNO MORE BOOPING! QwQ', 'color: #B71C1C; font-size: 50px; font-weight: bold;');
+        gif.style.display = 'none';
+        setTimeout(() => {
+          window.location.href = 'https://http.cat/images/401.jpg';
+        }, 1000);
+      }, 250);
+    } else {
       console.log('%c>w<', 'color: pink; font-size: 16px;');
       teleportGif();
-
-      if (clickCount >= 10) {
-        setTimeout(() => {
-          console.log('%cNO MORE BOOPING! QwQ', 'color: #B71C1C; font-size: 50px; font-weight: bold;');
-        }, 250);
-        gif.style.display = 'none';
-      }
-    });
-  }
-}
-
-// MutationObserver to watch for changes in the DOM
-const observer = new MutationObserver((mutations) => {
-  mutations.forEach((mutation) => {
-    if (mutation.addedNodes.length) {
-      setupEventListeners();
     }
   });
-});
+}
 
-observer.observe(document.body, { childList: true, subtree: true });
-setupEventListeners();
+// Boop initialization
+if (window.location.href.includes('https://sis.ssakhk.cz/News')) {
+  setTimeout(() => {
+    handleGifClick();
+  }, 1000);
+}
 
 
 
