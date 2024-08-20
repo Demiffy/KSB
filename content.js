@@ -1070,6 +1070,24 @@ function displayUserProfile(userProfile) {
   classSeparationContainer.appendChild(classInfo);
   leftColumn.appendChild(classSeparationContainer);
 
+  // Move QR code below "Rozdělení třídy"
+  if (userProfile.qrCodeSrc) {
+    const qrCodeContainer = document.createElement('div');
+    qrCodeContainer.className = 'qr-code-container';
+    const qrCodeImg = document.createElement('img');
+    qrCodeImg.src = userProfile.qrCodeSrc;
+    qrCodeImg.className = 'qr-code';
+    
+    // Tooltip for QR Code
+    const qrCodeTooltip = document.createElement('div');
+    qrCodeTooltip.className = 'qr-code-tooltip';
+    qrCodeTooltip.textContent = 'Toto je váš QR kód k profilu';
+
+    qrCodeContainer.appendChild(qrCodeImg);
+    qrCodeContainer.appendChild(qrCodeTooltip);
+    leftColumn.appendChild(qrCodeContainer);
+  }
+
   const rightColumn = document.createElement('div');
   rightColumn.className = 'profile-right-column';
   const profileTable = document.createElement('table');
@@ -1118,6 +1136,29 @@ function displayUserProfile(userProfile) {
       blocksTable.appendChild(blockRow);
     });
     rightColumn.appendChild(blocksTable);
+  }
+
+  // Add Projects section below Blocks
+  if (userProfile.mainProjects && userProfile.mainProjects.length > 0) {
+    const projectsTableTitle = document.createElement('h3');
+    projectsTableTitle.textContent = 'Projekty';
+    projectsTableTitle.className = 'projects-title';
+    rightColumn.appendChild(projectsTableTitle);
+    const projectsTable = document.createElement('table');
+    projectsTable.className = 'projects-table';
+    const headerRow = document.createElement('tr');
+    const projectHeader = document.createElement('th');
+    projectHeader.textContent = 'Název projektu';
+    headerRow.appendChild(projectHeader);
+    projectsTable.appendChild(headerRow);
+    userProfile.mainProjects.forEach(project => {
+      const projectRow = document.createElement('tr');
+      const projectCell = document.createElement('td');
+      projectCell.textContent = project;
+      projectRow.appendChild(projectCell);
+      projectsTable.appendChild(projectRow);
+    });
+    rightColumn.appendChild(projectsTable);
   }
 
   // Static WiFi settings with dynamic 'Načti' button handling
@@ -1178,21 +1219,12 @@ function displayUserProfile(userProfile) {
 
   rightColumn.appendChild(wifiSettingsTable);
 
-  if (userProfile.qrCodeSrc) {
-    const qrCodeContainer = document.createElement('div');
-    qrCodeContainer.className = 'qr-code-container';
-    const qrCodeImg = document.createElement('img');
-    qrCodeImg.src = userProfile.qrCodeSrc;
-    qrCodeImg.alt = 'QR Code';
-    qrCodeImg.className = 'qr-code';
-    qrCodeContainer.appendChild(qrCodeImg);
-    rightColumn.appendChild(qrCodeContainer);
-  }
-
   gridContainer.appendChild(leftColumn);
   gridContainer.appendChild(rightColumn);
   profileContainer.appendChild(gridContainer);
 }
+
+
 
 
 
