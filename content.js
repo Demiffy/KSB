@@ -194,7 +194,7 @@ function updateColspanWithCzechMonths() {
 function checkForErrorAndRedirect() {
   const errorMessage = document.querySelector('h1');
   if (errorMessage && errorMessage.textContent.includes('Server Error in \'/\' Application.')) {
-    console.log("No you can't go here silly x3");
+    console.log("[Kyberna MB] No you can't go here silly x3");
     window.location.href = 'https://sis.ssakhk.cz/News';
     
   }
@@ -238,7 +238,7 @@ function insertContentAndApplyStyles() {
           h2Element.insertAdjacentHTML('afterend', updatedHtmlContent);
         }
       })
-      .catch(error => console.error('Error loading content:', error));
+      .catch(error => console.error('[Kyberna MB] Error loading content:', error));
     });
   }
 }
@@ -918,18 +918,18 @@ function scrapeUserProfile() {
       const firstName = document.querySelector('td label[for="FirstName"]').parentElement.nextElementSibling.innerText.trim();
       const lastName = document.querySelector('td label[for="LastName"]').parentElement.nextElementSibling.innerText.trim();
       userProfile.name = `${firstName} ${lastName}`;
-      console.log("Scraped name:", userProfile.name);
+      console.log("[Kyberna MB] Scraped name:", userProfile.name);
 
       // Extract the user's email
       const schoolMail = document.querySelector('td label[for="SchoolMail"]').parentElement.nextElementSibling.innerText.trim();
       userProfile.email = schoolMail;
-      console.log("Scraped email:", userProfile.email);
+      console.log("[Kyberna MB] Scraped email:", userProfile.email);
 
       // Extract the profile picture
       const profilePicElement = document.querySelector('.profile-foto img');
       if (profilePicElement) {
         userProfile.profilePictureSrc = profilePicElement.src;
-        console.log("Scraped profile picture URL:", userProfile.profilePictureSrc);
+        console.log("[Kyberna MB] Scraped profile picture URL:", userProfile.profilePictureSrc);
       }
 
       // "Rozdělení třídy"
@@ -943,7 +943,7 @@ function scrapeUserProfile() {
         });
       }
       userProfile.classSeparation = classSeparation;
-      console.log("Scraped class separation:", userProfile.classSeparation);
+      console.log("[Kyberna MB] Scraped class separation:", userProfile.classSeparation);
 
       // "Bloky"
       const blocks = [];
@@ -975,12 +975,12 @@ function scrapeUserProfile() {
         });
       }
       userProfile.mainProjects = mainProjects;
-      console.log("Scraped main projects:", userProfile.mainProjects);
+      console.log("[Kyberna MB] Scraped main projects:", userProfile.mainProjects);
 
       // Extract the QR code image source
       const qrCodeSrc = document.querySelector('img[src*="UserProfile.qrcode"]').src;
       userProfile.qrCodeSrc = qrCodeSrc;
-      console.log("Scraped QR code URL:", userProfile.qrCodeSrc);
+      console.log("[Kyberna MB] Scraped QR code URL:", userProfile.qrCodeSrc);
 
       // Find the container that holds the profile data and remove it
       const profileHeading = Array.from(document.querySelectorAll('h2')).find(
@@ -993,26 +993,27 @@ function scrapeUserProfile() {
           placeholder.id = 'profile-container';
           profileContainer.parentElement.insertBefore(placeholder, profileContainer);
           profileContainer.remove();
-          console.log("Profile container removed and placeholder inserted successfully.");
+          console.log("[Kyberna MB] Profile container removed and placeholder inserted successfully.");
         } else {
-          console.warn("Profile container not found.");
+          console.warn("[Kyberna MB] Profile container not found.");
         }
       } else {
-        console.warn("Profile heading not found.");
+        console.warn("[Kyberna MB] Profile heading not found.");
       }
 
       return userProfile;
     } catch (error) {
-      console.error("An error occurred while scraping the user profile:", error);
+      console.error("[Kyberna MB] An error occurred while scraping the user profile:", error);
     }
   }
 }
 
 // Function to insert the scraped user profile data into the HTML
+let lastClickTime = 0;
 function displayUserProfile(userProfile) {
   const profileContainer = document.getElementById('profile-container');
   if (!profileContainer) {
-    console.error('Profile container placeholder not found!');
+    console.error('[Kyberna MB] Profile container placeholder not found!');
     return;
   }
 
@@ -1031,6 +1032,26 @@ function displayUserProfile(userProfile) {
     profilePic.src = userProfile.profilePictureSrc;
     profilePic.alt = 'Profile Picture';
     profilePic.className = 'profile-pic';
+
+    // Add click event listener to play sound
+  profilePic.addEventListener('click', function(event) {
+    const currentTime = new Date().getTime();
+    if (currentTime - lastClickTime < 3000) {
+      return;
+    }
+    
+    // Check if the click is in the middle of the image
+    const rect = event.target.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    
+    if (x > rect.width * 0.4 && x < rect.width * 0.6 && y > rect.height * 0.4 && y < rect.height * 0.6) {
+      const audio = new Audio('https://www.myinstants.com/media/sounds/fnaf-12-3-freddys-nose-sound.mp3');
+      audio.play();
+      lastClickTime = currentTime;
+    }
+  });
+
     profilePicContainer.appendChild(profilePic);
     leftColumn.appendChild(profilePicContainer);
   } else {
@@ -1223,6 +1244,72 @@ function displayUserProfile(userProfile) {
   gridContainer.appendChild(rightColumn);
   profileContainer.appendChild(gridContainer);
 }
+
+// Function to teleport the update GIF to a random location
+function teleportGif() {
+  const gif = document.querySelector('.update-gif');
+  if (!gif) {
+    return;
+  }
+
+  // Get the dimensions of the viewport
+  const viewportWidth = window.innerWidth;
+  const viewportHeight = window.innerHeight;
+
+  // Get dimensions of the GIF
+  const gifWidth = gif.offsetWidth;
+  const gifHeight = gif.offsetHeight;
+
+  const randomX = Math.random() * (viewportWidth - gifWidth);
+  const randomY = Math.random() * (viewportHeight - gifHeight);
+
+  gif.style.left = `${randomX}px`;
+  gif.style.top = `${randomY}px`;
+}
+
+// Function to set up event listeners
+function setupEventListeners() {
+  const gif = document.querySelector('.update-gif');
+  if (gif) {
+    let canClick = false;
+    let clickCount = 0;
+
+    setTimeout(() => {
+      canClick = true;
+      gif.style.pointerEvents = 'auto';
+    }, 3000);
+
+    gif.style.pointerEvents = 'none';
+
+    gif.addEventListener('click', () => {
+      if (!canClick) {
+        return;
+      }
+      clickCount++;
+      console.log('%c>w<', 'color: pink; font-size: 16px;');
+      teleportGif();
+
+      if (clickCount >= 10) {
+        setTimeout(() => {
+          console.log('%cNO MORE BOOPING! QwQ', 'color: #B71C1C; font-size: 50px; font-weight: bold;');
+        }, 250);
+        gif.style.display = 'none';
+      }
+    });
+  }
+}
+
+// MutationObserver to watch for changes in the DOM
+const observer = new MutationObserver((mutations) => {
+  mutations.forEach((mutation) => {
+    if (mutation.addedNodes.length) {
+      setupEventListeners();
+    }
+  });
+});
+
+observer.observe(document.body, { childList: true, subtree: true });
+setupEventListeners();
 
 
 
