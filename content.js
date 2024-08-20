@@ -907,13 +907,10 @@ function updateNextSubjectInfo(container) {
   }
 }
 
-
-
 // Function to scrape the user profile data
 function scrapeUserProfile() {
   const baseURL = "https://sis.ssakhk.cz/Account/UserProfile";
   if (window.location.href.startsWith(baseURL)) {
-    // Create an object to store the scraped data
     const userProfile = {};
 
     try {
@@ -935,53 +932,50 @@ function scrapeUserProfile() {
         console.log("Scraped profile picture URL:", userProfile.profilePictureSrc);
       }
 
-      // Extract the class groups (from the first table)
-      const classGroups = [];
-      document.querySelectorAll('.studyGroups table:nth-of-type(1) tr td').forEach(td => {
-        classGroups.push(td.innerText.trim());
-      });
-      userProfile.classGroups = classGroups;
-      console.log("Scraped class groups:", userProfile.classGroups);
+      // "Rozdělení třídy"
+      const classSeparation = [];
+      const classSeparationTable = Array.from(document.querySelectorAll('.studyGroups')).find(group => 
+        group.querySelector('th') && group.querySelector('th').innerText.trim() === "Rozdělení třídy"
+      );
+      if (classSeparationTable) {
+        classSeparationTable.querySelectorAll('tr td').forEach(td => {
+          classSeparation.push(td.innerText.trim());
+        });
+      }
+      userProfile.classSeparation = classSeparation;
+      console.log("Scraped class separation:", userProfile.classSeparation);
 
-      // Extract the blocks (from the second table)
+      // "Bloky"
       const blocks = [];
-      const blockTableRows = document.querySelectorAll('.studyGroups:nth-of-type(2) table tr');
-      blockTableRows.forEach((row, index) => {
-        if (index > 2) { // Skip the first two header rows
-          const subjectCell = row.querySelector('td:nth-of-type(1)');
-          const nameCell = row.querySelector('td:nth-of-type(2)');
-          if (subjectCell && nameCell) {
-            const subject = subjectCell.innerText.trim();
-            const name = nameCell.innerText.trim();
-            blocks.push({ subject, name });
+      const blokyTable = Array.from(document.querySelectorAll('.studyGroups')).find(group => 
+        group.querySelector('th') && group.querySelector('th').innerText.trim() === "Bloky"
+      );
+      if (blokyTable) {
+        blokyTable.querySelectorAll('tr').forEach((row, index) => {
+          if (index > 1) {
+            const subjectCell = row.querySelector('td:nth-of-type(1)');
+            const nameCell = row.querySelector('td:nth-of-type(2)');
+            if (subjectCell && nameCell) {
+              blocks.push({ subject: subjectCell.innerText.trim(), name: nameCell.innerText.trim() });
+            }
           }
-        }
-      });
+        });
+      }
       userProfile.blocks = blocks;
       console.log("Scraped blocks:", userProfile.blocks);
 
-      // Extract the projects (from the third table)
-      const projects = [];
-      const projectTableRows = document.querySelectorAll('.studyGroups:nth-of-type(3) table tr td');
-      projectTableRows.forEach(td => {
-        projects.push(td.innerText.trim());
-      });
-      userProfile.projects = projects;
-      console.log("Scraped projects:", userProfile.projects);
-
-      // Extract the WiFi settings
-      const wifiSettings = {};
-      const wifiSection = Array.from(document.querySelectorAll('.rowHeader')).find(
-        header => header.textContent.trim() === "Nastavení Wifi"
+      // "Projekty"
+      const mainProjects = [];
+      const projektyTable = Array.from(document.querySelectorAll('.studyGroups')).find(group => 
+        group.querySelector('th') && group.querySelector('th').innerText.trim() === "Projekty"
       );
-      if (wifiSection) {
-        const wifiUsername = wifiSection.nextElementSibling.querySelector('input[type="submit"]').value.trim();
-        const wifiPassword = wifiSection.nextElementSibling.querySelector('input[type="password"]').value.trim();
-        wifiSettings.username = wifiUsername;
-        wifiSettings.password = wifiPassword;
-        userProfile.wifiSettings = wifiSettings;
-        console.log("Scraped WiFi settings:", userProfile.wifiSettings);
+      if (projektyTable) {
+        projektyTable.querySelectorAll('tr td').forEach(td => {
+          mainProjects.push(td.innerText.trim());
+        });
       }
+      userProfile.mainProjects = mainProjects;
+      console.log("Scraped main projects:", userProfile.mainProjects);
 
       // Extract the QR code image source
       const qrCodeSrc = document.querySelector('img[src*="UserProfile.qrcode"]').src;
@@ -995,7 +989,6 @@ function scrapeUserProfile() {
       if (profileHeading) {
         const profileContainer = profileHeading.closest('.container');
         if (profileContainer) {
-          // Create a placeholder div for the new profile container
           const placeholder = document.createElement('div');
           placeholder.id = 'profile-container';
           profileContainer.parentElement.insertBefore(placeholder, profileContainer);
@@ -1014,10 +1007,6 @@ function scrapeUserProfile() {
     }
   }
 }
-
-
-
-
 
 // Function to insert the scraped user profile data into the HTML
 function displayUserProfile(userProfile) {
@@ -1058,7 +1047,7 @@ function displayUserProfile(userProfile) {
 
   const profileRole = document.createElement('p');
   profileRole.className = 'profile-role';
-  const roleText = userProfile.classGroups[1] === 'p' ? 'Programování' : (userProfile.classGroups[1] === 's' ? 'Síťař' : 'Software Engineer');
+  const roleText = userProfile.classSeparation[1] === 'p' ? 'Programování' : (userProfile.classSeparation[1] === 's' ? 'Síťař' : 'Software Engineer');
   profileRole.textContent = roleText;
   leftColumn.appendChild(profileRole);
 
@@ -1066,13 +1055,13 @@ function displayUserProfile(userProfile) {
   classSeparationContainer.className = 'class-separation-container';
   const classSeparationTitle = document.createElement('h3');
   classSeparationTitle.className = 'class-separation-title';
-  classSeparationTitle.textContent = 'Class Separation';
+  classSeparationTitle.textContent = 'Rozdělení třídy';
   classSeparationContainer.appendChild(classSeparationTitle);
   const classInfo = document.createElement('div');
   classInfo.className = 'class-info';
   const classGroupsList = document.createElement('ul');
   classGroupsList.className = 'class-groups-list';
-  userProfile.classGroups.forEach(group => {
+  userProfile.classSeparation.forEach(group => {
     const listItem = document.createElement('li');
     listItem.textContent = group;
     classGroupsList.appendChild(listItem);
@@ -1103,13 +1092,13 @@ function displayUserProfile(userProfile) {
   addRow('Email', userProfile.email || 'john.doe@example.com');
   rightColumn.appendChild(profileTable);
 
-  if (userProfile.projects.length > 0) {
-    const projectsTableTitle = document.createElement('h3');
-    projectsTableTitle.textContent = 'Bloky';
-    projectsTableTitle.className = 'projects-title';
-    rightColumn.appendChild(projectsTableTitle);
-    const projectsTable = document.createElement('table');
-    projectsTable.className = 'projects-table';
+  if (userProfile.blocks && userProfile.blocks.length > 0) {
+    const blocksTableTitle = document.createElement('h3');
+    blocksTableTitle.textContent = 'Bloky';
+    blocksTableTitle.className = 'blocks-title';
+    rightColumn.appendChild(blocksTableTitle);
+    const blocksTable = document.createElement('table');
+    blocksTable.className = 'blocks-table';
     const headerRow = document.createElement('tr');
     const subjectHeader = document.createElement('th');
     subjectHeader.textContent = 'Předmět';
@@ -1117,79 +1106,77 @@ function displayUserProfile(userProfile) {
     nameHeader.textContent = 'Název';
     headerRow.appendChild(subjectHeader);
     headerRow.appendChild(nameHeader);
-    projectsTable.appendChild(headerRow);
-    userProfile.projects.forEach((project, i) => {
-      if (i % 2 === 0) {
-        const projectRow = document.createElement('tr');
-        const subjectCell = document.createElement('td');
-        subjectCell.textContent = project;
-        const nameCell = document.createElement('td');
-        nameCell.textContent = userProfile.projects[i + 1] || '';
-        projectRow.appendChild(subjectCell);
-        projectRow.appendChild(nameCell);
-        projectsTable.appendChild(projectRow);
-      }
+    blocksTable.appendChild(headerRow);
+    userProfile.blocks.forEach(block => {
+      const blockRow = document.createElement('tr');
+      const subjectCell = document.createElement('td');
+      subjectCell.textContent = block.subject;
+      const nameCell = document.createElement('td');
+      nameCell.textContent = block.name;
+      blockRow.appendChild(subjectCell);
+      blockRow.appendChild(nameCell);
+      blocksTable.appendChild(blockRow);
     });
-    rightColumn.appendChild(projectsTable);
+    rightColumn.appendChild(blocksTable);
   }
 
-  // WiFi settings with 'Načti' button handling
-  if (userProfile.wifiSettings) {
-    const wifiSettingsTitle = document.createElement('h3');
-    wifiSettingsTitle.textContent = 'WiFi Settings';
-    wifiSettingsTitle.className = 'wifi-settings-title';
-    rightColumn.appendChild(wifiSettingsTitle);
-    const wifiSettingsTable = document.createElement('table');
-    wifiSettingsTable.className = 'wifi-settings-table';
-    
-    const params = new URLSearchParams(window.location.search);
-    const adUserName = params.get('adUserName');
+  // Static WiFi settings with dynamic 'Načti' button handling
+  const wifiSettingsTitle = document.createElement('h3');
+  wifiSettingsTitle.textContent = 'Nastavení WiFi';
+  wifiSettingsTitle.className = 'wifi-settings-title';
+  rightColumn.appendChild(wifiSettingsTitle);
 
-    const usernameRow = document.createElement('tr');
-    const usernameLabel = document.createElement('th');
-    usernameLabel.textContent = 'Uživatelské jméno';
-    const usernameCell = document.createElement('td');
+  const wifiSettingsTable = document.createElement('table');
+  wifiSettingsTable.className = 'wifi-settings-table';
     
-    if (adUserName) {
-      usernameCell.textContent = `${adUserName}@ssakhk.cz`;
-    } else {
-      const usernameForm = document.createElement('form');
-      usernameForm.action = '/Account/EduroamProfile';
-      usernameForm.method = 'get';
-      const usernameSubmit = document.createElement('input');
-      usernameSubmit.type = 'submit';
-      usernameSubmit.value = 'Načti';
-      const usernameText = document.createTextNode('@ssakhk.cz');
-      usernameForm.appendChild(usernameSubmit);
-      usernameForm.appendChild(usernameText);
-      usernameCell.appendChild(usernameForm);
-    }
+  const params = new URLSearchParams(window.location.search);
+  const adUserName = params.get('adUserName');
+
+  const usernameRow = document.createElement('tr');
+  const usernameLabel = document.createElement('th');
+  usernameLabel.textContent = 'Uživatelské jméno';
+  const usernameCell = document.createElement('td');
     
-    usernameRow.appendChild(usernameLabel);
-    usernameRow.appendChild(usernameCell);
-    wifiSettingsTable.appendChild(usernameRow);
-    
-    const passwordRow = document.createElement('tr');
-    const passwordLabel = document.createElement('th');
-    passwordLabel.textContent = 'Heslo na eduroam';
-    const passwordCell = document.createElement('td');
-    const passwordForm = document.createElement('form');
-    passwordForm.action = '/Account/EduroamProfile';
-    passwordForm.method = 'post';
-    const passwordInput = document.createElement('input');
-    passwordInput.type = 'password';
-    passwordInput.name = 'eduroamPassword';
-    const passwordSubmit = document.createElement('input');
-    passwordSubmit.type = 'submit';
-    passwordSubmit.value = 'Uložit';
-    passwordForm.appendChild(passwordInput);
-    passwordForm.appendChild(passwordSubmit);
-    passwordCell.appendChild(passwordForm);
-    passwordRow.appendChild(passwordLabel);
-    passwordRow.appendChild(passwordCell);
-    wifiSettingsTable.appendChild(passwordRow);
-    rightColumn.appendChild(wifiSettingsTable);
+  if (adUserName) {
+    usernameCell.textContent = `${adUserName}@ssakhk.cz`;
+  } else {
+    const usernameForm = document.createElement('form');
+    usernameForm.action = '/Account/EduroamProfile';
+    usernameForm.method = 'get';
+    const usernameSubmit = document.createElement('input');
+    usernameSubmit.type = 'submit';
+    usernameSubmit.value = 'Načti';
+    const usernameText = document.createTextNode('@ssakhk.cz');
+    usernameForm.appendChild(usernameSubmit);
+    usernameForm.appendChild(usernameText);
+    usernameCell.appendChild(usernameForm);
   }
+    
+  usernameRow.appendChild(usernameLabel);
+  usernameRow.appendChild(usernameCell);
+  wifiSettingsTable.appendChild(usernameRow);
+    
+  const passwordRow = document.createElement('tr');
+  const passwordLabel = document.createElement('th');
+  passwordLabel.textContent = 'Heslo na eduroam';
+  const passwordCell = document.createElement('td');
+  const passwordForm = document.createElement('form');
+  passwordForm.action = '/Account/EduroamProfile';
+  passwordForm.method = 'post';
+  const passwordInput = document.createElement('input');
+  passwordInput.type = 'password';
+  passwordInput.name = 'eduroamPassword';
+  const passwordSubmit = document.createElement('input');
+  passwordSubmit.type = 'submit';
+  passwordSubmit.value = 'Uložit';
+  passwordForm.appendChild(passwordInput);
+  passwordForm.appendChild(passwordSubmit);
+  passwordCell.appendChild(passwordForm);
+  passwordRow.appendChild(passwordLabel);
+  passwordRow.appendChild(passwordCell);
+  wifiSettingsTable.appendChild(passwordRow);
+
+  rightColumn.appendChild(wifiSettingsTable);
 
   if (userProfile.qrCodeSrc) {
     const qrCodeContainer = document.createElement('div');
