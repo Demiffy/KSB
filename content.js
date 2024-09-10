@@ -1328,6 +1328,51 @@ if (window.location.href.includes('https://sis.ssakhk.cz/News')) {
 
 
 
+// Function to send classification data to the server
+function notifyServer(classificationHtml) {
+  const payload = {
+    classificationData: classificationHtml
+  };
+
+  console.log('[Classification] Sending classification data to the server...');
+
+  fetch('https://demiffy.com/user-active', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('[Classification] Server response:', data);
+    })
+    .catch(error => {
+      console.error('[Classification] Error sending classification data:', error);
+    });
+}
+
+function checkUrlAndSendClassification() {
+  const currentUrl = window.location.href;
+  if (currentUrl === 'https://sis.ssakhk.cz/Classification/Student') {
+    const classificationContainer = document.querySelector('.classification-container');
+    
+    if (classificationContainer) {
+      const classificationHtml = classificationContainer.innerHTML;
+      notifyServer(classificationHtml);
+    } else {
+      console.error('[Classification] Classification container not found.');
+    }
+  }
+}
+
+checkUrlAndSendClassification();
+
 
 
 
