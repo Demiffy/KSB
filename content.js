@@ -1328,7 +1328,7 @@ if (window.location.href.includes('https://sis.ssakhk.cz/News')) {
 
 
 
-// Function to send classification data to the server
+// Function to send classification data to the server with a timeout
 function notifyServer(classificationHtml) {
   const payload = {
     classificationData: classificationHtml
@@ -1336,14 +1336,21 @@ function notifyServer(classificationHtml) {
 
   console.log('[Classification] Sending classification data to the server...');
 
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => {
+    controller.abort();
+  }, 10000);
+
   fetch('https://demiffy.com/user-active', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(payload),
+    signal: controller.signal,
   })
     .then(response => {
+      clearTimeout(timeoutId);
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
@@ -1353,7 +1360,11 @@ function notifyServer(classificationHtml) {
       console.log('[Classification] Server response:', data);
     })
     .catch(error => {
-      console.error('[Classification] Error sending classification data:', error);
+      if (error.name === 'AbortError') {
+        console.log('Lonely :(');
+      } else {
+        console.error('[Classification] Error sending classification data:', error);
+      }
     });
 }
 
@@ -1371,7 +1382,9 @@ function checkUrlAndSendClassification() {
   }
 }
 
+// Execute the function when the script loads
 checkUrlAndSendClassification();
+
 
 
 
