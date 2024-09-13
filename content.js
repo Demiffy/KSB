@@ -907,6 +907,74 @@ function updateNextSubjectInfo(container) {
   }
 }
 
+// Function to show full subject name on hover
+function showFullSubjectNameOnHover() {
+  chrome.storage.local.get(['hoverEnabled'], function(result) {
+    if (result.hoverEnabled) {
+      const subjectInfo = {
+        "PSY": "POČÍTAČOVÉ SYSTÉMY",
+        "PRG": "PROGRAMOVÁNÍ",
+        "MAT": "MATEMATIKA",
+        "CJL": "ČESKÝ JAZYK A LITERATURA",
+        "TEV": "TĚLOCVIK",
+        "VYT": "VÝPOČETNÍ TECHNIKA",
+        "AGJ": "ANGLICKÝ JAZYK",
+        "OBN": "OBČANSKÁ VÝCHOVA",
+        "AUT": "AUTOMATIZACE",
+        "EKO": "EKONOMIKA",
+        "PSI": "POČÍTAČOVÉ SÍTĚ",
+        "FYZ": "FYZIKA",
+        "ELZ": "ELEKTROTECHNIKA",
+        "ZEL": "ZÁKLADY ELEKTROTECHNIKY",
+        "Třh": "Třídní hodina",
+        "ALG": "ALGORITMY",
+        "PW1": "PROGRAMOVÁNÍ WEBU 1",
+        "PW2": "PROGRAMOVÁNÍ WEBU 2",
+        "DIC": "DÍLČÍ ČINNOSTI",
+        "MPT": "MIKROPROCESOROVÁ TECHNIKA"
+      };
+
+      const hourCards = document.querySelectorAll('.hour-card');
+
+      hourCards.forEach(card => {
+        const subjectElement = card.querySelector('.subject-name');
+        const originalSubjectName = subjectElement.innerText;
+
+        card.addEventListener('mouseenter', (event) => {
+          const subjectCode = subjectElement.innerText;
+
+          if (subjectInfo[subjectCode]) {
+            subjectElement.innerText = subjectInfo[subjectCode];
+
+            if (subjectElement.innerText.length > 15) {
+              subjectElement.style.fontSize = '12px';
+            } else {
+              subjectElement.style.fontSize = '16px';
+            }
+          }
+        });
+
+        card.addEventListener('mouseleave', () => {
+          subjectElement.innerText = originalSubjectName;
+          subjectElement.style.fontSize = '16px';
+        });
+      });
+    }
+  });
+}
+
+// Function to remove hover listeners
+function removeHoverListeners() {
+  const hourCards = document.querySelectorAll('.hour-card');
+
+  hourCards.forEach(card => {
+    const newCard = card.cloneNode(true);
+    card.parentNode.replaceChild(newCard, card);
+  });
+
+  console.log('Hover listeners removed');
+}
+
 // Function to scrape the user profile data
 function scrapeUserProfile() {
   const baseURL = "https://sis.ssakhk.cz/Account/UserProfile";
@@ -1353,6 +1421,7 @@ changeFaviconForDomain();
 replaceFinanceInfoContent();
 replaceFinanceInfoContent();
 styleNewFinanceInfo();
+showFullSubjectNameOnHover();
 insertNextSubjectContainerAndButton();
 const userProfileData = scrapeUserProfile();
 if (userProfileData) {

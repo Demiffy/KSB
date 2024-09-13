@@ -30,6 +30,54 @@ chrome.runtime.getManifest().version;
 // Update the version number
 document.getElementById("version").textContent = "v" + chrome.runtime.getManifest().version;
 
+// Save the hover toggle state to local storage
+function saveHoverToggle(enabled) {
+  chrome.storage.local.set({ 'hoverEnabled': enabled }, function() {
+    console.log('Hover feature is set to ' + (enabled ? 'enabled' : 'disabled'));
+
+    chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+      if (tabs[0]) {
+        chrome.scripting.executeScript({
+          target: { tabId: tabs[0].id },
+          func: updateHoverState,
+          args: [enabled]
+        });
+      }
+    });
+  });
+}
+
+// Load the hover toggle state when the popup opens
+function loadHoverToggle() {
+  chrome.storage.local.get(['hoverEnabled'], function(result) {
+    const toggleHover = document.getElementById("toggleHover");
+    if (result.hoverEnabled !== undefined) {
+      toggleHover.checked = result.hoverEnabled;
+    } else {
+      toggleHover.checked = false;
+    }
+  });
+}
+
+// Update hover behavior based on the new state
+function updateHoverState(enabled) {
+  if (enabled) {
+    showFullSubjectNameOnHover();
+  } else {
+    removeHoverListeners();
+  }
+}
+
+// Add event listener for the hover toggle checkbox
+document.addEventListener("DOMContentLoaded", function() {
+  loadHoverToggle();
+
+  const toggleHover = document.getElementById("toggleHover");
+  toggleHover.addEventListener('change', function() {
+    saveHoverToggle(toggleHover.checked);
+  });
+});
+
 
 document.addEventListener("DOMContentLoaded", function() {
     var rozvrh = document.getElementById("rozvrh");
