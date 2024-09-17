@@ -314,8 +314,28 @@
 
 }
 
+.col.active {
+  position: relative;
+  border-left: 5px solid #0150be;
+  border-right: 5px solid #0150be;
+  z-index: 2;
+}
 
+.col.active::before,
+.col.active::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  box-shadow: 0 0 15px rgba(1, 80, 190, 0.7);
+  background-color: #0054c9;
+}
 
+.col.active::before {
+  left: 0;
+}
 
-
-
+.col.active::after {
+  right: 0;
+}

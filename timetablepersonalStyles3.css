@@ -487,3 +487,29 @@ body{
   margin-top: 500px !important;
 
 }
+
+.col.active {
+  position: relative;
+  border-left: 5px solid #C55F1B;
+  border-right: 5px solid #C55F1B;
+  z-index: 2;
+}
+
+.col.active::before,
+.col.active::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  box-shadow: 0 0 15px rgba(233, 103, 30, 0.7);
+  background-color: #E9671E;
+}
+
+.col.active::before {
+  left: 0;
+}
+
+.col.active::after {
+  right: 0;
+}
