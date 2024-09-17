@@ -1392,7 +1392,17 @@ if (window.location.href.includes('https://sis.ssakhk.cz/News')) {
   }, 1000);
 }
 
-
+// Function to change the color of crossed out rows
+function changeCrossedOutRowsColor() {
+  const crossedOutRows = document.querySelectorAll('tr[style*="text-decoration:line-through"]');
+  
+  crossedOutRows.forEach(row => {
+    row.style.color = 'red';
+    row.querySelectorAll('*').forEach(child => {
+      child.style.color = 'red';
+    });
+  });
+}
 
 
 
@@ -1423,6 +1433,7 @@ replaceFinanceInfoContent();
 styleNewFinanceInfo();
 showFullSubjectNameOnHover();
 insertNextSubjectContainerAndButton();
+changeCrossedOutRowsColor();
 const userProfileData = scrapeUserProfile();
 if (userProfileData) {
   displayUserProfile(userProfileData);
