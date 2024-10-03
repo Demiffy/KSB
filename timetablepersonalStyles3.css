@@ -492,7 +492,7 @@ body{
   position: relative;
   border-left: 5px solid #C55F1B;
   border-right: 5px solid #C55F1B;
-  z-index: 2;
+  z-index: 100;
 }
 
 .col.active::before,

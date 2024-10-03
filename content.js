@@ -202,7 +202,7 @@ function checkForErrorAndRedirect() {
 window.addEventListener('load', checkForErrorAndRedirect);
 
 
-// Function to insert content and apply theme-specific styles and display next hour info
+// Function to insert content and apply styles and display next hour info
 function insertContentAndApplyStyles() {
   if (window.location.href === 'https://sis.ssakhk.cz/News') {
     const h2Element = document.querySelector('h2.text-center');
@@ -241,7 +241,7 @@ function insertContentAndApplyStyles() {
           const today = new Date();
           const formattedDate = today.toLocaleDateString('cs-CZ', { weekday: 'long', day: 'numeric', month: 'long' });
 
-          // Create the container with static content and placeholders
+          // Create the container
           const container = document.createElement('div');
           container.classList.add('news-next-container');
           container.innerHTML = `
@@ -249,7 +249,7 @@ function insertContentAndApplyStyles() {
             <div><strong>Nyní:</strong> <span class="current-subject">...</span></div>
             <div><strong>Končí za:</strong> <span class="current-time-left">...</span></div>
             <div><strong>Následující:</strong> <span class="next-subject">...</span></div>
-            <div><strong>Začíná za:</strong> <span class="next-time-left">...</span></div>
+            <div class="next-time-section"><strong>Začíná za:</strong> <span class="next-time-left">...</span></div>
             <div class="news-last-fetched"><small>Poslední načtení: <span class="last-fetched-time">...</span></small></div>
             <button class="update-button"><img class="refresh-icon" alt="refresh icon"></button>
           `;
@@ -288,11 +288,13 @@ function displayNextHourInfo(timetable, lastFetched, container) {
   const nextSubjectEl = container.querySelector('.next-subject');
   const nextTimeLeftEl = container.querySelector('.next-time-left');
   const lastFetchedEl = container.querySelector('.last-fetched-time');
+  const nextTimeSection = container.querySelector('.next-time-section');
 
   currentSubjectEl.textContent = '...';
   currentTimeLeftEl.textContent = '...';
   nextSubjectEl.textContent = '...';
   nextTimeLeftEl.textContent = '...';
+  nextTimeSection.style.display = 'block';
 
   for (let i = 0; i < timetable.length; i++) {
     const subject = timetable[i];
@@ -323,11 +325,11 @@ function displayNextHourInfo(timetable, lastFetched, container) {
         if (diffStartNextSeconds < 300) {
           nextTimeLeftEl.style.color = 'red';
         } else {
-          nextTimeLeftEl.style.color = ''; // Reset to default if more than 5 minutes
+          nextTimeLeftEl.style.color = '';
         }
       } else {
         nextSubjectEl.textContent = 'Žádná další hodina';
-        nextTimeLeftEl.textContent = '';
+        nextTimeSection.style.display = 'none';
       }
       break;
     }
@@ -353,13 +355,14 @@ function displayNextHourInfo(timetable, lastFetched, container) {
     if (diffStartSeconds < 300) {
       nextTimeLeftEl.style.color = 'red';
     } else {
-      nextTimeLeftEl.style.color = ''; // Reset to default
+      nextTimeLeftEl.style.color = '';
     }
   } else if (!foundCurrent) {
     currentSubjectEl.textContent = 'Žádná další hodina';
     currentTimeLeftEl.textContent = '';
     nextSubjectEl.textContent = '';
     nextTimeLeftEl.textContent = '';
+    nextTimeSection.style.display = 'none';
   }
 
   // Update the last fetched time and turn red if older than 12 hours
@@ -368,11 +371,27 @@ function displayNextHourInfo(timetable, lastFetched, container) {
   lastFetchedEl.textContent = `${formatLastFetched(lastFetched)}`;
   
   if (timeSinceLastFetch > 12) {
-    lastFetchedEl.style.color = 'red'; // Turn text red if older than 12 hours
+    lastFetchedEl.style.color = 'red';
   } else {
-    lastFetchedEl.style.color = ''; // Reset to default
+    lastFetchedEl.style.color = '';
   }
 }
+
+// Function to format time
+function formatTime(seconds) {
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
+  return `${minutes} minut a ${remainingSeconds} sekund`;
+}
+
+// Function to format the last fetched time
+function formatLastFetched(timestamp) {
+  if (!timestamp) return 'Neznámé';
+
+  const lastFetchedDate = new Date(timestamp);
+  return `${lastFetchedDate.toLocaleDateString()} ${lastFetchedDate.toLocaleTimeString()}`;
+}
+
 
 // Function to format time
 function formatTime(seconds) {
@@ -1116,7 +1135,8 @@ function showFullSubjectNameOnHover() {
         "PW1": "PROGRAMOVÁNÍ WEBU 1",
         "PW2": "PROGRAMOVÁNÍ WEBU 2",
         "DIC": "DÍLČÍ ČINNOSTI",
-        "MPT": "MIKROPROCESOROVÁ TECHNIKA"
+        "MPT": "MIKROPROCESOROVÁ TECHNIKA",
+        "ITE": "IT ESSENTIALS"
       };
 
       const hourCards = document.querySelectorAll('.hour-card');
