@@ -4,3 +4,70 @@
     margin-bottom: 20px;
     font-weight: bold;
 }
+
+.news-next-container {
+    position: relative;
+    width: 50%;
+    max-width: 600px;
+    padding: 20px;
+    background-color: #0F0F0F;
+    border-radius: 8px;
+    border: 1px solid #1b1b1b;
+    margin: 20px auto;
+    min-height: 180px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  }
+  
+  .news-timetable-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #FFFFFF;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 8px;
+    text-transform: uppercase;
+  }
+  
+  .current-subject, .next-subject, .current-time-left, .next-time-left {
+    font-size: 16px;
+    color: #B0BEC5;
+    font-weight: 500;
+  }
+  
+  .news-last-fetched {
+    margin-top: 15px;
+    font-size: 12px;
+    color: #888;
+  }
+  
+  /* Button */
+  .update-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: #1e1e1e;
+    border: 2px solid #444;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .refresh-icon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .update-button:hover {
+    background-color: #3a3a3a;
+    border-color: #5a5a5a;
+  }
+  
+  .update-button:active {
+    background-color: #444;
+    border-color: #666;
+  }

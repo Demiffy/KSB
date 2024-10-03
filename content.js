@@ -175,9 +175,9 @@ function updateCurrentTimeLine() {
 // Update colspan elements with month names
 function updateColspanWithCzechMonths() {
   const czechMonths = {
-    '1': 'Leden', '2': 'Únor', '3': 'Březen', '4': 'Duben',
-    '5': 'Květen', '6': 'Červen', '7': 'Červenec', '8': 'Srpen',
-    '9': 'Září', '10': 'Říjen', '11': 'Listopad', '12': 'Prosinec'
+    '1': 'Leden 1.', '2': 'Únor 2.', '3': 'Březen 3.', '4': 'Duben 4.',
+    '5': 'Květen 5.', '6': 'Červen 6.', '7': 'Červenec 7.', '8': 'Srpen 8.',
+    '9': 'Září 9.', '10': 'Říjen 10.', '11': 'Listopad 11.', '12': 'Prosinec 12.'
   };
 
   const colspanElements = document.querySelectorAll('td[colspan="13"]');
@@ -202,7 +202,7 @@ function checkForErrorAndRedirect() {
 window.addEventListener('load', checkForErrorAndRedirect);
 
 
-// Function to insert content and apply theme-specific styles
+// Function to insert content and apply theme-specific styles and display next hour info
 function insertContentAndApplyStyles() {
   if (window.location.href === 'https://sis.ssakhk.cz/News') {
     const h2Element = document.querySelector('h2.text-center');
@@ -217,7 +217,7 @@ function insertContentAndApplyStyles() {
       }
     }
 
-    chrome.storage.local.get(['selectedTheme'], function(result) {
+    chrome.storage.local.get(['selectedTheme', 'timetable', 'lastFetched'], function(result) {
       const cssFile = determineCssFileName(result.selectedTheme);
       const updateHtmlUrl = chrome.runtime.getURL('update.html');
       const updateCssUrl = chrome.runtime.getURL(cssFile);
@@ -236,6 +236,39 @@ function insertContentAndApplyStyles() {
         // Check if the h2 element exists
         if (h2Element) {
           h2Element.insertAdjacentHTML('afterend', updatedHtmlContent);
+
+          // Format the current date
+          const today = new Date();
+          const formattedDate = today.toLocaleDateString('cs-CZ', { weekday: 'long', day: 'numeric', month: 'long' });
+
+          // Create the container with static content and placeholders
+          const container = document.createElement('div');
+          container.classList.add('news-next-container');
+          container.innerHTML = `
+            <h3 class="news-timetable-title">${formattedDate}</h3>
+            <div><strong>Nyní:</strong> <span class="current-subject">...</span></div>
+            <div><strong>Končí za:</strong> <span class="current-time-left">...</span></div>
+            <div><strong>Následující:</strong> <span class="next-subject">...</span></div>
+            <div><strong>Začíná za:</strong> <span class="next-time-left">...</span></div>
+            <div class="news-last-fetched"><small>Poslední načtení: <span class="last-fetched-time">...</span></small></div>
+            <button class="update-button"><img class="refresh-icon" alt="refresh icon"></button>
+          `;
+          h2Element.insertAdjacentElement('afterend', container);
+
+          // Set image source for the refresh icon
+          const refreshIcon = container.querySelector('.refresh-icon');
+          refreshIcon.setAttribute('src', chrome.runtime.getURL('refresh.png'));
+
+          // Update button - redirects to timetable page for refresh
+          const updateButton = container.querySelector('.update-button');
+          updateButton.addEventListener('click', () => {
+            window.location.href = 'https://sis.ssakhk.cz/TimeTable/PersonalNew';
+          });
+
+          // Update next hour info every second
+          setInterval(function() {
+            displayNextHourInfo(result.timetable, result.lastFetched, container);
+          }, 1000);
         }
       })
       .catch(error => console.error('[Kyberna MB] Error loading content:', error));
@@ -243,6 +276,118 @@ function insertContentAndApplyStyles() {
   }
 }
 
+
+// Function to display the next hour information in the news section
+function displayNextHourInfo(timetable, lastFetched, container) {
+  const now = new Date();
+  let foundCurrent = false;
+  let nextSubjectInfo = null;
+
+  const currentSubjectEl = container.querySelector('.current-subject');
+  const currentTimeLeftEl = container.querySelector('.current-time-left');
+  const nextSubjectEl = container.querySelector('.next-subject');
+  const nextTimeLeftEl = container.querySelector('.next-time-left');
+  const lastFetchedEl = container.querySelector('.last-fetched-time');
+
+  currentSubjectEl.textContent = '...';
+  currentTimeLeftEl.textContent = '...';
+  nextSubjectEl.textContent = '...';
+  nextTimeLeftEl.textContent = '...';
+
+  for (let i = 0; i < timetable.length; i++) {
+    const subject = timetable[i];
+    const [startTime, endTime] = subject.time.split(' - ').map(t => t.trim());
+    const [startHour, startMinute] = startTime.split(':').map(Number);
+    const [endHour, endMinute] = endTime.split(':').map(Number);
+
+    const startDateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), startHour, startMinute);
+    const endDateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), endHour, endMinute);
+
+    if (now >= startDateTime && now < endDateTime) {
+      foundCurrent = true;
+      const diffEndSeconds = Math.floor((endDateTime - now) / 1000);
+      currentSubjectEl.textContent = `${subject.subjectName} - ${subject.roomNumber}`;
+      currentTimeLeftEl.textContent = formatTime(diffEndSeconds);
+
+      if (i + 1 < timetable.length) {
+        const nextSubject = timetable[i + 1];
+        const nextStartTime = nextSubject.time.split(' - ')[0].trim();
+        const [nextStartHour, nextStartMinute] = nextStartTime.split(':').map(Number);
+        const nextStartDateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), nextStartHour, nextStartMinute);
+        const diffStartNextSeconds = Math.floor((nextStartDateTime - now) / 1000);
+
+        nextSubjectEl.textContent = `${nextSubject.subjectName} - ${nextSubject.roomNumber}`;
+        nextTimeLeftEl.textContent = formatTime(diffStartNextSeconds);
+
+        // Turn text red if time is below 5 minutes
+        if (diffStartNextSeconds < 300) {
+          nextTimeLeftEl.style.color = 'red';
+        } else {
+          nextTimeLeftEl.style.color = ''; // Reset to default if more than 5 minutes
+        }
+      } else {
+        nextSubjectEl.textContent = 'Žádná další hodina';
+        nextTimeLeftEl.textContent = '';
+      }
+      break;
+    }
+
+    if (!foundCurrent && now < startDateTime) {
+      nextSubjectInfo = {
+        name: subject.subjectName,
+        roomNumber: subject.roomNumber,
+        startDateTime
+      };
+      break;
+    }
+  }
+
+  if (!foundCurrent && nextSubjectInfo) {
+    // Break time
+    const diffStartSeconds = Math.floor((nextSubjectInfo.startDateTime - now) / 1000);
+    currentSubjectEl.textContent = 'Přestávka';
+    nextSubjectEl.textContent = `${nextSubjectInfo.name} - ${nextSubjectInfo.roomNumber}`;
+    nextTimeLeftEl.textContent = formatTime(diffStartSeconds);
+
+    // Turn text red if time is below 5 minutes
+    if (diffStartSeconds < 300) {
+      nextTimeLeftEl.style.color = 'red';
+    } else {
+      nextTimeLeftEl.style.color = ''; // Reset to default
+    }
+  } else if (!foundCurrent) {
+    currentSubjectEl.textContent = 'Žádná další hodina';
+    currentTimeLeftEl.textContent = '';
+    nextSubjectEl.textContent = '';
+    nextTimeLeftEl.textContent = '';
+  }
+
+  // Update the last fetched time and turn red if older than 12 hours
+  const lastFetchedDate = new Date(lastFetched);
+  const timeSinceLastFetch = (now - lastFetchedDate) / (1000 * 60 * 60);
+  lastFetchedEl.textContent = `${formatLastFetched(lastFetched)}`;
+  
+  if (timeSinceLastFetch > 12) {
+    lastFetchedEl.style.color = 'red'; // Turn text red if older than 12 hours
+  } else {
+    lastFetchedEl.style.color = ''; // Reset to default
+  }
+}
+
+// Function to format time
+function formatTime(seconds) {
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
+  return `${minutes} minut a ${remainingSeconds} sekund`;
+}
+
+// Function to format the last fetched time
+function formatLastFetched(timestamp) {
+  if (!timestamp) return 'Neznámé';
+
+  const lastFetchedDate = new Date(timestamp);
+  return `${lastFetchedDate.toLocaleDateString()} ${lastFetchedDate.toLocaleTimeString()}`;
+}
 
 // Function set the title of the page
 function setTitleIfURLMatches() {
@@ -827,7 +972,10 @@ function insertNextSubjectContainerAndButton() {
         toggleButton.textContent = '▶';
       }
     });
+
+    saveTimetableToStorage();
     updateNextSubjectInfo(nextContainer);
+
     setInterval(function() {
       updateNextSubjectInfo(nextContainer);
     }, 1000);
@@ -891,7 +1039,7 @@ function updateNextSubjectInfo(container) {
   }
 
   if (!foundCurrent && nextSubjectInfo) {
-    // Přestávka
+    // Break
     const diffStartSeconds = Math.floor((nextSubjectInfo.startDateTime - now) / 1000);
     container.innerHTML = `<strong>Přestávka</strong><br><strong>Následující:</strong> ${nextSubjectInfo.name} - ${nextSubjectInfo.roomNumber}<br><strong>Začíná za:</strong> ${formatTime(diffStartSeconds)}`;
   } else if (!foundCurrent) {
@@ -906,6 +1054,43 @@ function updateNextSubjectInfo(container) {
     return `${minutes} minut a ${remainingSeconds} sekund`;
   }
 }
+
+// Function to save active day timetable to storage
+function saveTimetableToStorage() {
+  const activeColumn = document.querySelector('.col.active');
+  if (!activeColumn) {
+    console.error('No active column found for the current day.');
+    return;
+  }
+
+  let timetableData = [];
+  const hourCards = activeColumn.querySelectorAll('.hour-card:not(.canceled-card)');
+
+  hourCards.forEach((card) => {
+    const subjectName = card.querySelector('.subject-name').innerText;
+    const timeText = card.querySelector('.time').innerText;
+    const roomNumber = card.querySelector('.room-name').innerText;
+
+    timetableData.push({
+      subjectName,
+      time: timeText,
+      roomNumber
+    });
+  });
+
+  const lastFetched = new Date().toISOString();  // Store fetch time
+
+  // Save to local storage
+  chrome.storage.local.set({ 
+    timetable: timetableData, 
+    lastFetched 
+  }, function() {
+    console.log('[Kyberna MB] Timetable saved for the current day:', timetableData);
+    console.log('[Kyberna MB] Last fetched time saved as:', lastFetched);
+  });
+}
+
+
 
 // Function to show full subject name on hover
 function showFullSubjectNameOnHover() {
