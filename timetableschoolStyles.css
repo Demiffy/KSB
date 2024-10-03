@@ -1,48 +1,99 @@
-/* Base Content Styles */
-.container .content {
-    color: #D3B9FF;
-    padding: 20px;
+.main-header {
+    font-size: 28px;
+    color: white;
     text-align: center;
-}
-
-.container .content h2 {
-    color: white;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    font-size: 2.5em;
-    font-weight: bold;
     margin-bottom: 30px;
-}
-
-/* Modern Button Styles */
-.container .content a {
-    background-image: linear-gradient(145deg, #0052D4, #00337C);
+  }
+  
+  .weeks-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .week-header {
+    background-color: #00337C;
     color: white;
-    padding: 10px 20px;
-    margin: 10px;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.2s ease, background-color 0.3s ease;
-    display: inline-block;
-    font-size: 1.2em;
+    border: 1px solid #265487;
+    padding: 10px;
     cursor: pointer;
-}
-
-.container .content a:hover, .container .content a:focus {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
-    background-color: #022b5c;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .container .content h2 {
-        font-size: 2em;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 16px;
+    width: 100%;
+    text-align: left;
+    border-radius: 5px;
+  }
+  
+  .week-header:hover {
+    background-color: #1A4A8D;
+  }
+  
+  .section-panel {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+    background-color: #0D0D0D;
+    border-radius: 5px;
+    border: 1px solid #265487;
+    margin-top: 10px;
+  }
+  
+  .section-panel.collapsed {
+    display: none;
+  }
+  
+  .day-text {
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    padding: 5px 10px;
+    position: relative;
+    display: inline-block;
+    transition: color 0.3s;
+    user-select: none;
+  }
+  
+  .day-text.disabled {
+    color: #6c757d;
+    cursor: not-allowed;
+  }
+  
+  .day-text:not(.disabled):hover {
+    color: #1A4A8D;
+  }
+  
+  .day-text.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #1A4A8D;
+    animation: underline 0.4s ease-in-out;
+  }
+  
+  @keyframes underline {
+    from {
+      width: 0;
     }
-
-    .container .content a {
-        padding: 12px 20px;
-        font-size: 1em;
+    to {
+      width: 100%;
     }
-}
+  }
+  
+  .day-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .day-image {
+    max-width: 90%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+  

@@ -1593,6 +1593,173 @@ function changeCrossedOutRowsColor() {
 
 
 
+// Function to ensure the timetable data is loaded
+function waitForTimetableContent() {
+  return new Promise((resolve, reject) => {
+    const checkExist = setInterval(() => {
+      const weekDivs = document.querySelectorAll('.container .content div');
+      if (weekDivs.length >= 2) {
+        clearInterval(checkExist);
+        resolve(weekDivs);
+      } else if (document.readyState === 'complete') {
+        clearInterval(checkExist);
+        reject("Week data not found.");
+      }
+    }, 100);
+  });
+}
+
+// Function to preload images sequentially and enable buttons
+async function preloadImagesSequentially(imageUrls, dayButtons, preloadedImages) {
+  console.log(`Preloading ${imageUrls.length} images...`);
+
+  for (let i = 0; i < imageUrls.length; i++) {
+    const url = imageUrls[i];
+    const dayButton = dayButtons[i];
+
+    await new Promise((resolve) => {
+      const img = new Image();
+      img.src = url;
+      img.onload = () => {
+        console.log(`Loaded image: ${url}`);
+        preloadedImages[url] = img;
+        dayButton.classList.remove('disabled');
+        resolve();
+      };
+      img.onerror = () => {
+        console.error(`Failed to load image: ${url}`);
+        dayButton.classList.remove('disabled');
+        resolve();
+      };
+    });
+  }
+
+  console.log("All images preloaded.");
+}
+
+// Function to replace the timetable with clickable sections
+async function replaceTimetableWithPanel() {
+  if (window.location.href.includes('/TimeTable/School')) {
+    console.log("Replacing timetable with panel...");
+    const container = document.querySelector('.container .content');
+    
+    if (!container) {
+      console.error("Container not found!");
+      return;
+    }
+
+    try {
+      const weekDivs = await waitForTimetableContent();
+      
+      container.innerHTML = '';
+
+      const header = document.createElement('h1');
+      header.classList.add('main-header');
+      header.textContent = 'Rozvrh hodin';
+      container.appendChild(header);
+
+      const allImageUrls = [];
+      const dayButtons = [];
+      const preloadedImages = {};
+
+      const weeksContainer = document.createElement('div');
+      weeksContainer.classList.add('weeks-container');
+
+      weekDivs.forEach((weekDiv, weekIndex) => {
+        const weekLabelText = weekDiv.textContent.match(/Tento týden \(([\d.]+) - ([\d.]+)\):/);
+        if (!weekLabelText) {
+          console.error("Week label not found in:", weekDiv.textContent);
+          return;
+        }
+
+        const weekStartDate = weekLabelText ? weekLabelText[1] : 'Neznámé Datum Začátku';
+        const weekEndDate = weekLabelText ? weekLabelText[2] : 'Neznámé Datum Konce';
+        const weekLabel = weekIndex === 0 
+          ? `Tento týden (${weekStartDate} - ${weekEndDate})` 
+          : `Další týden (${weekStartDate} - ${weekEndDate})`;
+
+        const weekContainer = document.createElement('div');
+        weekContainer.classList.add('week-container');
+
+        const weekHeader = document.createElement('button');
+        weekHeader.classList.add('week-header', 'btn', 'btn-default');
+        weekHeader.textContent = weekLabel;
+
+        const weekSectionPanel = document.createElement('div');
+        weekSectionPanel.classList.add('section-panel', 'collapsed');
+        weekSectionPanel.style.display = 'none';
+
+        weekHeader.addEventListener('click', () => {
+          const isCollapsed = weekSectionPanel.classList.contains('collapsed');
+          weekSectionPanel.style.display = isCollapsed ? 'flex' : 'none';
+          weekSectionPanel.classList.toggle('collapsed');
+        });
+
+        const dayLinks = weekDiv.querySelectorAll('a');
+        dayLinks.forEach((link) => {
+          const dayShortName = link.textContent;
+          const dayNames = {
+            'po': 'Pondělí', 'út': 'Úterý', 'st': 'Středa', 'čt': 'Čtvrtek', 'pá': 'Pátek',
+          };
+          const dayName = dayNames[dayShortName] || 'Unknown';
+
+          allImageUrls.push(link.href);
+
+          const dayButton = document.createElement('span');
+          dayButton.classList.add('day-text', 'disabled');
+          dayButton.textContent = dayName;
+
+          dayButton.addEventListener('click', () => {
+            if (!preloadedImages[link.href]) {
+              console.log(`Image for ${dayName} not yet loaded, ignoring click.`);
+              return;
+            }
+
+            console.log(`Displaying timetable for ${dayName}`);
+
+            const activeButton = document.querySelector('.day-text.active');
+            if (activeButton) {
+              activeButton.classList.remove('active');
+            }
+
+            if (activeButton !== dayButton) {
+              dayButton.classList.add('active');
+
+              // Clear any previous content
+              const dayContainer = document.createElement('div');
+              dayContainer.classList.add('day-container');
+              container.querySelectorAll('.day-container').forEach(dc => dc.remove());
+              container.appendChild(dayContainer);
+
+              const img = preloadedImages[link.href].cloneNode(true);
+              img.classList.add('day-image');
+              img.addEventListener('click', () => {
+                window.open(link.href, '_blank');
+              });
+              dayContainer.appendChild(img);
+            } else {
+              dayButton.classList.remove('active');
+              container.querySelectorAll('.day-container').forEach(dc => dc.remove());
+            }
+          });
+
+          dayButtons.push(dayButton);
+          weekSectionPanel.appendChild(dayButton);
+        });
+
+        weekContainer.appendChild(weekHeader);
+        weekContainer.appendChild(weekSectionPanel);
+        weeksContainer.appendChild(weekContainer);
+      });
+      container.appendChild(weeksContainer);
+
+      await preloadImagesSequentially(allImageUrls, dayButtons, preloadedImages);
+
+    } catch (error) {
+      console.error(error);
+    }
+  }
+}
 
 
 
@@ -1619,6 +1786,7 @@ styleNewFinanceInfo();
 showFullSubjectNameOnHover();
 insertNextSubjectContainerAndButton();
 changeCrossedOutRowsColor();
+replaceTimetableWithPanel();
 const userProfileData = scrapeUserProfile();
 if (userProfileData) {
   displayUserProfile(userProfileData);
