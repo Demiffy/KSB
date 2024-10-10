@@ -1,6 +1,6 @@
 {
   "name": "KybernaIS Made Better",
-  "version": "2.1.5",
+  "version": "2.1.6",
   "description": "Vylepšuje a zpříjemňuje uživatelské prostředí informačního systému KybernaIS",
   "manifest_version": 3,
   "action": {
@@ -94,7 +94,8 @@
         "timetable.html",
         "loading.gif",
         "DMLogoGif.gif",
-        "refresh.png"
+        "refresh.png",
+        "classdetails.png"
       ],
       "matches": ["<all_urls>"]
     }

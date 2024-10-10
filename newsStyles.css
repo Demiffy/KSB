@@ -71,3 +71,10 @@
     background-color: #444;
     border-color: #666;
   }
+
+  .update-img {
+    width: 100%;
+    max-width: 2000px;
+    margin-top: 30px;
+    border-radius: 8px;
+  }

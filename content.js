@@ -491,6 +491,7 @@ function insertContentAfterDiv() {
   }
 }
 
+
 // Function to set up the checkbox listener
 function setUpCheckboxListener() {
   const checkbox = document.querySelector('.static-switch input[type="checkbox"]');
@@ -1781,18 +1782,11 @@ async function replaceTimetableWithPanel() {
   }
 }
 
-
-
-
-
-
-
 // Function to handle double-click events on hour cards
 function replaceHourCardContent() {
   const hourCards = document.querySelectorAll('.hour-card');
 
   hourCards.forEach((card) => {
-    // Extract the href if available and store it
     if (card.hasAttribute('href')) {
       const url = card.getAttribute('href');
       card.removeAttribute('href');
@@ -1800,6 +1794,15 @@ function replaceHourCardContent() {
     }
 
     card.addEventListener('dblclick', handleCardDoubleClick);
+
+    // Check for existing notes to display the glowing red dot
+    const debugId = card.getAttribute('data-debugid');
+    chrome.storage.local.get(debugId, (result) => {
+      const savedData = result[debugId] || {};
+      if (savedData.notesList && savedData.notesList.length > 0) {
+        addGlowingRedDotToCard(card);
+      }
+    });
   });
 
   // Handle double-click event on an hour card
@@ -1810,10 +1813,6 @@ function replaceHourCardContent() {
     const roomNumber = card.querySelector('.room-name').innerText;
     const url = card.dataset.url || null;
     const debugId = card.getAttribute('data-debugid');
-
-    console.log(
-      `Double-clicked on: ${subjectName}, Time: ${time}, Room: ${roomNumber}, URL: ${url}`
-    );
 
     // Fetch any stored notes for the current card
     chrome.storage.local.get(debugId, (result) => {
@@ -1829,7 +1828,33 @@ function replaceHourCardContent() {
     });
   }
 
-  // Create and display a popup
+  // Function to add a glowing red dot
+  function addGlowingRedDotToCard(card) {
+    const subjectNameEl = card.querySelector('.subject-name');
+    const existingDot = card.querySelector('.red-dot-container');
+    if (!existingDot) {
+      const redDotContainer = document.createElement('div');
+      redDotContainer.classList.add('red-dot-container');
+
+      // Glowing red dot element
+      const redDot = document.createElement('div');
+      redDot.classList.add('glowing-red-dot');
+      
+      redDotContainer.appendChild(redDot);
+
+      // Insert the red dot container
+      subjectNameEl.parentNode.insertBefore(redDotContainer, subjectNameEl);
+    }
+  }
+
+  function removeGlowingRedDotFromCard(card) {
+    const redDotContainer = card.querySelector('.red-dot-container');
+    if (redDotContainer) {
+      redDotContainer.remove();
+    }
+  }
+
+  // Create and display a popup over the card
   function openPopup({
     subjectName,
     time,
@@ -1898,7 +1923,7 @@ function replaceHourCardContent() {
 
         const noteTypeSelect = document.createElement('select');
         noteTypeSelect.classList.add('note-type-select');
-        ['Homework', 'Test', 'Other'].forEach((type) => {
+        ['Domací Úkol', 'Test', 'Ostatní'].forEach((type) => {
           const option = document.createElement('option');
           option.value = type;
           option.textContent = type;
@@ -1916,11 +1941,6 @@ function replaceHourCardContent() {
         noteTextInput.value = note.text;
         noteItem.appendChild(noteTextInput);
 
-        const noteDeleteButton = document.createElement('button');
-        noteDeleteButton.classList.add('note-delete-button');
-        noteDeleteButton.textContent = 'Odstranit';
-        noteItem.appendChild(noteDeleteButton);
-
         noteTypeSelect.addEventListener('change', () => {
           updateNote(index, noteTypeSelect.value, noteTextInput.value);
         });
@@ -1928,26 +1948,40 @@ function replaceHourCardContent() {
           updateNote(index, noteTypeSelect.value, noteTextInput.value);
         });
 
+        const noteDeleteButton = document.createElement('button');
+        noteDeleteButton.classList.add('note-delete-button');
+        noteDeleteButton.textContent = 'Odstranit';
+        noteItem.appendChild(noteDeleteButton);
+
         noteDeleteButton.addEventListener('click', () => {
           notesList.splice(index, 1);
           renderNotesList();
           saveNotes();
+          checkIfNoNotes();
         });
 
         notesListContainer.appendChild(noteItem);
       });
     }
 
+    // Function to update a note and save
     function updateNote(index, type, text) {
       notesList[index] = { type, text };
       saveNotes();
     }
 
+    // Function to save notes list to Chrome storage
     function saveNotes() {
       chrome.storage.local.set(
         { [debugId]: { subjectName, time, roomNumber, notesList } },
         () => {
           console.log('Notes list saved');
+          const card = document.querySelector(`[data-debugid="${debugId}"]`);
+          if (notesList.length > 0) {
+            addGlowingRedDotToCard(card);
+          } else {
+            removeGlowingRedDotFromCard(card);
+          }
         }
       );
     }
@@ -1974,24 +2008,67 @@ function replaceHourCardContent() {
   }
 }
 
-replaceHourCardContent();
+// Function to monitor the loading element
+function monitorLoadingElement() {
+  const loadingElementSelector = '.loading .content';
+  
+  const intervalId = setInterval(() => {
+    const loadingElement = document.querySelector(loadingElementSelector);
+    
+    if (loadingElement) {
+      console.log('[KybernaMB] Loading element is visible: Načítání');
+    } else {
+      clearInterval(intervalId);
+      replaceHourCardContent();
+    }
+  }, 500);
+}
 
+const prevDayButton = document.querySelector('#prev-day');
+const nextDayButton = document.querySelector('#next-day');
+const toggleSwitch = document.querySelector('.static-switch input[type="checkbox"]');
 
+if (prevDayButton) {
+  prevDayButton.addEventListener('click', () => {
+    monitorLoadingElement();
+  });
+}
 
+if (nextDayButton) {
+  nextDayButton.addEventListener('click', () => {
+    monitorLoadingElement();
+  });
+}
 
+if (toggleSwitch) {
+  toggleSwitch.addEventListener('change', () => {
+    monitorLoadingElement();
+  });
+}
 
+// Function to insert the update image
+function insertUpdateImage() {
+  const intervalId = setInterval(() => {
+    const changelogElement = document.querySelector('.update-changelog');
 
+    if (changelogElement) {
+      const updateImage = document.createElement('img');
+      updateImage.alt = 'Detaily Hodiny';
+      updateImage.classList.add('update-img');
 
+      const imageUrl = chrome.runtime.getURL('classdetails.png');
+      updateImage.src = imageUrl;
 
+      updateImage.style.cursor = 'pointer';
+      updateImage.addEventListener('click', () => {
+        window.open(imageUrl, '_blank');
+      });
 
-
-
-
-
-
-
-
-
+      changelogElement.appendChild(updateImage);
+      clearInterval(intervalId);
+    }
+  }, 100);
+}
 
 
 
@@ -2003,6 +2080,7 @@ window.addEventListener("load", function() {
 });
 
 // Initialization
+insertUpdateImage();
 insertNavbarToggleButton();
 updateTextColorBasedOnBgColor();
 setInterval(updateTextColorBasedOnBgColor, 100);
@@ -2019,6 +2097,7 @@ showFullSubjectNameOnHover();
 insertNextSubjectContainerAndButton();
 changeCrossedOutRowsColor();
 replaceTimetableWithPanel();
+replaceHourCardContent();
 const userProfileData = scrapeUserProfile();
 if (userProfileData) {
   displayUserProfile(userProfileData);
