@@ -1785,6 +1785,218 @@ async function replaceTimetableWithPanel() {
 
 
 
+
+
+// Function to handle double-click events on hour cards
+function replaceHourCardContent() {
+  const hourCards = document.querySelectorAll('.hour-card');
+
+  hourCards.forEach((card) => {
+    // Extract the href if available and store it
+    if (card.hasAttribute('href')) {
+      const url = card.getAttribute('href');
+      card.removeAttribute('href');
+      card.dataset.url = url;
+    }
+
+    card.addEventListener('dblclick', handleCardDoubleClick);
+  });
+
+  // Handle double-click event on an hour card
+  function handleCardDoubleClick(event) {
+    const card = event.currentTarget;
+    const subjectName = card.querySelector('.subject-name').innerText;
+    const time = card.querySelector('.time').innerText;
+    const roomNumber = card.querySelector('.room-name').innerText;
+    const url = card.dataset.url || null;
+    const debugId = card.getAttribute('data-debugid');
+
+    console.log(
+      `Double-clicked on: ${subjectName}, Time: ${time}, Room: ${roomNumber}, URL: ${url}`
+    );
+
+    // Fetch any stored notes for the current card
+    chrome.storage.local.get(debugId, (result) => {
+      const savedData = result[debugId] || {};
+      openPopup({
+        subjectName,
+        time,
+        roomNumber,
+        url,
+        debugId,
+        notesList: savedData.notesList || [],
+      });
+    });
+  }
+
+  // Create and display a popup
+  function openPopup({
+    subjectName,
+    time,
+    roomNumber,
+    url,
+    debugId,
+    notesList,
+  }) {
+    const overlay = document.createElement('div');
+    overlay.classList.add('popup-overlay');
+
+    const popupContainer = document.createElement('div');
+    popupContainer.classList.add('popup-container');
+
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        closePopup();
+      }
+    });
+
+    function closePopup() {
+      popupContainer.classList.remove('popup-open');
+      setTimeout(() => {
+        document.body.removeChild(overlay);
+      }, 300);
+    }
+
+    const closeButton = document.createElement('span');
+    closeButton.classList.add('popup-close');
+    closeButton.innerHTML = '&times;';
+    closeButton.addEventListener('click', closePopup);
+
+    if (url) {
+      const joinButton = document.createElement('a');
+      joinButton.href = url;
+      joinButton.target = '_blank';
+      joinButton.classList.add('join-url-button');
+      joinButton.textContent = 'Připojit se k hodině';
+      popupContainer.appendChild(joinButton);
+    }
+
+    const subjectDetails = document.createElement('div');
+    subjectDetails.classList.add('popup-details');
+    subjectDetails.innerHTML = `
+      <p><strong>Předmět:</strong> ${subjectName}</p>
+      <p><strong>Čas:</strong> ${time}</p>
+      <p><strong>Místnost:</strong> ${roomNumber}</p>
+    `;
+    popupContainer.appendChild(subjectDetails);
+
+    const notesListContainer = document.createElement('div');
+    notesListContainer.classList.add('notes-list-container');
+    popupContainer.appendChild(notesListContainer);
+
+    function renderNotesList() {
+      notesListContainer.innerHTML = '';
+
+      notesList.forEach((note, index) => {
+        const noteItem = document.createElement('div');
+        noteItem.classList.add('note-item');
+
+        const bulletPoint = document.createElement('span');
+        bulletPoint.textContent = '•';
+        bulletPoint.classList.add('note-bullet');
+        noteItem.appendChild(bulletPoint);
+
+        const noteTypeSelect = document.createElement('select');
+        noteTypeSelect.classList.add('note-type-select');
+        ['Homework', 'Test', 'Other'].forEach((type) => {
+          const option = document.createElement('option');
+          option.value = type;
+          option.textContent = type;
+          if (note.type === type) {
+            option.selected = true;
+          }
+          noteTypeSelect.appendChild(option);
+        });
+        noteItem.appendChild(noteTypeSelect);
+
+        const noteTextInput = document.createElement('input');
+        noteTextInput.type = 'text';
+        noteTextInput.classList.add('note-text-input');
+        noteTextInput.placeholder = 'Název';
+        noteTextInput.value = note.text;
+        noteItem.appendChild(noteTextInput);
+
+        const noteDeleteButton = document.createElement('button');
+        noteDeleteButton.classList.add('note-delete-button');
+        noteDeleteButton.textContent = 'Odstranit';
+        noteItem.appendChild(noteDeleteButton);
+
+        noteTypeSelect.addEventListener('change', () => {
+          updateNote(index, noteTypeSelect.value, noteTextInput.value);
+        });
+        noteTextInput.addEventListener('input', () => {
+          updateNote(index, noteTypeSelect.value, noteTextInput.value);
+        });
+
+        noteDeleteButton.addEventListener('click', () => {
+          notesList.splice(index, 1);
+          renderNotesList();
+          saveNotes();
+        });
+
+        notesListContainer.appendChild(noteItem);
+      });
+    }
+
+    function updateNote(index, type, text) {
+      notesList[index] = { type, text };
+      saveNotes();
+    }
+
+    function saveNotes() {
+      chrome.storage.local.set(
+        { [debugId]: { subjectName, time, roomNumber, notesList } },
+        () => {
+          console.log('Notes list saved');
+        }
+      );
+    }
+    renderNotesList();
+
+    const addNoteButton = document.createElement('button');
+    addNoteButton.classList.add('add-note-button');
+    addNoteButton.textContent = 'Přidat novou poznámku';
+    popupContainer.appendChild(addNoteButton);
+
+    addNoteButton.addEventListener('click', () => {
+      notesList.push({ type: 'Homework', text: '' });
+      renderNotesList();
+      saveNotes();
+    });
+
+    popupContainer.appendChild(closeButton);
+    overlay.appendChild(popupContainer);
+    document.body.appendChild(overlay);
+
+    setTimeout(() => {
+      popupContainer.classList.add('popup-open');
+    }, 10);
+  }
+}
+
+replaceHourCardContent();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Function to apply custom styles before the page loads
 window.addEventListener("load", function() {
   document.body.style.display = "block";
