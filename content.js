@@ -1624,7 +1624,7 @@ function waitForTimetableContent() {
         resolve(weekDivs);
       } else if (document.readyState === 'complete') {
         clearInterval(checkExist);
-        reject("Week data not found.");
+        reject("[KybernaMB] Week data not found.");
       }
     }, 100);
   });
@@ -1632,7 +1632,7 @@ function waitForTimetableContent() {
 
 // Function to preload images sequentially and enable buttons
 async function preloadImagesSequentially(imageUrls, dayButtons, preloadedImages) {
-  console.log(`Preloading ${imageUrls.length} images...`);
+  console.log(`[KybernaMB] Preloading ${imageUrls.length} images...`);
 
   for (let i = 0; i < imageUrls.length; i++) {
     const url = imageUrls[i];
@@ -1642,30 +1642,30 @@ async function preloadImagesSequentially(imageUrls, dayButtons, preloadedImages)
       const img = new Image();
       img.src = url;
       img.onload = () => {
-        console.log(`Loaded image: ${url}`);
+        console.log(`[KybernaMB] Loaded image: ${url}`);
         preloadedImages[url] = img;
         dayButton.classList.remove('disabled');
         resolve();
       };
       img.onerror = () => {
-        console.error(`Failed to load image: ${url}`);
+        console.error(`[KybernaMB] Failed to load image: ${url}`);
         dayButton.classList.remove('disabled');
         resolve();
       };
     });
   }
 
-  console.log("All images preloaded.");
+  console.log("[KybernaMB] All images preloaded.");
 }
 
 // Function to replace the timetable with clickable sections
 async function replaceTimetableWithPanel() {
   if (window.location.href.includes('/TimeTable/School')) {
-    console.log("Replacing timetable with panel...");
+    console.log("[KybernaMB] Replacing timetable with panel...");
     const container = document.querySelector('.container .content');
     
     if (!container) {
-      console.error("Container not found!");
+      console.error("[KybernaMB] Container not found!");
       return;
     }
 
@@ -1732,11 +1732,11 @@ async function replaceTimetableWithPanel() {
 
           dayButton.addEventListener('click', () => {
             if (!preloadedImages[link.href]) {
-              console.log(`Image for ${dayName} not yet loaded, ignoring click.`);
+              console.log(`[KybernaMB] Image for ${dayName} not yet loaded, ignoring click.`);
               return;
             }
 
-            console.log(`Displaying timetable for ${dayName}`);
+            console.log(`[KybernaMB] Displaying timetable for ${dayName}`);
 
             const activeButton = document.querySelector('.day-text.active');
             if (activeButton) {
@@ -1923,7 +1923,7 @@ function replaceHourCardContent() {
 
         const noteTypeSelect = document.createElement('select');
         noteTypeSelect.classList.add('note-type-select');
-        ['Domací Úkol', 'Test', 'Ostatní'].forEach((type) => {
+        ['Domací Úkol', 'Test', "Zkoušení", "Prezentace", 'Ostatní'].forEach((type) => {
           const option = document.createElement('option');
           option.value = type;
           option.textContent = type;
@@ -1957,7 +1957,6 @@ function replaceHourCardContent() {
           notesList.splice(index, 1);
           renderNotesList();
           saveNotes();
-          checkIfNoNotes();
         });
 
         notesListContainer.appendChild(noteItem);
@@ -2096,7 +2095,7 @@ styleNewFinanceInfo();
 showFullSubjectNameOnHover();
 insertNextSubjectContainerAndButton();
 changeCrossedOutRowsColor();
-replaceTimetableWithPanel();
+//replaceTimetableWithPanel();
 replaceHourCardContent();
 const userProfileData = scrapeUserProfile();
 if (userProfileData) {

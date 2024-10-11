@@ -236,3 +236,10 @@ body{
   background-color: #B9642E;
   border-color: #8E4F22;
 }
+
+.update-img {
+  width: 100%;
+  max-width: 2000px;
+  margin-top: 30px;
+  border-radius: 8px;
+}

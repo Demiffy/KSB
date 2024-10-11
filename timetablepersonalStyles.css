@@ -202,6 +202,8 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
   transform-origin: center;
   z-index: 100 !important;
+  cursor: pointer;
+  user-select: none;
 }
 
 .hour-card:hover {
@@ -437,7 +439,7 @@
   padding: 8px 12px;
   background-color: #00337c;
   color: #ffffff;
-  text-decoration: none;
+  text-decoration: none !important;
   border-radius: 6px;
   transition: background-color 0.3s ease;
   font-size: 14px;
