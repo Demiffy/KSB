@@ -1798,7 +1798,7 @@ async function replaceTimetableWithPanel() {
   }
 }
 
-// Function to handle double-click events on hour cards
+// Function to handle click events on hour cards
 function replaceHourCardContent() {
   const hourCards = document.querySelectorAll('.hour-card');
 
@@ -1809,7 +1809,7 @@ function replaceHourCardContent() {
       card.dataset.url = url;
     }
 
-    card.addEventListener('dblclick', handleCardDoubleClick);
+    card.addEventListener('click', handleCardClick);
 
     // Check for existing notes to display the glowing red dot
     const debugId = card.getAttribute('data-debugid');
@@ -1821,8 +1821,8 @@ function replaceHourCardContent() {
     });
   });
 
-  // Handle double-click event on an hour card
-  function handleCardDoubleClick(event) {
+  // Handle click event on an hour card
+  function handleCardClick(event) {
     const card = event.currentTarget;
     const subjectName = card.querySelector('.subject-name').innerText;
     const time = card.querySelector('.time').innerText;
@@ -2085,6 +2085,106 @@ function insertUpdateImage() {
   }, 100);
 }
 
+let highlightTimeoutId = null;
+
+// Function to inject enhanced CSS styles for highlighting
+function injectEnhancedHighlightStyles() {
+  const style = document.createElement('style');
+  style.textContent = `
+    td.hour {
+      transition: background-color 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .highlight-column {
+      background-color: rgba(173, 216, 230, 0.3) !important;
+    }
+
+    .highlight-cell {
+      z-index: 1;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    tr > td.highlight-column[title] {
+      background-color: transparent !important;
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+// Function to remove all existing highlights
+function removeAllEnhancedHighlights() {
+  const highlightedColumns = document.querySelectorAll('.highlight-column');
+  highlightedColumns.forEach(col => col.classList.remove('highlight-column'));
+
+  const highlightedCells = document.querySelectorAll('.highlight-cell');
+  highlightedCells.forEach(cell => cell.classList.remove('highlight-cell'));
+}
+
+// Function to highlight the selected column with enhanced styles
+function highlightSelectedEnhancedCell(event) {
+  // Check if the middle mouse button was clicked (button === 1)
+  if (event.button !== 1) {
+    return;
+  }
+
+  removeAllEnhancedHighlights();
+
+  const clickedCell = event.currentTarget;
+
+  // Add highlight to the clicked cell
+  clickedCell.classList.add('highlight-cell');
+
+  const cellIndex = Array.from(clickedCell.parentElement.children).indexOf(clickedCell);
+
+  let table = clickedCell.closest('table');
+  if (!table) {
+    console.error("[KybernaMB] Could not find the parent table element.");
+    return;
+  }
+
+  const tbody = table.querySelector('tbody');
+  if (!tbody) {
+    console.error("[KybernaMB] No <tbody> found within the table.");
+    return;
+  }
+
+  const rows = tbody.querySelectorAll('tr');
+
+  rows.forEach((r, index) => {
+    const cells = r.children;
+    if (cells[cellIndex]) {
+      if (!cells[cellIndex].hasAttribute('title')) {
+        cells[cellIndex].classList.add('highlight-column');
+      }
+    }
+  });
+
+  if (highlightTimeoutId !== null) {
+    clearTimeout(highlightTimeoutId);
+  }
+
+  highlightTimeoutId = setTimeout(() => {
+    removeAllEnhancedHighlights();
+    highlightTimeoutId = null;
+  }, 2000);
+}
+
+// Function to add event listeners to all timetable cells
+function addEnhancedCellEventListeners() {
+  const cells = document.querySelectorAll('td.hour');
+
+  cells.forEach((cell, index) => {
+    cell.style.cursor = 'pointer';
+
+    cell.addEventListener('auxclick', highlightSelectedEnhancedCell);
+  });
+}
+
+// Function to initialize the enhanced highlighting feature
+function initializeEnhancedCellHighlighting() {
+  injectEnhancedHighlightStyles();
+  addEnhancedCellEventListeners();
+}
 
 
 
@@ -2113,6 +2213,7 @@ insertNextSubjectContainerAndButton();
 changeCrossedOutRowsColor();
 //replaceTimetableWithPanel();
 replaceHourCardContent();
+initializeEnhancedCellHighlighting();
 const userProfileData = scrapeUserProfile();
 if (userProfileData) {
   displayUserProfile(userProfileData);

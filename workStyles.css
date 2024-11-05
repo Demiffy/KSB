@@ -1,6 +1,7 @@
 /* H2 */
 .container h2 {
     text-align: center;
+    color: white;
     margin-bottom: 20px;
     font-weight: bold;
 }
@@ -9,34 +10,35 @@
 .table {
     width: 100%;
     background-color: #171717;
-    color: #D3B9FF;
     border-collapse: collapse;
-}
-
-.table th, .table td {
-    padding: 12px;
-    border: 1px solid #343A40;
-    text-align: left;
+    color: white;
 }
 
 .table th {
-    background-color: #2C2F33;
-    color: #FFFFFF;
+    background-color: #00337C;
+    color: white;
+    padding: 12px;
+    text-align: left;
+    border-bottom: 2px solid #034aac;
+}
+
+.table td {
+    padding: 10px;
+    border-bottom: 1px solid #343A40;
+}
+
+.table tr:nth-child(even) {
+    background-color: #20232A;
+}
+
+.table tr:hover {
+    background-color: #292b2c;
 }
 
 /* RESPONSIVE ELEMENTS */
-@media screen and (max-width: 768px) {
-    .container h2 {
-        font-size: 18px;
-    }
-
+@media (max-width: 768px) {
     .table th, .table td {
-        padding: 10px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .container h2 {
-        font-size: 16px;
+        padding: 8px;
+        font-size: 14px;
     }
 }
