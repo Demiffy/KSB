@@ -840,14 +840,30 @@ function insertModernTables(data, container) {
   applyGradientToProcentaRow(table);
 }
 
-// Function to apply gradient to the Procenta row
+// Function to apply gradient to the Procenta row and add warning for percentages above 30%
 function applyGradientToProcentaRow(table) {
   const procentaRow = Array.from(table.rows).find(row => row.cells[0] && row.cells[0].innerText.trim() === 'Procenta');
-  if (procentaRow) {
-      Array.from(procentaRow.cells).forEach(cell => {
+  const headerRow = table.querySelector('thead tr');
+
+  if (procentaRow && headerRow) {
+      Array.from(procentaRow.cells).forEach((cell, index) => {
           const percentage = parseFloat(cell.innerText);
           if (!isNaN(percentage)) {
+              // Apply gradient background color based on percentage
               cell.style.backgroundColor = getGradientColor(percentage);
+
+              if (percentage > 30) {
+                  const headerCell = headerRow.cells[index];
+                  if (headerCell) {
+                      headerCell.style.color = 'red';
+                  }
+              }
+              if (percentage > 25 && percentage <= 30) {
+                const headerCell = headerRow.cells[index];
+                if (headerCell) {
+                    headerCell.style.color = 'orange';
+                }
+              }
           }
       });
   }
@@ -2079,7 +2095,7 @@ window.addEventListener("load", function() {
 });
 
 // Initialization
-insertUpdateImage();
+//insertUpdateImage();
 insertNavbarToggleButton();
 updateTextColorBasedOnBgColor();
 setInterval(updateTextColorBasedOnBgColor, 100);

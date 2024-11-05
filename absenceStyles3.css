@@ -246,6 +246,16 @@ td[colspan="13"] {
     background-color: #E9671E; 
 }
 
+[class*="excuseid-"] {
+    font-weight: bold;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+[class*="excuseid-"]:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
 /* Mobile styles */
 @media (max-width: 768px) {
     .panel-default .panel-heading {
@@ -442,7 +452,7 @@ textarea[name="message"] {
 .modern-table td {
     padding: 12px 15px;
     text-align: left;
-    border-bottom: 1px solid #C55F1B;
+
 }
 
 .modern-table tbody tr:nth-child(even) {
@@ -470,4 +480,168 @@ textarea[name="message"] {
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
+}
+
+/* Excuse Table Styles */
+.excuse-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    overflow: hidden;
+    background-color: transparent;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.excuse-table th,
+.excuse-table td {
+    padding: 12px 15px;
+    text-align: left;
+    vertical-align: middle;
+    color: black;
+}
+
+.excuse-table th {
+    background-color: #E9671E;
+    color: white;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+/* Row Styling */
+.excuse-table tbody tr {
+    background-color: #DFDEDE;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.excuse-table tbody tr:first-child {
+    cursor: default;
+}
+
+.excuse-table tbody tr:nth-child(even) {
+    background-color: #F2F2F2;
+}
+
+.excuse-table tbody tr:hover {
+    background-color: #ffb35d !important;
+}
+
+/* Specific Row Classes */
+.excuse-table tbody tr.newExcuse {
+    background-color: #e7a65c;
+}
+
+/* Hidden Inputs */
+.excuse-table tbody td input[type="hidden"] {
+    display: none;
+}
+
+/* Buttons Styling */
+.excuse-table tbody td button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    transition: color 0.3s ease;
+}
+
+.excuse-table tbody td button:hover {
+    color: #d9534f;
+}
+
+.excuse-table tbody td button i {
+    font-size: 16px;
+    color: rgb(119, 119, 119);
+}
+
+.excuse-table tbody tr.newExcuse td button {
+    color: #5cb85c;
+}
+
+.excuse-table tbody tr.newExcuse td button:hover {
+    color: #4cae4c;
+}
+
+.excuse-table tbody tr.newExcuse input[type="datetime-local"],
+.excuse-table tbody tr.newExcuse select,
+.excuse-table tbody tr.newExcuse textarea {
+    width: 100%;
+    padding: 8px 10px;
+    margin: 4px 0;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.excuse-table tbody tr.newExcuse textarea {
+    resize: vertical;
+    height: 38px;
+}
+
+/* Action Column */
+.excuse-table tbody td:last-child {
+    text-align: center;
+}
+
+.excuse-table tbody tr.newExcuse select {
+    background-color: #e7a65c;
+    color: black;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='4'%20height='5'%20viewBox='0%200%204%205'%3E%3Cpath%20fill='%23ffffff'%20d='M2%200L0%202h4L2%200zM2%205L0%203h4L2%205z'/%3E%3C/svg%3E"); /* Custom arrow */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 8px 10px;
+    cursor: pointer;
+}
+
+.excuse-table,
+.excuse-table th,
+.excuse-table td {
+    border: none;
+}
+
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .excuse-table thead {
+        display: none;
+    }
+
+    .excuse-table, 
+    .excuse-table tbody, 
+    .excuse-table tr, 
+    .excuse-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .excuse-table tr {
+        margin-bottom: 15px;
+    }
+
+    .excuse-table td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+
+    .excuse-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 15px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+    }
 }
