@@ -1821,25 +1821,40 @@ function replaceHourCardContent() {
     });
   });
 
-  // Handle click event on an hour card
-  function handleCardClick(event) {
-    const card = event.currentTarget;
-    const subjectName = card.querySelector('.subject-name').innerText;
-    const time = card.querySelector('.time').innerText;
-    const roomNumber = card.querySelector('.room-name').innerText;
-    const url = card.dataset.url || null;
-    const debugId = card.getAttribute('data-debugid');
-
-    // Fetch any stored notes for the current card
-    chrome.storage.local.get(debugId, (result) => {
-      const savedData = result[debugId] || {};
+  async function handleCardClick(event) {
+    try {
+      const card = event.currentTarget;
+      const subjectName = card.querySelector('.subject-name').innerText;
+      const time = card.querySelector('.time').innerText;
+      const roomNumber = card.querySelector('.room-name').innerText;
+      const url = card.dataset.url || null;
+      const debugId = card.getAttribute('data-debugid');
+  
+      // Fetch any stored notes for the current card
+      const savedData = await getStorageData(debugId);
+      
       openPopup({
         subjectName,
         time,
         roomNumber,
         url,
         debugId,
-        notesList: savedData.notesList || [],
+        notesList: savedData?.notesList || [],
+      });
+    } catch (error) {
+      console.error("[KybernaMB] Failed to fetch storage data:", error);
+    }
+  }  
+
+  // Utility function to promisify chrome.storage.local.get
+  function getStorageData(key) {
+    return new Promise((resolve, reject) => {
+      chrome.storage.local.get(key, (result) => {
+        if (chrome.runtime.lastError) {
+          reject(chrome.runtime.lastError);
+        } else {
+          resolve(result[key]);
+        }
       });
     });
   }
