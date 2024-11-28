@@ -631,3 +631,11 @@ textarea[name="message"] {
         font-weight: bold;
     }
 }
+
+.outer-modal {
+    z-index: 1000;
+}
+
+.modal-content{
+    background-color: #1E1E1E;
+}

@@ -645,3 +645,7 @@ textarea[name="message"] {
         font-weight: bold;
     }
 }
+
+.outer-modal {
+    z-index: 1000;
+}

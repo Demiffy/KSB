@@ -608,7 +608,7 @@ if (window.location.href.includes('https://sis.ssakhk.cz/Classification')) {
                                   } else if (grade >= 3.5 && grade <= 4.49) {
                                       cell.style.color = 'darkorange';
                                   } else if (grade >= 4.5 && grade <= 5.0) {
-                                      cell.style.color = 'red';
+                                      cell.style.color = '#FF4C4C';;
                                   }
                               }
                           }
@@ -1028,34 +1028,72 @@ function updateNextSubjectInfo(container) {
 
   container.innerHTML = '';
 
+  // Array to store combined lessons
+  let combinedLessons = [];
   for (let i = 0; i < hourCards.length; i++) {
     const card = hourCards[i];
+    const subjectName = card.querySelector('.subject-name').innerText;
+    const roomNumber = card.querySelector('.room-name').innerText;
     const timeText = card.querySelector('.time').innerText;
     const [startTime, endTime] = timeText.split(' - ').map(t => t.trim());
     const [startHour, startMinute] = startTime.split(':').map(Number);
     const [endHour, endMinute] = endTime.split(':').map(Number);
-    const startDateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), startHour, startMinute);
-    const endDateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), endHour, endMinute);
+
+    // Check and merge lessons
+    if (
+      combinedLessons.length > 0 &&
+      combinedLessons[combinedLessons.length - 1].subjectName === subjectName &&
+      combinedLessons[combinedLessons.length - 1].roomNumber === roomNumber
+    ) {
+      const previousLesson = combinedLessons[combinedLessons.length - 1];
+
+      const previousEnd = new Date(now.getFullYear(), now.getMonth(), now.getDate(), previousLesson.endHour, previousLesson.endMinute);
+      const currentStart = new Date(now.getFullYear(), now.getMonth(), now.getDate(), startHour, startMinute);
+      const breakLength = Math.floor((currentStart - previousEnd) / 60000);
+
+      const adjustedEndTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), endHour, endMinute);
+      adjustedEndTime.setMinutes(adjustedEndTime.getMinutes() - breakLength);
+
+      previousLesson.endHour = adjustedEndTime.getHours();
+      previousLesson.endMinute = adjustedEndTime.getMinutes();
+      previousLesson.adjustedEndTime = `${String(previousLesson.endHour).padStart(2, '0')}:${String(previousLesson.endMinute).padStart(2, '0')}`;
+      previousLesson.isDoubleHour = true;
+      previousLesson.breakLength = breakLength;
+      } else {
+      combinedLessons.push({
+        subjectName,
+        roomNumber,
+        startHour,
+        startMinute,
+        endHour,
+        endMinute,
+        adjustedEndTime: `${String(endHour).padStart(2, '0')}:${String(endMinute).padStart(2, '0')}`,
+        isDoubleHour: false,
+        breakLength: 0,
+      });
+    }
+  }
+
+  // Iterate over combined lessons
+  for (let i = 0; i < combinedLessons.length; i++) {
+    const lesson = combinedLessons[i];
+    const startDateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), lesson.startHour, lesson.startMinute);
+    const endDateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), lesson.endHour, lesson.endMinute);
 
     if (now >= startDateTime && now < endDateTime) {
       // Current subject
       foundCurrent = true;
       const diffEndSeconds = Math.floor((endDateTime - now) / 1000);
-      const subjectName = card.querySelector('.subject-name').innerText;
-      const roomNumber = card.querySelector('.room-name').innerText;
-      container.innerHTML = `<strong>Nyní:</strong> ${subjectName} - ${roomNumber}<br><strong>Končí za:</strong> ${formatTime(diffEndSeconds)}`;
+      const doubleHourSuffix = lesson.isDoubleHour ? ' x2' : ''; // Add 'x2' if it's a double hour
+      container.innerHTML = `<strong>Nyní:</strong> ${lesson.subjectName} - ${lesson.roomNumber}${doubleHourSuffix}<br><strong>Končí za:</strong> ${formatTime(diffEndSeconds)}`;
 
       // Look ahead for the next subject
-      if (i + 1 < hourCards.length) {
-        const nextCard = hourCards[i + 1];
-        const nextTimeText = nextCard.querySelector('.time').innerText;
-        const [nextStartHour, nextStartMinute] = nextTimeText.split(' - ')[0].split(':').map(Number);
-        const nextStartDateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), nextStartHour, nextStartMinute);
+      if (i + 1 < combinedLessons.length) {
+        const nextLesson = combinedLessons[i + 1];
+        const nextStartDateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), nextLesson.startHour, nextLesson.startMinute);
         const diffStartNextSeconds = Math.floor((nextStartDateTime - now) / 1000);
-        const nextSubjectName = nextCard.querySelector('.subject-name').innerText;
-        const nextRoomNumber = nextCard.querySelector('.room-name').innerText;
 
-        container.innerHTML += `<br><strong>Následující:</strong> ${nextSubjectName} - ${nextRoomNumber}<br><strong>Začíná za:</strong> ${formatTime(diffStartNextSeconds)}`;
+        container.innerHTML += `<br><strong>Následující:</strong> ${nextLesson.subjectName} - ${nextLesson.roomNumber}<br><strong>Začíná za:</strong> ${formatTime(diffStartNextSeconds)}`;
       } else {
         // No more subjects for the day
         container.innerHTML += `<br><strong>Žádná další hodina</strong>`;
@@ -1066,8 +1104,8 @@ function updateNextSubjectInfo(container) {
     if (!foundCurrent && now < startDateTime) {
       // Next subject
       nextSubjectInfo = {
-        name: card.querySelector('.subject-name').innerText,
-        roomNumber: card.querySelector('.room-name').innerText,
+        name: lesson.subjectName,
+        roomNumber: lesson.roomNumber,
         startDateTime
       };
       break;
@@ -1090,6 +1128,7 @@ function updateNextSubjectInfo(container) {
     return `${minutes} minut a ${remainingSeconds} sekund`;
   }
 }
+
 
 // Function to save active day timetable to storage
 function saveTimetableToStorage() {
@@ -1954,7 +1993,7 @@ function replaceHourCardContent() {
 
         const noteTypeSelect = document.createElement('select');
         noteTypeSelect.classList.add('note-type-select');
-        ['Domací Úkol', 'Test', "Zkoušení", "Prezentace", 'Ostatní'].forEach((type) => {
+        ['Domácí Úkol', 'Test', "Zkoušení", "Prezentace", 'Ostatní'].forEach((type) => {
           const option = document.createElement('option');
           option.value = type;
           option.textContent = type;
